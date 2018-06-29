@@ -1,5 +1,5 @@
 baseurl = "https://example.org/"
-title = "ThreatConnect Playbooks"
+title = "ThreatConnect Resources"
 theme = "hugo-nederburg-theme"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
@@ -10,13 +10,12 @@ preserveTaxonomyNames = true
 paginate = 7 #frontpage pagination
 
 [params]
-  slogan = "Open-source playbooks for orchestrating your security systems"
-  description = "A list of open-source playbooks for ThreatConnect" # meta description
+  slogan = "Open-source, ThreatConnect resources"
+  description = "A list of open-source resources for ThreatConnect" # meta description
   copyright = [
     "&copy; 2018 Floyd Hightower",
     "[Nederburg Hugo Theme](https://themes.gohugo.io/hugo-nederburg-theme/) by [Appernetic](https://appernetic.io).",
   ]
-
 
   # Contact page
      # Since this template is static, the contact form uses www.formspree.io as a
@@ -33,5 +32,5 @@ paginate = 7 #frontpage pagination
   email = "goran@molnsys.com"
 
   [params.social]
-  github        = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks"
+  github        = "https://github.com/ThreatConnect-Inc/"
   rss           = true
