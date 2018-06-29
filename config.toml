@@ -1,0 +1,37 @@
+baseurl = "https://example.org/"
+title = "ThreatConnect Playbooks"
+theme = "hugo-nederburg-theme"
+languageCode = "en-us"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = ""
+preserveTaxonomyNames = true
+paginate = 7 #frontpage pagination
+
+[params]
+  slogan = "Open-source playbooks for orchestrating your security systems"
+  description = "A list of open-source playbooks for ThreatConnect" # meta description
+  copyright = [
+    "&copy; 2018 Floyd Hightower",
+    "[Nederburg Hugo Theme](https://themes.gohugo.io/hugo-nederburg-theme/) by [Appernetic](https://appernetic.io).",
+  ]
+
+
+  # Contact page
+     # Since this template is static, the contact form uses www.formspree.io as a
+     # proxy. The form makes a POST request to their servers to send the actual
+     # email. Visitors can send up to a 1000 emails each month for free.
+     #
+     # What you need to do for the setup?
+     #
+     # - set your email address under 'email' below (it is also used in Gravatar for the bio).
+     # - upload the generated site to your server
+     # - send a dummy email yourself to confirm your account
+     # - click the confirm link in the email from www.formspree.io
+     # - you're done. Happy mailing!
+  email = "goran@molnsys.com"
+
+  [params.social]
+  github        = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks"
+  rss           = true
