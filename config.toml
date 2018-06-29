@@ -1,4 +1,4 @@
-baseurl = "https://fhightower-tc.gitlab.io/"
+baseurl = "https://fhightower-tc.gitlab.io/tc-resources-static-site/"
 title = "ThreatConnect Resources"
 theme = "hugo-nederburg-theme"
 languageCode = "en-us"
