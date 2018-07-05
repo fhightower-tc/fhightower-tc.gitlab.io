@@ -8,10 +8,9 @@
       <ul id="menu-secondary-items" class="menu-secondary-items">
         {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
         <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-          <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>
+          <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>&nbsp;&nbsp;&nbsp;&nbsp;
         </li>
         {{ end }}
-
       </ul>
 
     </div>
