@@ -45,6 +45,7 @@
           <div class="entry-content">
             <article>
               <i>{{ .Params.description }}</i>
+              <br><br>
               {{ .Content }}
             </article>
           </div>
@@ -85,6 +86,7 @@
   {{ if .Params.viewLink }}
   <a class="buttonLink" href="{{ .Params.viewLink }}">View</a>
   {{ end }}
+  <a class="buttonLink" href="https://github.com/ThreatConnect-Inc/threatconnect-playbooks/issues/new?title={{ .Title }}:%20">Raise an issue/Ask a question</a>
 </div>
 </div>
 {{ if and (isset .Site.Params "author") .Site.Params.author }}

@@ -5,4 +5,7 @@ tags = ["Attributes", "Tags"]
 author = "Floyd Hightower"
 description = "Quickly and easily add an attribute and/or tag to all indicators associated with a given group."
 categories = ["Playbooks"]
+downloadLink = "a"
+viewLink = "b"
+repositoryBaseURL = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks"
 +++

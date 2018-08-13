@@ -1,0 +1,24 @@
++++
+date = "2018-03-08"
+title = "Archive.org Wayback Machine Query"
+tags = ["Archive.org", "Host", "URL"]
+author = "Floyd Hightower"
+description = "Query for a Host or URL Indicator in Archive.org's Wayback Machine."
+categories = ["Playbooks"]
+viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/archive-org-wayback-machine-query"
++++
+
+Query for a Host or URL Indicator in Archive.org's Wayback Machine (https://archive.org/web/web.php).
+
+## Documentation
+
+### Triggers
+
+- UserAction
+
+### Variables Declared in the Playbook
+
+The following variables are declared in this playbook:
+
+- **successMessage:** `This indicator was archived on #App:12676:archiveDate!String . You can view it here:<a href="#App:12676:archiveURL!String " target="_blank"> #App:12676:archiveURL!String</a>.`
+- **failureMessage:** `This indicator was not found in archive.org.`
