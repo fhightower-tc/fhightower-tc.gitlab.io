@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div id="loop-container" class="loop-container">
+  <ul>
+  {{ range .Data.Pages }}
+      <li class="site-title"><a style="color: white;" href="{{ .Permalink }}">{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+{{ end }}
