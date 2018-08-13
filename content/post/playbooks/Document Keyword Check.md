@@ -1,7 +1,7 @@
 +++
 date = "2018-06-28"
-title = "Key-word Parsing"
-tags = ["Document", "Parsing"]
+title = "Document Keyword Parsing"
+tags = ["Documents", "Searching", "Parsing"]
 author = "billdauterive"
 description = "These playbooks will allow you to define a set of keywords in a JSON Array to parse a document for. Upon ingestion of a document the playbook will parse the documents in the specified owners for the given keywords. Should a match be found the group name as well as the identified keywords will be added as tags on the triggering document."
 categories = ["Playbooks"]

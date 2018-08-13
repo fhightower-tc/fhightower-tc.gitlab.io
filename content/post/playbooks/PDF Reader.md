@@ -1,7 +1,7 @@
 +++
 date = "2018-04-16"
 title = "PDF Reader"
-tags = ["PDF"]
+tags = ["PDF", "Parsing"]
 author = "Floyd Hightower"
 description = "Request a PDF from a given URL and return the text from the PDF."
 categories = ["Playbooks"]

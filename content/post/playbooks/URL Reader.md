@@ -1,7 +1,7 @@
 +++
 date = "2018-04-16"
 title = "URL Reader"
-tags = ["Collection"]
+tags = ["HTML", "Parsing"]
 author = "Floyd Hightower"
 description = "Request the content of the given website and return the text of the website's content."
 categories = ["Playbooks"]

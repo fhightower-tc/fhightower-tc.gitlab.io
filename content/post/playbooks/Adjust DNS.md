@@ -1,7 +1,7 @@
 +++
 date = "2018-03-07"
 title = "Adjust DNS"
-tags = ["DNS", "Indicators"]
+tags = ["DNS", "Indicators", "Hosts"]
 author = "Floyd Hightower"
 description = "These playbooks allow users to turn the DNS on or off for all indicators associated with a group."
 categories = ["Playbooks"]

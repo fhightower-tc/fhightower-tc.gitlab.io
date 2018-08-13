@@ -1,7 +1,7 @@
 +++
 date = "2018-03-21"
 title = "Get Shodan Enrichment"
-tags = ["Shodan", "Enrichment"]
+tags = ["Shodan", "Enrichment", "Indicators"]
 author = "citadelintelligenceresearch"
 description = "This playbook presents a User Action trigger that when pressed, will query Shodan's API for a given indicator then pull back enrichments and store them as an attribute on said indicator."
 categories = ["Playbooks"]

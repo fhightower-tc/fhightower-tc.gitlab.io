@@ -32,7 +32,7 @@
           <span class="category">
             <span> / </span>
 
-            <a href="/categories{{ . | relURL }}">{{ . }}</a>
+            <a href="/categories/{{ . | urlize }}">{{ . }}</a>
           </span>
           {{ end }}
 

@@ -1,7 +1,7 @@
 +++
 date = "2018-03-05"
 title = "Cymon IP and Host Query"
-tags = ["Cymon", "IPs", "Hosts", "Enrichment"]
+tags = ["Cymon", "IPs", "Hosts", "Indicators", "Enrichment"]
 author = "Floyd Hightower"
 description = "This playbook lets you query Cymon for an IP Address or Host."
 categories = ["Playbooks"]

@@ -1,7 +1,7 @@
 +++
 date = "2018-03-08"
 title = "Attribute and Tag Adder"
-tags = ["Attributes", "Tags", "Indicators"]
+tags = ["Attributes", "Tags", "Indicators", "Metadata"]
 author = "Floyd Hightower"
 description = "Add an attribute and/or tag to all indicators associated with a given group."
 categories = ["Playbooks"]

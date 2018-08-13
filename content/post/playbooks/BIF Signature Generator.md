@@ -1,7 +1,7 @@
 +++
 date = "2018-06-06"
 title = "Bro Intel Framework Signature Generator"
-tags = ["BIF", "Bro", "Signature"]
+tags = ["BIF", "Bro", "Signatures", "Indicators"]
 author = "Malware Utkonos"
 description = "Generate a Bro Intelligence Framework signature from an indicator."
 categories = ["Playbooks"]

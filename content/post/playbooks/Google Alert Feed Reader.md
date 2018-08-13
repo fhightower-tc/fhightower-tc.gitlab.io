@@ -1,7 +1,7 @@
 +++
 date = "2018-03-08"
 title = "Google Alert Feed Reader"
-tags = ["Google Alerts", "URL"]
+tags = ["Google", "Google Alerts", "URLs", "Indicators"]
 author = "Floyd Hightower"
 description = "Read a Google Alerts RSS feed and create indicators from the links. This playbook pulls the content from an RSS feed of Google alerts, finds the URLs from the alerts, and creates those URLs as indicators in ThreatConnect."
 categories = ["Playbooks"]

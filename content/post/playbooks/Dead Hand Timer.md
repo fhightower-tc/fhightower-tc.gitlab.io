@@ -1,7 +1,7 @@
 +++
 date = "2018-06-19"
 title = "Dead Hand Timer"
-tags = ["Dead Hand"]
+tags = ["Dead Hand", "Utility"]
 author = "Malware Utkonos"
 description = "This playbook checks the status of a feed and sends a notification if there is a fault in the feed status."
 categories = ["Playbooks"]
