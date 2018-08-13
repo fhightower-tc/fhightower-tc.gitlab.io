@@ -45,7 +45,7 @@
 						 {{ range .Params.categories }}
 							<span> / </span>
 						<span class="category">
-							<a href="/categories{{ . | relURL }}">{{ . }}</a>
+							<a href="/categories/{{ . | urlize }}">{{ . }}</a>
 						</span>
 						{{ end }}
 					</div>
@@ -58,7 +58,7 @@
 								<article>
 									{{ .Params.description }}
 
-									<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">Read the post<span class="screen-reader-text">This is a Standard Post</span></a></div>
+									<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">Click to learn more<span class="screen-reader-text">This is a Standard Post</span></a></div>
 								</article>
 							</div>
 						</div>
