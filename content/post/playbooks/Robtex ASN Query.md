@@ -3,7 +3,7 @@ date = "2018-03-05"
 title = "Robtex IP and ASN Query"
 tags = ["Robtex", "Enrichment", "IPs", "ASNs"]
 author = "Floyd Hightower"
-description = "Query [Robtex](https://www.robtex.com/) for an IP or ASN."
+description = "Query <a href='https://www.robtex.com/'>Robtex</a> for an IP or ASN."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/robtex-query"
 +++

@@ -49,18 +49,19 @@
 						</span>
 						{{ end }}
 					</div>
-							<div class='excerpt-header'>
-								<h2 class='excerpt-title'>
-									<a href="{{ .Permalink }} "> {{ .Title }} </a>
-								</h2>
-							</div>
-							<div class='excerpt-content'>
-								<article>
-									{{ .Params.description }}
-
-									<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">Click to learn more<span class="screen-reader-text">This is a Standard Post</span></a></div>
-								</article>
-							</div>
+					<div class='excerpt-header'>
+						<h2 class='excerpt-title'>
+							<a href="{{ .Permalink }} "> {{ .Title }} </a>
+						</h2>
+					</div>
+					<br>
+					<div class='excerpt-content'>
+						<article>
+							{{ .Params.description | safeHTML }}
+						</article>
+						<br>
+						<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">Click to learn more<span class="screen-reader-text">This is a Standard Post</span></a></div>
+					</div>
 						</div>
 					</div>
 					{{ end }}
