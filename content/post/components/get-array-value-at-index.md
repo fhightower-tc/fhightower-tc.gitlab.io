@@ -5,7 +5,7 @@ tags = ["Arrays", "Lists", "Utility"]
 author = "Floyd Hightower"
 description = "Get the value of an array at the given index."
 categories = ["Components"]
-viewLink = ""
+viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/pull/68"
 +++
 
 ## Documentation
