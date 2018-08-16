@@ -5,7 +5,7 @@ tags = ["Strings", "Utility"]
 author = "Floyd Hightower"
 description = "Get the length of the given string."
 categories = ["Components"]
-viewLink = ""
+viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/pull/69"
 +++
 
 ## Documentation
