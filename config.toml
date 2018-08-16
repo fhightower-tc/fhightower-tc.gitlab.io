@@ -15,6 +15,7 @@ paginate = 7 #frontpage pagination
   copyright = [
     "&copy; 2018 Floyd Hightower",
     "[Nederburg Hugo Theme](https://themes.gohugo.io/hugo-nederburg-theme/) by [Appernetic](https://appernetic.io).",
+    "Favicon is \"[Strategy](https://thenounproject.com/search/?q=playbook&i=82325)\" icon by Evan MacDonald from the Noun Project "
   ]
 
   # Contact page
