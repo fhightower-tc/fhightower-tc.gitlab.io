@@ -7,3 +7,5 @@ description = "Structured import for humans. Quickly and easily import and edit/
 categories = ["Spaces Apps"]
 viewLink = "https://gitlab.com/fhightower-tc/structured-import-app"
 +++
+
+![Easily import structured content](/post/spaces-apps/structured_import.gif)
