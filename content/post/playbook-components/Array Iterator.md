@@ -4,7 +4,7 @@ title = "Array Iterator"
 tags = ["Arrays", "Lists"]
 author = "Floyd Hightower"
 description = "Iterate through an array of items and send each one of them to another playbook."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://gitlab.com/cezhunter/Iterator_Playbook_Components/"
 +++
 

@@ -4,7 +4,7 @@ title = "Human in the Loop System"
 tags = ["Tasks"]
 author = "Floyd Hightower"
 description = "A playbook system to wait for human interaction before continuing in a process."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://pb-constructs.hightower.space/playbooks/constructs/human_in_the_loop"
 +++
 

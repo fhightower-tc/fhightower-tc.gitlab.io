@@ -4,7 +4,7 @@ title = "Indicator Defanger"
 tags = ["Indicators"]
 author = "Floyd Hightower"
 description = "Defang indicators of compromise so they don't become links in documents, emails, tasks, slack messages, etc."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/indicator-defanger"
 +++
 

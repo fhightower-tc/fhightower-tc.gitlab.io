@@ -4,7 +4,7 @@ title = "Indicator Parser"
 tags = ["Indicators", "Parsing"]
 author = "Floyd Hightower"
 description = "Parse indicators from text using the system regexes available via the API."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/indicator-parser"
 +++
 

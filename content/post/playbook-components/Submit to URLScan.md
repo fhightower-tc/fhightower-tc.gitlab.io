@@ -4,7 +4,7 @@ title = "Get String Length"
 tags = ["urlscan.io", "Hosts", "URLs", "Indicators", "Enrichment"]
 author = "citadelintellgenceresearch"
 description = "Submit a host or URL to urlscan.io for enrichment."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/submit_to_urlscan"
 +++
 

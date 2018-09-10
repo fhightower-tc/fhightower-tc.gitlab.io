@@ -4,7 +4,7 @@ title = "Shorten Group Name"
 tags = ["Groups"]
 author = "Floyd Hightower"
 description = "Shorten a group's name to the maximum length (100 characters)."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/shorten_group_name"
 +++
 

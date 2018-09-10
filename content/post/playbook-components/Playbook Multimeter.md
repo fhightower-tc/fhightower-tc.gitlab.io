@@ -4,7 +4,7 @@ title = "Playbook Multimeter"
 tags = ["Utility"]
 author = "Floyd Hightower"
 description = "Spaces app and playbook component to view data across multiple playbooks."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://gitlab.com/fhightower-tc/playbook-multimeter"
 +++
 

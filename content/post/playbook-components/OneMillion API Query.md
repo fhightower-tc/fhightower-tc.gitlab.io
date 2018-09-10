@@ -4,7 +4,7 @@ title = "OneMillion API Query"
 tags = ["Hosts", "Enrichment"]
 author = "Floyd Hightower"
 description = "Check the rank of a domain in the Alexa and Cisco top million domain lists."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/onemillion-api-query"
 +++
 

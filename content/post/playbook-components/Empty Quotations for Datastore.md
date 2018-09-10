@@ -4,7 +4,7 @@ title = "Escape Quotes for Datastore"
 tags = ["Datastore"]
 author = "Floyd Hightower"
 description = "Escape quotation marks for storing content in the datastore."
-categories = ["Components"]
+categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/escape-quotation-marks-for-datastore"
 +++
 
