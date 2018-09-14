@@ -31,19 +31,16 @@ When triggered, this will - Get the list of keywords from the datastore in Elast
 This playbook uses the following datastores:
 
 - `GET organization/keywords/`:
-  - **Datastore Organization:** "Customer Org"
-  - **Datastore Entity:** ```{
-          from: 0,
-          size: 5000
-        }```
+  - **Datastore Organization:** "DOITNC"
+  - **Datastore Entity:** ```{ "from" : 0, "size": 5000}```
 
 ### Variables Declared in the Playbook
 
 The following variables are declared in this playbook:
 
-- **enclosure.North_Korea:** `(#App:567:join.North_Korea!String)`
-- **enclosure.China:** `(#App:567:join.China!String)`
-- **enclosure.Russia:** `(#App:567:join.Russia!String)`
+- **enclosure.North_Korea:** `(#App:7820:join.North_Korea!String)`
+- **enclosure.China:** `(#App:7820:join.China!String)`
+- **enclosure.Russia:** `(#App:7820:join.Russia!String)`
 
 ## Documentation for "Populate DataStore with Keywords" Playbook
 
@@ -56,16 +53,16 @@ The following variables are declared in this playbook:
 This playbook uses the following datastores:
 
 - `POST organization/keywords/None`:
-  - **Datastore Organization:** "Customer Org"
-  - **Datastore Entity:** ```#App:623:North_Korea!String```
+  - **Datastore Organization:** "DOITNC"
+  - **Datastore Entity:** ```#App:7813:North_Korea!String```
 
 - `POST organization/keywords/None`:
-  - **Datastore Organization:** "Customer Org"
-  - **Datastore Entity:** ```#App:623:China!String```
+  - **Datastore Organization:** "DOITNC"
+  - **Datastore Entity:** ```#App:7813:China!String```
 
 - `POST organization/keywords/None`:
-  - **Datastore Organization:** "Customer Org"
-  - **Datastore Entity:** ```#App:623:Russia!String```
+  - **Datastore Organization:** "DOITNC"
+  - **Datastore Entity:** ```#App:7813:Russia!String```
 
 ### Variables Declared in the Playbook
 
@@ -86,5 +83,5 @@ The following variables are declared in this playbook:
 This playbook uses the following datastores:
 
 - `GET organization/keywords/`:
-  - **Datastore Organization:** "Customer Org"
-  - **Datastore Entity:** ```{from: 0,size: 5000}```
+  - **Datastore Organization:** "DOITNC"
+  - **Datastore Entity:** ```{ "from" : 0, "size": 5000}```

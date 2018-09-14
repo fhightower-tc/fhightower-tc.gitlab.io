@@ -8,13 +8,19 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/False%20Positive%20Triage"
 +++
 
-There are two versions of this playbook. One which works in ThreatConnect instances before version 5.7 and one that works in versions after 5.7.
+There are two versions of this playbook. One which works in ThreatConnect instances before version 5.7 and one that works in versions >= 5.7.
 
-## Documentation
+## Pre 5.7 Version
 
-### Pre 5.7 Version
+This playbook triages false positives by:
 
-Rather than deleting the indicator and republishing associated groups after 25 hours, this playbook writes the indicator data into the datastore so it can be triaged using a script or other mechanism.
+- reporting a false positive
+- turning off all monitors (DNS/WHOIS)
+- resetting all ratings
+
+Everything in the [pre-5.7 directory](https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/False%20Positive%20Triage/pre-5.7) will work in ThreatConnect versions before 5.7. The `pre-5.7/False Positive Triage Standalone - pre 5.7.pbx` playbook can be installed on its own and provides a user-action trigger to triage false positives. There are also two interfaces (`pre-5.7/False Positive Triage HTTP Interface.pbx` and `pre-5.7/False Positive Triage Trigger Interface.pbx`) which provide different interfaces with the false positive triage component [here](https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/false-positive-triage). The advantage of this structure (as described [here](https://pb-constructs.hightower.space/playbooks/paradigms/structuring-playbook-systems)) is that it is more flexible and interface-agnostic.
+
+### Documentation
 
 #### Triggers
 
@@ -28,7 +34,20 @@ This playbook uses the following datastores:
   - **Datastore Organization:** <NO ORGANIZATION SPECIFIED>
   - **Datastore Entity:** ```#App:1445141972:tc.indicator!TCEntity```
 
-### Post 5.7 Version
+## Post 5.7 Version
+
+This playbook triages false positives by:
+
+- reporting a false positive
+- turning off all monitors (DNS/WHOIS)
+- resetting all ratings
+- waiting for 25 hours (to make sure CAL gets the new information)
+- deleting the indicator
+- republishing all groups previously associated with the indicator
+
+Everything in the [post-5.7 directory](https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/False%20Positive%20Triage/post-5.7) will only work in ThreatConnect versions after the release of version 5.7.
+
+### Documentation
 
 #### Triggers
 
