@@ -9,3 +9,5 @@ viewLink = "https://gitlab.com/fhightower-templates/tcex-app-template"
 +++
 
 You can find details and see a demo [here](https://gitlab.com/fhightower-templates/tcex-app-template).
+
+![Creating a jobs or playbook app using this template is very easy](/post/templates/tcex_app_template_demo.gif)
