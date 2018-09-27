@@ -1,7 +1,7 @@
 +++
 date = "2018-06-11"
 title = "Human in the Loop System"
-tags = ["Tasks"]
+tags = ["Tasks", "Workflows", "Humans"]
 author = "Floyd Hightower"
 description = "A playbook system to wait for human interaction before continuing in a process."
 categories = ["Playbook Components"]

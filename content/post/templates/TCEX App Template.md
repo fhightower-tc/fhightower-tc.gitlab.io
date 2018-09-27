@@ -1,7 +1,7 @@
 +++
 date = "2017-06-12"
 title = "TCEX App Template"
-tags = ["Playbook Apps", "Jobs Apps", "TCEX"]
+tags = ["Playbook Apps", "Jobs Apps", "TCEX", "App Development", "Cookiecutter"]
 author = "Floyd Hightower"
 description = "A cookiecutter template for quickly creating a jobs or playbook app using the TCEX package."
 categories = ["Templates"]
