@@ -1,9 +1,11 @@
 +++
 date = "2018-06-21"
 title = "Note Taker"
-tags = ["Notes"]
+tags = ["Notes", "Datastore"]
 author = "Floyd Hightower"
 description = "Take and save notes in ThreatConnect."
 categories = ["Spaces Apps"]
-viewLink = "https://github.com/fhightower/threatconnect-spaces/tree/adding-notetaker/spaces/TCS_-_Note_Taker"
+viewLink = "https://gitlab.com/fhightower-tc/note-taker"
 +++
+
+This app persists notes in the datastore. You can find more details [here](https://gitlab.com/fhightower-tc/note-taker).
