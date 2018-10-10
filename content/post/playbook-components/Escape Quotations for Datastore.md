@@ -1,7 +1,7 @@
 +++
 date = "2018-06-14"
 title = "Escape Quotes for Datastore"
-tags = ["Datastore"]
+tags = ["Datastore", "Cleaning"]
 author = "Floyd Hightower"
 description = "Escape quotation marks for storing content in the datastore."
 categories = ["Playbook Components"]
