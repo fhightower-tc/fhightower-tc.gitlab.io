@@ -32,6 +32,8 @@ The basic algorithm is as follows:
 * Wait until a condition is true before proceeding
 * Attempt an action until the action is successful
 
+You can read more about how this app works at [https://pb-constructs.hightower.space/playbooks/constructs/try_until_complete](https://pb-constructs.hightower.space/playbooks/constructs/try_until_complete).
+
 ## Documentation
 
 ### Triggers
