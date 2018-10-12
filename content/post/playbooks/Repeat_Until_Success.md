@@ -47,11 +47,12 @@ This playbook uses an HTTP trigger; the parts of the HTTP request below are used
 - **body:** used in the "http - attempt action" app
 - **queryparam:** used in the "Value Lookup 1" app
 - **body:** used in the "http - call this playbook again" app
+- **body:** used in the "http - call final playbook" app
 
 ### Variables Declared in the Playbook
 
 The following variables are declared in this playbook:
 
 - **messagePrefix:** `[repeat until complete]:`
-- **thisPlaybookTrigger:** `REPLACE ME!`
-- **newCount:** `#App:17375:http.content!String`
+- **thisPlaybookTrigger:** `Replace Me!`
+- **newCount:** `#App:22709:http.content!String`
