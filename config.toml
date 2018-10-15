@@ -13,7 +13,7 @@ paginate = 7 #frontpage pagination
   slogan = "Open-source, ThreatConnect resources"
   description = "A list of open-source resources for ThreatConnect" # meta description
   copyright = [
-    "&copy; 2018 Floyd Hightower",
+    "&copy; 2018 [Floyd Hightower](https://hightower.space/)",
     "[Nederburg Hugo Theme](https://themes.gohugo.io/hugo-nederburg-theme/) by [Appernetic](https://appernetic.io).",
     "Favicon is \"[Strategy](https://thenounproject.com/search/?q=playbook&i=82325)\" icon by Evan MacDonald from the Noun Project "
   ]
