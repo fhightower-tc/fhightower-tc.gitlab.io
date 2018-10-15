@@ -1,7 +1,7 @@
 +++
 date = "2018-09-21"
 title = "ThreatConnect DoubleCheck"
-tags = ["Testing", "Validation", "Monitoring", "Groups", "Indicators"]
+tags = ["Testing", "Validation", "Monitoring", "Groups", "Indicators", "ThreatConnect DoubleCheck"]
 author = "Floyd Hightower"
 description = "Library for validating the contents and structure of data in ThreatConnect. Think unit-tests for ThreatConnect data."
 categories = ["Tools"]
