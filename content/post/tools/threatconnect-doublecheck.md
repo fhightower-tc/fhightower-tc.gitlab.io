@@ -9,3 +9,5 @@ viewLink = "https://gitlab.com/fhightower-tc/threatconnect-doublecheck"
 +++
 
 This library is the foundation for monitoring automated collection systems, allowing analysts to validate their work before sharing, and providing insight into the quality/completeness of data in a ThreatConnect source.
+
+There is a spaces app to create and manage profiles for this system described [here](https://tc.hightower.space/post/spaces-apps/tc-doublecheck-profile-creator-and-manager/).
