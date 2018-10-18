@@ -1,6 +1,6 @@
 +++
 date = "2018-07-23"
-title = "Get String Length"
+title = "Submit to urlscan.io"
 tags = ["urlscan.io", "Hosts", "URLs", "Indicators", "Enrichment"]
 author = "citadelintellgenceresearch"
 description = "Submit a host or URL to urlscan.io for enrichment."
