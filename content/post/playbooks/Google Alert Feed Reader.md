@@ -8,6 +8,10 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/google-alerts-rss-reader"
 +++
 
+This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/google-alerts-rss-reader/](https://threatconnect.com/blog/google-alerts-rss-reader/)! The blog post includes installation instructions and a gif of how to setup the playbook.
+
+![](/post/playbooks/images/google-alert-rss.png)
+
 ## Use Cases
 
 Once in a while, there is a Google search that turns up a lot of malicious or compromised domains. When this happens, it is helpful to use [Google Alerts](https://www.google.com/alerts) to create an RSS feed of websites matching the search. This playbook will then read from this RSS feed and create all of the urls as indicators in ThreatConnect. There are details and instructions for setting up an RSS feed for a Google alert here: [https://thenextweb.com/google/2013/09/11/google-alerts-regains-rss-delivery-option-it-lost-after-google-readers-demise/](https://thenextweb.com/google/2013/09/11/google-alerts-regains-rss-delivery-option-it-lost-after-google-readers-demise/).

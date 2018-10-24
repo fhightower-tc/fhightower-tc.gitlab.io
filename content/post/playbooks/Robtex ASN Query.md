@@ -8,7 +8,17 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/robtex-query"
 +++
 
-<!-- Query [Robtex](https://www.robtex.com/) for an IP or ASN. -->
+This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/robtex-asn-query-ip-query/](https://threatconnect.com/blog/robtex-asn-query-ip-query/)! The blog post includes installation instructions and a gif of how to setup the playbook.
+
+## Images
+
+Here is a picture of the ASN Query playbook:
+
+![](/post/playbooks/images/robtex-asn-query.png)
+
+Here is a picture of the IP Query playbook:
+
+![](/post/playbooks/images/robtex-ip-query.png)
 
 ## Documentation for "Robtex ASN Query" Playbook
 

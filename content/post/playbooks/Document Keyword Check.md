@@ -8,6 +8,8 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/KeyWord%20Parsing"
 +++
 
+This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/document-parsing-keyword-tagging/](https://threatconnect.com/blog/document-parsing-keyword-tagging/)! The blog post includes installation and setup instructions.
+
 ## Usage
 
 Populate DataStore with Keywords - This Playbook will only need to be ran once, it will create an list of keywords in JSON format and submit them to a datastore in ElasticSearch for your Org called "keywords". The keywords themselves are stored in variables so they can be updated for easy of future additions.
@@ -21,6 +23,8 @@ Document Keyword Check - this is the actual playbook that does the work. Current
 When triggered, this will - Get the list of keywords from the datastore in ElasticSearch, JSON parse this list for the type and save them as variables Convert the document to a set of strings Do a regex capture on any keywords that match between the two For those that match it will create the tag for the group, ie: China/Russia It will additionally tag the document with the actual keywords within those that match, ie: APT12/APT28 etc.
 
 ## Documentation for "Document Keyword Check" Playbook
+
+![](/post/playbooks/images/document-keyword-check.png)
 
 ### Triggers
 
@@ -43,6 +47,8 @@ The following variables are declared in this playbook:
 - **enclosure.Russia:** `(#App:7820:join.Russia!String)`
 
 ## Documentation for "Populate DataStore with Keywords" Playbook
+
+![](/post/playbooks/images/document-keyword-check-populate-datastore.jpg)
 
 ### Triggers
 
