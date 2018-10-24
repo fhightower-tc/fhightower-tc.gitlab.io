@@ -1,7 +1,7 @@
 +++
 date = "2018-03-05"
 title = "Group Comment Link Creator"
-tags = ["Sharing", "Groups", "Comments"]
+tags = ["Sharing", "Groups", "Comments", "Links"]
 author = "Floyd Hightower"
 description = "Create and copy the link to a Group in two clicks."
 categories = ["Playbooks"]

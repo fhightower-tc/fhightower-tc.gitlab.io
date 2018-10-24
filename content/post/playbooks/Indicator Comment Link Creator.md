@@ -1,7 +1,7 @@
 +++
 date = "2018-03-05"
 title = "Indicator Comment Link Creator"
-tags = ["Sharing", "Indicators", "Comments"]
+tags = ["Sharing", "Indicators", "Comments", "Links"]
 author = "Floyd Hightower"
 description = "Create and copy the link to an Indicator in two clicks."
 categories = ["Playbooks"]
