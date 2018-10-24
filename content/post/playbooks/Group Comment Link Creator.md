@@ -8,6 +8,8 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/comment-link-creators"
 +++
 
+![](/post/playbooks/images/group-comment-link-creator.png)
+
 ## Documentation
 
 ### Triggers
