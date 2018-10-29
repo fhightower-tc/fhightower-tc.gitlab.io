@@ -8,6 +8,8 @@ categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/comment-link-creators"
 +++
 
+This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/playbook-fridays-group-and-indicator-comment-link-creators/](https://threatconnect.com/blog/playbook-fridays-group-and-indicator-comment-link-creators/)! The blog post includes installation instructions for this playbook.
+
 ![](/post/playbooks/images/indicator-comment-link-creator.png)
 
 ## Documentation
