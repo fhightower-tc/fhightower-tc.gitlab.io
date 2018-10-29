@@ -1,7 +1,7 @@
 +++
 date = "2018-03-01"
 title = "Indicator Defanger"
-tags = ["Indicators"]
+tags = ["Indicators", "Defanging"]
 author = "Floyd Hightower"
 description = "Defang indicators of compromise so they don't become links in documents, emails, tasks, slack messages, etc."
 categories = ["Playbook Components"]

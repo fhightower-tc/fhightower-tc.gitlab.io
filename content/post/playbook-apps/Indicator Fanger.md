@@ -1,7 +1,7 @@
 +++
 date = "2018-03-02"
 title = "Indicator Fanger"
-tags = ["Indicators"]
+tags = ["Indicators", "Fanging"]
 author = "Floyd Hightower"
 description = "Fang indicators of compromise in text."
 categories = ["Playbook Apps"]
