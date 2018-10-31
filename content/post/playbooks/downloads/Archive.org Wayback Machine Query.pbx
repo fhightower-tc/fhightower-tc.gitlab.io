@@ -1,0 +1,232 @@
+{
+    "jobList": [
+        {
+            "id": 12669,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Wayback API Call",
+            "locationLeft": 150.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "http://archive.org/wayback/available",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"url\",\"value\":\"#Trigger:1209:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12676,
+            "outputVariables": "[{\"name\":\"archiveDate\",\"type\":\"String\"},{\"name\":\"archiveURL\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Json Path 1",
+            "locationLeft": 400.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.1",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:12669:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"archiveURL\",\"value\":\"archived_snapshots.closest.url\"},{\"key\":\"archiveDate\",\"value\":\"archived_snapshots.closest.timestamp\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12678,
+            "outputVariables": "[{\"name\":\"successMessage\",\"type\":\"String\"}]",
+            "locationTop": 100.0,
+            "name": "Set Variable 1",
+            "locationLeft": 660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"successMessage\",\"value\":\"This indicator was archived on #App:12676:archiveDate!String . You can view it here:\\u003ca href\\u003d\\\"#App:12676:archiveURL!String \\\" target\\u003d\\\"_blank\\\"\\u003e #App:12676:archiveURL!String\\u003c/a\\u003e.\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12679,
+            "outputVariables": "[{\"name\":\"message\",\"type\":\"String\"}]",
+            "locationTop": -60.0,
+            "name": "Merge 1",
+            "locationLeft": 1020.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"message\",\"value\":\"#App:12678:successMessage!String\"},{\"key\":\"message\",\"value\":\"#App:12680:failureMessage!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12680,
+            "outputVariables": "[{\"name\":\"failureMessage\",\"type\":\"String\"}]",
+            "locationTop": 200.0,
+            "name": "Set Variable 2",
+            "locationLeft": 660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"failureMessage\",\"value\":\"This indicator was not found in archive.org.\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 12669,
+            "sourceTriggerId": 1209,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12676,
+            "sourceJobId": 12669,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12678,
+            "sourceJobId": 12676,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12679,
+            "sourceJobId": 12680,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12679,
+            "sourceJobId": 12678,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1209,
+            "sourceJobId": 12679,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 12680,
+            "sourceJobId": 12676,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 400.0,
+    "definitionVersion": "1.0.0",
+    "name": "Archive.org Wayback Machine Query",
+    "description": "Query for a Host or URL Indicator in Archive.org's Wayback Machine (https://archive.org/web/web.php).",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "id": 1209,
+            "type": "UserAction",
+            "locationTop": 150.0,
+            "name": "Query Web Archive for Indicator",
+            "userActionTypes": "Host,URL",
+            "httpResponseBody": "#App:12679:message!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -90.0,
+            "orFilters": false,
+            "renderBodyAsTip": true
+        }
+    ],
+    "panY": 124.0,
+    "dateExported": "1/30/18 2:19 PM"
+}

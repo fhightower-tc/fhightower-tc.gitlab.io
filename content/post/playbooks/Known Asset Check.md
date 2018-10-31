@@ -6,6 +6,7 @@ author = "Malware Utkonos"
 description = "The purpose of this playbook is to check to see if a newly created host or address indicator belongs to the user's organization."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/Known%20Asset%20Check"
+downloadLinks = ["/post/playbooks/downloads/Known Asset Check.pbx"]
 +++
 
 The purpose of this playbook is to check to see if a newly created host or address indicator belongs to the user's organization. It does this by checking the indicator against the WebSite Assets in a Victim in ThreatConnect. Therefore there are a few configuration and setup requirements before this playbook will be usable.

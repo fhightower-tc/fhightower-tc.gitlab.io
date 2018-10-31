@@ -1,0 +1,226 @@
+{
+    "jobList": [
+        {
+            "id": 7812,
+            "locationTop": 70.0,
+            "name": "North Korea Keyword DataStore",
+            "locationLeft": 320.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "keywords",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "#App:7813:North_Korea!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7813,
+            "locationTop": 150.0,
+            "name": "Keyword Set",
+            "locationLeft": -80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.10",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"North_Korea\",\"value\":\"{    \\\"data\\\": [        {            \\\"North_Korea\\\": [                \\\"APT37\\\"            ]        }    ]}\"},{\"key\":\"Russia\",\"value\":\"{    \\\"data\\\": [        {            \\\"Russia\\\": [                \\\"APT29\\\",                \\\"APT28\\\"            ]        }    ]}\"},{\"key\":\"China\",\"value\":\"{    \\\"data\\\": [        {            \\\"China\\\": [                \\\"APT30\\\",                \\\"APT27\\\",                \\\"APT19\\\",                \\\"APT18\\\",                \\\"APT17\\\",                \\\"APT16\\\",                \\\"APT12\\\",                \\\"APT10\\\",                \\\"APT3\\\",                \\\"APT1\\\"            ]        }    ]}\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7814,
+            "locationTop": 150.0,
+            "name": "China Keyword DataStore",
+            "locationLeft": 320.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "keywords",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "#App:7813:China!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7815,
+            "locationTop": 230.0,
+            "name": "Russia Keyword DataStore",
+            "locationLeft": 320.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "#App:7813:Russia!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "keywords",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 680.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Populate DataStore with Keywords",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 7812,
+            "sourceJobId": 7813,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 7814,
+            "sourceJobId": 7813,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 7813,
+            "sourceTriggerId": 989,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 7815,
+            "sourceJobId": 7813,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 75.0,
+    "exportablePipes": [],
+    "description": "This Playbook will only need to be ran once, it will create an list of keywords in JSON format and submit them to a datastore in ElasticSearch called \"keywords\". The keywords themselves are stored in variables so they can be updated for easy of future additions. \r\n\r\nBearing in mind if you create a new array in the datastore the playbook \"Keyword Check\" would need to be updated to also parse for the new array.",
+    "playbookTriggerList": [
+        {
+            "id": 989,
+            "type": "HttpLink",
+            "locationTop": 150.0,
+            "name": "Save dataset in DataStore",
+            "eventType": "Create",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -420.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "8/16/18 3:57 PM"
+}

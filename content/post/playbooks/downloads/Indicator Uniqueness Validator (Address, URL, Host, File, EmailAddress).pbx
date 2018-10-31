@@ -1,0 +1,1169 @@
+{
+    "jobList": [
+        {
+            "id": 364,
+            "outputVariables": "[{\"name\":\"tc.api.result\",\"type\":\"String\"}]",
+            "locationTop": 80.0,
+            "name": "Get Owner List (Address)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                },
+                {
+                    "value": "/v2/indicators/addresses/#Trigger:45:trg.tc.item!String/owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 365,
+            "outputVariables": "[{\"name\":\"owner.length\",\"type\":\"String\"}]",
+            "locationTop": 190.0,
+            "name": "Count Owners (Address)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"owner.length\",\"value\":\"$.data.owner.length()\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "#App:364:tc.api.result!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 366,
+            "locationTop": 130.0,
+            "name": "More Than One Owner? (Address)",
+            "locationLeft": 610.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:365:owner.length!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 367,
+            "locationTop": 120.0,
+            "name": "Add \"multiple_owners\" Tag (Address)",
+            "locationLeft": 780.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:45:trg.tc.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "multiple_owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 368,
+            "locationTop": 380.0,
+            "name": "Host?",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "host",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 369,
+            "locationTop": 950.0,
+            "name": "File?",
+            "locationLeft": 160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "file",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 370,
+            "locationTop": 130.0,
+            "name": "Address?",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "address",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 371,
+            "locationTop": 670.0,
+            "name": "URL?",
+            "locationLeft": 160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "url",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 372,
+            "outputVariables": "[{\"name\":\"tc.api.result\",\"type\":\"String\"}]",
+            "locationTop": 340.0,
+            "name": "Get Owner (Host)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                },
+                {
+                    "value": "/v2/indicators/hosts/#Trigger:45:trg.tc.item!String/owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 373,
+            "outputVariables": "[{\"name\":\"owner.length\",\"type\":\"String\"}]",
+            "locationTop": 450.0,
+            "name": "Count Owners (Host)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:372:tc.api.result!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"owner.length\",\"value\":\"$.data.owner.length()\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 374,
+            "locationTop": 390.0,
+            "name": "More Than One Owner? (Host)",
+            "locationLeft": 610.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#App:373:owner.length!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 375,
+            "locationTop": 390.0,
+            "name": "Add \"multiple_owners\" (Host)",
+            "locationLeft": 780.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "multiple_owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 376,
+            "locationTop": 570.0,
+            "name": "Get Owner List (URL)",
+            "locationLeft": 640.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "/v2/indicators/urls/#App:388:encode_url.output!String/owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 377,
+            "locationTop": 680.0,
+            "name": "Count Owners (URL)",
+            "locationLeft": 640.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "#App:376:tc.api.result!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"owner.length\",\"value\":\"$.data.owner.length()\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 378,
+            "locationTop": 620.0,
+            "name": "More Than One Owner? (URL)",
+            "locationLeft": 880.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#App:377:owner.length!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 379,
+            "locationTop": 620.0,
+            "name": "Add \"multiple_owners\" Tag (URL)",
+            "locationLeft": 1040.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "multiple_owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 380,
+            "outputVariables": "[{\"name\":\"tc.api.result\",\"type\":\"String\"}]",
+            "locationTop": 830.0,
+            "name": "Get Owner List (File)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "/v2/indicators/files/#Trigger:45:trg.tc.item!String/owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 381,
+            "outputVariables": "[{\"name\":\"owner.length\",\"type\":\"String\"}]",
+            "locationTop": 940.0,
+            "name": "Count Owners (File)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "#App:380:tc.api.result!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"owner.length\",\"value\":\"$.data.owner.length()\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 382,
+            "locationTop": 880.0,
+            "name": "More Than One Owner? (File)",
+            "locationLeft": 610.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#App:381:owner.length!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 383,
+            "locationTop": 880.0,
+            "name": "Add \"multiple_owners\" Tag (File)",
+            "locationLeft": 780.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "multiple_owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 384,
+            "outputVariables": "[{\"name\":\"tc.api.result\",\"type\":\"String\"}]",
+            "locationTop": 1070.0,
+            "name": "Get Owner List (emailAddress)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "/v2/indicators/emailAddresses/#Trigger:45:trg.tc.item!String/owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 385,
+            "outputVariables": "[{\"name\":\"owner.length\",\"type\":\"String\"}]",
+            "locationTop": 1180.0,
+            "name": "Count Owners (emailAddress)",
+            "locationLeft": 360.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:384:tc.api.result!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"owner.length\",\"value\":\"$.data.owner.length()\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 386,
+            "locationTop": 1120.0,
+            "name": "More Than One Owner? (emailAddress)",
+            "locationLeft": 610.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:385:owner.length!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 387,
+            "locationTop": 1120.0,
+            "name": "Add \"multiple_owners\" Tag (emailAddress)",
+            "locationLeft": 780.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "multiple_owners",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "#Trigger:45:trg.tc.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                }
+            ]
+        },
+        {
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Encode URL",
+                "programName": "Encode URL"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:45:trg.tc.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ],
+            "id": 388,
+            "playbookRetryEnabled": false,
+            "name": "Encode URL Indicator"
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 393.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Indicator Uniqueness Validator (Address, URL, Host, File, EmailAddress)",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 365,
+            "sourceJobId": 364,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 366,
+            "sourceJobId": 365,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 367,
+            "sourceJobId": 366,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 370,
+            "sourceTriggerId": 45,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 364,
+            "sourceJobId": 370,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 368,
+            "sourceJobId": 370,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 371,
+            "sourceJobId": 368,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 369,
+            "sourceJobId": 371,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 372,
+            "sourceJobId": 368,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 373,
+            "sourceJobId": 372,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 374,
+            "sourceJobId": 373,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 375,
+            "sourceJobId": 374,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 377,
+            "sourceJobId": 376,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 378,
+            "sourceJobId": 377,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 379,
+            "sourceJobId": 378,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 380,
+            "sourceJobId": 369,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 381,
+            "sourceJobId": 380,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 382,
+            "sourceJobId": 381,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 383,
+            "sourceJobId": 382,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 384,
+            "sourceJobId": 369,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 385,
+            "sourceJobId": 384,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 387,
+            "sourceJobId": 386,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 386,
+            "sourceJobId": 385,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 388,
+            "sourceJobId": 371,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 376,
+            "sourceJobId": 388,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 20.0,
+    "exportablePipes": [],
+    "description": "This playbook is designed to verify when a new IOC (Address, URL, Host, File, or Email Address) comes in, whether it already exists in the platform in a different owner. If so, the new indicator is tagged with \"multiple_owners\", denoting that it is a duplicate IOC. This is designed to be used in conjunction with a custom dashboard card to display the owner names and their number of duplicate indicators. The TQL syntax for the dashboard card is as follows:\r\n\r\ntypeName in (\"Address\", \"EmailAddress\", \"File\", \"Host\", \"URL\") and tag in (\"multiple_owners\")\r\n\r\nFor the card, choose to display as a chart and group by Owner Name. For chart type, ideally, you'd choose between either a Number Card if all you want to see is the total number of duplicate IOCs per source, or an Advanced Pie Chart if you'd to see the total number of duplicate IOCs in your instance, with that number broken down per source with a percentage as well.\r\n\r\nNOTE: This is designed to run on every single IOC that gets added in the owners that you choose in the trigger. This can mean quite a lot of times this Playbook runs. For that reason, I've restricted it to the 5 main IOC types. If you wish to open this functionality up to other IOC types, please contact me at jlakeson@citadelintelligenceresearch.com",
+    "playbookTriggerList": [
+        {
+            "id": 45,
+            "type": "MultipleIndicator",
+            "locationTop": 140.0,
+            "name": "New Address/EmailAddress/File/Host/URL",
+            "userActionTypes": "Address,EmailAddress,File,Host,URL",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.tc.entity\",\"type\":\"TCEntity\"},{\"name\":\"trg.tc.item\",\"type\":\"String\"},{\"name\":\"trg.tc.type\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": false,
+            "locationLeft": -110.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "6/6/18 7:47 PM"
+}

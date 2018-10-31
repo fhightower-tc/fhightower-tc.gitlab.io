@@ -6,6 +6,7 @@ author = "Malware Utkonos"
 description = "This playbook receives a webhook from a feed collector and then resets the dead hand entry in the datastore. This prevents the dead hand timer from sending a fault notification. This playbook also checks for indicator and group counts and sends an appropriate notification if groups or indicators are not collected."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/Dead%20Hand"
+downloadLinks = ["/post/playbooks/downloads/Dead Hand Receiver.pbx"]
 +++
 
 ## Documentation

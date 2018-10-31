@@ -1,0 +1,741 @@
+{
+    "jobList": [
+        {
+            "id": 16676,
+            "locationTop": 80.0,
+            "name": "Host?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 310.0,
+            "scheduleType": "Daily",
+            "publishPassword": "2BwZlUrMIVgLZQTV",
+            "scheduleLOM": false,
+            "publishUsername": "bGyxnZXAJATuUTUE",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 16679,
+            "locationTop": 80.0,
+            "name": "Merge Types",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 900.0,
+            "scheduleType": "Daily",
+            "publishPassword": "0pvLcOVzi2K7uWFy",
+            "scheduleLOM": false,
+            "publishUsername": "iLFg1MbJ0WqNgxji",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            }
+        },
+        {
+            "id": 16686,
+            "locationTop": 80.0,
+            "name": "Report False Positive",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 70.0,
+            "scheduleType": "Daily",
+            "publishPassword": "SNqyDzFMqEScTsqM",
+            "scheduleLOM": false,
+            "publishUsername": "eMRETdGC9budieZ4",
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Report False Positive",
+                "programName": "TCPB - ReportFalsePositive v1.1"
+            }
+        },
+        {
+            "id": 16701,
+            "locationTop": 240.0,
+            "name": "Wait 25 Hours",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "90000",
+                    "appCatalogItemParameter": {
+                        "paramName": "seconds"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 530.0,
+            "scheduleType": "Daily",
+            "publishPassword": "bFzBRBOa1imO6hQz",
+            "scheduleLOM": false,
+            "publishUsername": "UjuIWFtA6qyvU6as",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Delay",
+                "programName": "Delay"
+            }
+        },
+        {
+            "id": 16702,
+            "locationTop": 380.0,
+            "name": "TC Intel?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "ThreatConnect Intelligence",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.owner!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 540.0,
+            "scheduleType": "Daily",
+            "publishPassword": "AlQN36ZGE0FfmwEN",
+            "scheduleLOM": false,
+            "publishUsername": "DGlIHAgVgb4WFTto",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 16703,
+            "locationTop": 480.0,
+            "name": "Tech Blogs?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.owner!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "Technical Blogs and Reports",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 690.0,
+            "scheduleType": "Daily",
+            "publishPassword": "KYajnDjmIfv1szVK",
+            "scheduleLOM": false,
+            "publishUsername": "VLQOK0mgjKLhf1zg",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 16715,
+            "locationTop": 770.0,
+            "name": "Merge",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": -360.0,
+            "scheduleType": "Daily",
+            "publishPassword": "XbEGZZPBuxRjvzHl",
+            "scheduleLOM": false,
+            "publishUsername": "elFb1PE3wvXxciHV",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            }
+        },
+        {
+            "id": 16716,
+            "locationTop": 350.0,
+            "name": "Delete Indicator",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "values"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 300.0,
+            "scheduleType": "Daily",
+            "publishPassword": "ahfV28hUC7fFQqa4",
+            "scheduleLOM": false,
+            "publishUsername": "fAGLJPP0srCYM8eh",
+            "appCatalogItem": {
+                "programVersion": "1.1.17",
+                "displayName": "Delete ThreatConnect Indicator by Name",
+                "programName": "TCPB - IndicatorDeleteByValue v1.1"
+            }
+        },
+        {
+            "id": 18394,
+            "locationTop": 40.0,
+            "name": "Disable DNS Monitor",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "DNS",
+                    "appCatalogItemParameter": {
+                        "paramName": "field_type"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 460.0,
+            "scheduleType": "Daily",
+            "publishPassword": "hhl72kD6EJQI1xsJ",
+            "scheduleLOM": false,
+            "publishUsername": "9PxdXM7d3FbFllmJ",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Update ThreatConnect DNS",
+                "programName": "TCPB - UpdateDNS v1.0"
+            }
+        },
+        {
+            "id": 18395,
+            "locationTop": 40.0,
+            "name": "Disable Whois Monitor",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "WHOIS",
+                    "appCatalogItemParameter": {
+                        "paramName": "field_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 680.0,
+            "scheduleType": "Daily",
+            "publishPassword": "EJG9H4KBE1CyNaiS",
+            "scheduleLOM": false,
+            "publishUsername": "IETGh2GBsgvVqzai",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Update ThreatConnect WhoIS",
+                "programName": "TCPB - UpdateWhoIs v1.0"
+            }
+        },
+        {
+            "id": 18398,
+            "locationTop": 240.0,
+            "name": "Set Threat Rating",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "RATING",
+                    "appCatalogItemParameter": {
+                        "paramName": "field_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "0",
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 70.0,
+            "scheduleType": "Daily",
+            "publishPassword": "wERX3mvg7hGaTHcK",
+            "scheduleLOM": false,
+            "publishUsername": "B76JxvlBTpPgT8WK",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Update ThreatConnect Threat Rating",
+                "programName": "TCPB - UpdateRating v1.0"
+            }
+        },
+        {
+            "id": 18400,
+            "locationTop": 240.0,
+            "name": "Set Confidence",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                },
+                {
+                    "value": "1",
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "CONFIDENCE",
+                    "appCatalogItemParameter": {
+                        "paramName": "field_type"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 300.0,
+            "scheduleType": "Daily",
+            "publishPassword": "bydeQ92HxhtqlZOw",
+            "scheduleLOM": false,
+            "publishUsername": "bUtVnqFiYBnn6C0C",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Update ThreatConnect Confidence Rating",
+                "programName": "TCPB - UpdateConfidence v1.0"
+            }
+        },
+        {
+            "id": 19216,
+            "locationTop": 350.0,
+            "name": "Get Indicator",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#Trigger:1607:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "summary"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 70.0,
+            "scheduleType": "Daily",
+            "publishPassword": "W66WWKhrFozkiWqG",
+            "scheduleLOM": false,
+            "publishUsername": "9bOHFSxLocCRksoS",
+            "appCatalogItem": {
+                "programVersion": "1.1.17",
+                "displayName": "Get ThreatConnect Indicator",
+                "programName": "TCPB - IndicatorRetrieve v1.1"
+            },
+            "outputVariables": "[{\"name\":\"tc.indicators.associations.group\",\"type\":\"TCEntityArray\"}]"
+        },
+        {
+            "id": 19217,
+            "locationTop": 370.0,
+            "name": "Publish Groups",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:19216:tc.indicators.associations.group!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entities"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 850.0,
+            "scheduleType": "Daily",
+            "publishPassword": "bq4TZltpjnirRkvf",
+            "scheduleLOM": false,
+            "publishUsername": "TZOhVcsABkISV0c2",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Publish ThreatConnect Group",
+                "programName": "TCPB - GroupPublish v1.0"
+            }
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 134.911,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "False Positive Triage",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 16686,
+            "sourceTriggerId": 1607,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16703,
+            "sourceJobId": 16702,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16715,
+            "sourceJobId": 16703,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16702,
+            "sourceJobId": 16716,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1607,
+            "sourceJobId": 16715,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 18395,
+            "sourceJobId": 18394,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16679,
+            "sourceJobId": 18395,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18398,
+            "sourceJobId": 16679,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18400,
+            "sourceJobId": 18398,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16701,
+            "sourceJobId": 18400,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18394,
+            "sourceJobId": 16676,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16679,
+            "sourceJobId": 16676,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16676,
+            "sourceJobId": 16686,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 19216,
+            "sourceJobId": 16701,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16716,
+            "sourceJobId": 19216,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 19217,
+            "sourceJobId": 16702,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 19217,
+            "sourceJobId": 16703,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16715,
+            "sourceJobId": 19217,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": -106.7095,
+    "exportablePipes": [],
+    "description": "Deletes a false positive indicator after reporting it, turning off all monitors, resetting all ratings, waiting enough time for CAL to pick up the change, and finally republishing any groups associated with the indicator.",
+    "playbookTriggerList": [
+        {
+            "id": 1607,
+            "type": "UserAction",
+            "locationTop": 80.0,
+            "name": "Triage False Positive",
+            "userActionTypes": "ASN,Address,CIDR,EmailAddress,File,Host,Mutex,Registry Key,URL,User Agent",
+            "httpResponseBody": "<a href=\"#Trigger:1607:trg.action.weblink!String\">Refresh</a>",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.owner\",\"type\":\"String\"},{\"name\":\"trg.action.type\",\"type\":\"String\"},{\"name\":\"trg.action.entity\",\"type\":\"TCEntity\"},{\"name\":\"trg.action.weblink\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -150.0,
+            "orFilters": false,
+            "renderBodyAsTip": true
+        }
+    ],
+    "dateExported": "6/21/18 12:51 AM"
+}

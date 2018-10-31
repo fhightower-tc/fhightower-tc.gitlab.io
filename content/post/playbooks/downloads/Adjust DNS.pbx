@@ -1,0 +1,115 @@
+{
+    "jobList": [
+        {
+            "id": 14971,
+            "locationTop": 260.0,
+            "name": "ThreatConnect API 1",
+            "locationLeft": 530.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.4",
+                "displayName": "ThreatConnect API",
+                "programName": "TCPB - TC Api v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "{\n\"dnsActive\" : \"#App:14981:dnsStatus!String\"\n}",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "PUT",
+                    "appCatalogItemParameter": {
+                        "paramName": "method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "query_params"
+                    }
+                },
+                {
+                    "value": "/v2/indicators/hosts/#Trigger:1393:trg.http.body!String/",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14981,
+            "outputVariables": "[{\"name\":\"dnsStatus\",\"type\":\"String\"}]",
+            "locationTop": 260.0,
+            "name": "Value Lookup 1",
+            "locationLeft": 310.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Value Lookup",
+                "programName": "TCPB - ValueLookup v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"dnsStatus\",\"value\":\"dnsStatus\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#Trigger:1393:trg.http.queryparam!KeyValueArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_array"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 20.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Adjust DNS",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 14981,
+            "sourceTriggerId": 1393,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14971,
+            "sourceJobId": 14981,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 20.0,
+    "exportablePipes": [],
+    "description": "",
+    "playbookTriggerList": [
+        {
+            "id": 1393,
+            "type": "HttpLink",
+            "locationTop": 260.0,
+            "name": "HttpLink Trigger 1",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"},{\"name\":\"trg.http.queryparam\",\"type\":\"KeyValueArray\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": 100.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "3/7/18 3:52 PM"
+}

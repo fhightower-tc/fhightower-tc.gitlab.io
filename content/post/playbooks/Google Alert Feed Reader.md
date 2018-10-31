@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Read a Google Alerts RSS feed and create indicators from the links. This playbook pulls the content from an RSS feed of Google alerts, finds the URLs from the alerts, and creates those URLs as indicators in ThreatConnect."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/google-alerts-rss-reader"
+downloadLinks = ["/post/playbooks/downloads/Google Alert Feed Reader.pbx"]
 +++
 
 This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/google-alerts-rss-reader/](https://threatconnect.com/blog/google-alerts-rss-reader/)! The blog post includes installation instructions and a gif of how to setup the playbook.

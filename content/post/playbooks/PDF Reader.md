@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Request a PDF from a given URL and return the text from the PDF."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/pdf-reader"
+downloadLinks = ["/post/playbooks/downloads/PDF_reader.pbx"]
 +++
 
 ## Usage

@@ -1,0 +1,475 @@
+{
+    "jobList": [
+        {
+            "id": 12686,
+            "outputVariables": "[{\"name\":\"cymonAPIToken\",\"type\":\"String\"}]",
+            "locationTop": 20.0,
+            "name": "Set Variable 1",
+            "locationLeft": -40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorMessagePrefix\",\"value\":\"[Cymon Query PB]:\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12687,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 380.0,
+            "name": "HTTP Client 1",
+            "locationLeft": -40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "https://cymon.io/api/nexus/v1/#App:12694:indicatorType!String/#Trigger:1212:trg.action.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"Authorization\",\"value\":\"Token ${USER:TEXT:Cymon API Token}\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12689,
+            "locationTop": 10.0,
+            "name": "If / Else 1",
+            "locationLeft": 210.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "Address",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#Trigger:1212:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12690,
+            "outputVariables": "[{\"name\":\"link\",\"type\":\"String\"},{\"name\":\"address\",\"type\":\"String\"}]",
+            "locationTop": 10.0,
+            "name": "Set Variable 2",
+            "locationLeft": 540.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"address\",\"value\":\"ip\"},{\"key\":\"link\",\"value\":\"https://cymon.io/#Trigger:1212:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12691,
+            "locationTop": 120.0,
+            "name": "If / Else 2",
+            "locationLeft": 330.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1212:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12692,
+            "outputVariables": "[{\"name\":\"host\",\"type\":\"String\"},{\"name\":\"link\",\"type\":\"String\"}]",
+            "locationTop": 130.0,
+            "name": "Copy of Set Variable 2 1",
+            "locationLeft": 540.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"host\",\"value\":\"domain\"},{\"key\":\"link\",\"value\":\"https://cymon.io/domain/#Trigger:1212:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12694,
+            "outputVariables": "[{\"name\":\"indicatorType\",\"type\":\"String\"},{\"name\":\"link\",\"type\":\"String\"}]",
+            "locationTop": 70.0,
+            "name": "Merge 1",
+            "locationLeft": 800.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicatorType\",\"value\":\"#App:12690:address!String\"},{\"key\":\"indicatorType\",\"value\":\"#App:12692:host!String\"},{\"key\":\"link\",\"value\":\"#App:12690:link!String\"},{\"key\":\"link\",\"value\":\"#App:12692:link!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12966,
+            "outputVariables": "[{\"name\":\"successMessage\",\"type\":\"String\"}]",
+            "locationTop": 320.0,
+            "name": "Set Variable 3",
+            "locationLeft": 610.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"successMessage\",\"value\":\"This indicator is found in #App:12970:array.length!String sources: \\u003ca href\\u003d\\\"#App:12694:link!String\\\" target\\u003d\\\"_blank\\\"\\u003e#App:12694:link!String\\u003c/a\\u003e.\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12967,
+            "outputVariables": "[{\"name\":\"failureMessage\",\"type\":\"String\"}]",
+            "locationTop": 440.0,
+            "name": "Set Variable 4",
+            "locationLeft": 190.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"failureMessage\",\"value\":\"This indicator was not found in cymon.\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12968,
+            "outputVariables": "[{\"name\":\"message\",\"type\":\"String\"}]",
+            "locationTop": 380.0,
+            "name": "Merge 2",
+            "locationLeft": 860.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"message\",\"value\":\"#App:12967:failureMessage!String\"},{\"key\":\"message\",\"value\":\"#App:12966:successMessage!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12969,
+            "outputVariables": "[{\"name\":\"sources\",\"type\":\"StringArray\"}]",
+            "locationTop": 320.0,
+            "name": "Json Path 1",
+            "locationLeft": 190.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"sources\",\"value\":\"sources\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:12687:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12970,
+            "outputVariables": "[{\"name\":\"array.length\",\"type\":\"String\"}]",
+            "locationTop": 320.0,
+            "name": "Get Array Length 1",
+            "locationLeft": 400.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Get Array Length",
+                "programName": "TCPB - GetArrayLength v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:12969:sources!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 12686,
+            "sourceTriggerId": 1212,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12692,
+            "sourceJobId": 12691,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12690,
+            "sourceJobId": 12689,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12691,
+            "sourceJobId": 12689,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12694,
+            "sourceJobId": 12692,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12694,
+            "sourceJobId": 12690,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12687,
+            "sourceJobId": 12694,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12689,
+            "sourceJobId": 12686,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12967,
+            "sourceJobId": 12687,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12968,
+            "sourceJobId": 12966,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12968,
+            "sourceJobId": 12967,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1212,
+            "sourceJobId": 12968,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 12969,
+            "sourceJobId": 12687,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12970,
+            "sourceJobId": 12969,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12966,
+            "sourceJobId": 12970,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 408.0,
+    "definitionVersion": "1.0.0",
+    "name": "Cymon IP and Host Query",
+    "description": "Query Cymon for an IP or Host.",
+    "logLevel": "TRACE",
+    "playbookTriggerList": [
+        {
+            "httpBasicAuthUsername": "VKA5BJ9GZ1IXJTDTQRV2",
+            "type": "UserAction",
+            "locationTop": 20.0,
+            "name": "Query cymon.io for this indicator.",
+            "anyOrg": true,
+            "userActionTypes": "Address,Host",
+            "httpResponseBody": "#App:12968:message!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.type\",\"type\":\"String\"},{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "locationLeft": -280.0,
+            "id": 1212,
+            "orFilters": false,
+            "httpBasicAuthPassword": "TOZLDDSMOXGBRQTBVIZZ",
+            "renderBodyAsTip": true
+        }
+    ],
+    "panY": 34.0,
+    "dateExported": "1/31/18 7:37 PM"
+}

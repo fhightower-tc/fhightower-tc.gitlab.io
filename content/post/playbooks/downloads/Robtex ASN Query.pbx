@@ -1,0 +1,455 @@
+{
+    "jobList": [
+        {
+            "id": 10682,
+            "outputVariables": "[{\"name\":\"asns\",\"type\":\"StringArray\"}]",
+            "locationTop": 70.0,
+            "name": "Regex Extract 1",
+            "locationLeft": -1110.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1026:trg.action.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"asns\",\"value\":\"ASN(.*)\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10683,
+            "outputVariables": "[{\"name\":\"asn\",\"type\":\"String\"}]",
+            "locationTop": 70.0,
+            "name": "Join Array 1",
+            "locationLeft": -890.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"asn\",\"value\":\"#App:10682:asns!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10684,
+            "outputVariables": "[{\"name\":\"robtexAPI\",\"type\":\"String\"},{\"name\":\"errorPrefix\",\"type\":\"String\"}]",
+            "locationTop": 70.0,
+            "name": "Set Variable 1",
+            "locationLeft": -670.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"robtexAPI\",\"value\":\"https://freeapi.robtex.com/asquery/#App:10683:asn!String\"},{\"key\":\"errorPrefix\",\"value\":\"[Robtex ASN Query]:\u00a0\"},{\"key\":\"slackChannel\",\"value\":\"#slack-channel\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10685,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 210.0,
+            "name": "HTTP Client 1",
+            "locationLeft": -670.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10684:robtexAPI!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10686,
+            "outputVariables": "[{\"name\":\"cidrRanges\",\"type\":\"StringArray\"}]",
+            "locationTop": 160.0,
+            "name": "Json Path 1",
+            "locationLeft": -400.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.1",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"cidrRanges\",\"value\":\"nets[*].n\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:10685:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10687,
+            "locationTop": 270.0,
+            "name": "Send Slack Message 1",
+            "locationLeft": -400.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10684:errorPrefix!String Unable to retrieve search for #Trigger:1026:trg.action.item!String in Robtex using #App:10684:robtexAPI!String: #App:10685:http_client.response.output_content!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "#App:10684:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10688,
+            "outputVariables": "[{\"name\":\"tc.cidr\",\"type\":\"TCEntityArray\"}]",
+            "locationTop": 160.0,
+            "name": "Create ThreatConnect CIDR 1",
+            "locationLeft": -180.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create ThreatConnect CIDR",
+                "programName": "TCPB - CidrCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "CIDR",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "#App:10686:cidrRanges!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"Source\",\"value\":\"#App:10684:robtexAPI!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10689,
+            "locationTop": 160.0,
+            "name": "Create Custom Indicator Association 2",
+            "locationLeft": 40.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create Custom Indicator Association",
+                "programName": "TCPB - CustomAssociationCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1026:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "source_entities"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "one_to_one"
+                    }
+                },
+                {
+                    "value": "#App:10688:tc.cidr!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "association_entities"
+                    }
+                },
+                {
+                    "value": "ASN to CIDR",
+                    "appCatalogItemParameter": {
+                        "paramName": "association_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10690,
+            "locationTop": 270.0,
+            "name": "Send Slack Message 2",
+            "locationLeft": 40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10684:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:10684:errorPrefix!String Error creating #App:10686:cidrRanges!StringArray .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 10686,
+            "sourceJobId": 10685,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10687,
+            "sourceJobId": 10685,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10685,
+            "sourceJobId": 10684,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10682,
+            "sourceTriggerId": 1026,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10683,
+            "sourceJobId": 10682,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10684,
+            "sourceJobId": 10683,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10688,
+            "sourceJobId": 10686,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10689,
+            "sourceJobId": 10688,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10690,
+            "sourceJobId": 10688,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 1450.0,
+    "definitionVersion": "1.0.0",
+    "name": "Robtex ASN Query",
+    "description": "Playbook which queries Robtex for an ASN.",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "httpBasicAuthUsername": "RL26AWS4OQPT6EEHPX9A",
+            "type": "UserAction",
+            "locationTop": 70.0,
+            "name": "Query Robtex API",
+            "userActionTypes": "ASN",
+            "anyOrg": true,
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.item\",\"type\":\"String\"},{\"name\":\"trg.action.entity\",\"type\":\"TCEntity\"}]",
+            "httpBasicAuthEnable": false,
+            "locationLeft": -1330.0,
+            "id": 1026,
+            "orFilters": false,
+            "httpBasicAuthPassword": "XL20VFLJTEA2CWZHN8TU",
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 28.0,
+    "dateExported": "1/17/18 6:29 PM"
+}

@@ -1,7 +1,7 @@
 +++
 date = "2018-07-20"
 title = "Unstructured Indicator Importer"
-tags = ["Importer", "Indicators"]
+tags = ["Importer", "Indicators", "Unstructured Data"]
 author = "Floyd Hightower"
 description = "Unstructured import for humans. Quickly and easily import and edit/update indicators in an unstructured format."
 categories = ["Spaces Apps"]

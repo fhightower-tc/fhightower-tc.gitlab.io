@@ -6,6 +6,7 @@ author = "billdauterive"
 description = "These playbooks will allow you to define a set of keywords in a JSON Array to parse a document for. Upon ingestion of a document the playbook will parse the documents in the specified owners for the given keywords. Should a match be found the group name as well as the identified keywords will be added as tags on the triggering document."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/KeyWord%20Parsing"
+downloadLinks = ["/post/playbooks/downloads/Document Keyword Check.pbx", "/post/playbooks/downloads/Populate DataStore with Keywords.pbx", "/post/playbooks/downloads/Verify DataStore Data.pbx"]
 +++
 
 This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/document-parsing-keyword-tagging/](https://threatconnect.com/blog/document-parsing-keyword-tagging/)! The blog post includes installation and setup instructions.

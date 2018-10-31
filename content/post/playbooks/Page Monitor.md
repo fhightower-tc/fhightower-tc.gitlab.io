@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Periodically capture the content of a website and send an alert if the content changes."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/page-monitor-playbook"
+downloadLinks = ["/post/playbooks/downloads/Page Monitor < 5.6.pbx", "/post/playbooks/downloads/Page Monitor.pbx"]
 +++
 
 **Warning:** Do **NOT** use this playbook to monitor malicious websites. It is only designed to monitor benign infrastructure.

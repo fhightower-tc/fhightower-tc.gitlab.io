@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Given an array, this playbook sends each item in the array one at a time to another playbook. This allows you to run a playbook on each item of an array."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/array-serializer"
+downloadLinks = ["/post/playbooks/downloads/Array Serializer.pbx"]
 +++
 
 **YOU SHOULD STOP USING THIS PLAYBOOK. Instead, use the array iterator described at [https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/array-iterator](https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/array-iterator).**

@@ -1,0 +1,95 @@
+{
+    "jobList": [
+        {
+            "id": 8360,
+            "locationTop": 310.0,
+            "name": "Data Store 1",
+            "locationLeft": 490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "keywords",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "{ \"from\" : 0, \"size\": 5000}",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 197.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Verify DataStore Data",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 8360,
+            "sourceTriggerId": 1045,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1045,
+            "sourceJobId": 8360,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        }
+    ],
+    "panY": 20.0,
+    "exportablePipes": [],
+    "description": "This will only need to be ran to verify the first playbook created the data that is expected from the \"Populate DataStore with Keywords\" playbook.",
+    "playbookTriggerList": [
+        {
+            "id": 1045,
+            "type": "HttpLink",
+            "locationTop": 190.0,
+            "name": "HttpLink Trigger 1",
+            "httpResponseBody": "#App:8360:datastore.response!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": 210.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "8/16/18 3:57 PM"
+}

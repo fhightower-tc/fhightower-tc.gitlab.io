@@ -1,0 +1,148 @@
+{
+    "jobList": [
+        {
+            "id": 7393,
+            "outputVariables": "[{\"name\":\"html_parser.text\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "HTML Text Parser 1",
+            "locationLeft": 340.0,
+            "appCatalogItem": {
+                "programVersion": "0.1.0",
+                "displayName": "HTML Text Parser",
+                "programName": "html text parser v0.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:16734:http.content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "html_input"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16734,
+            "outputVariables": "[{\"name\":\"http.content\",\"type\":\"String\"}]",
+            "locationTop": 120.0,
+            "name": "HTTP Client 2",
+            "locationLeft": 350.0,
+            "playbookRetryDelayMinutes": 1,
+            "playbookRetryMaxRetries": 5,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "HTTP Client",
+                "programName": "TCPB - HTTP Client v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:620:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "verify_ssl"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "advanced"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "proxies_enabled"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "multipart"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "http_method"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"User-Agent\",\"value\":\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "params"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "INFO",
+    "panX": 20.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "URL Reader",
+    "playbookConnectionList": [
+        {
+            "targetTriggerId": 620,
+            "sourceJobId": 7393,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 16734,
+            "sourceTriggerId": 620,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 7393,
+            "sourceJobId": 16734,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 20.0,
+    "exportablePipes": [],
+    "description": "",
+    "playbookTriggerList": [
+        {
+            "id": 620,
+            "type": "HttpLink",
+            "locationTop": 220.0,
+            "name": "HttpLink Trigger 1",
+            "httpResponseBody": "#App:7393:html_parser.text!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": 50.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "4/16/18 11:03 AM"
+}

@@ -1,0 +1,194 @@
+{
+    "jobList": [
+        {
+            "id": 21270,
+            "outputVariables": "[{\"name\":\"tc.incident.name\",\"type\":\"String\"},{\"name\":\"tc.incident.status\",\"type\":\"String\"},{\"name\":\"tc.incident.attributes\",\"type\":\"KeyValueArray\"}]",
+            "locationTop": 320.0,
+            "name": "Get ThreatConnect Incident by ID 1",
+            "locationLeft": 590.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Incident by ID",
+                "programName": "TCPB - IncidentRetrieveById v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Incident",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#Trigger:2271:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21271,
+            "outputVariables": "[{\"name\":\"archer.result.json.raw\",\"type\":\"String\"}]",
+            "locationTop": 320.0,
+            "name": "Create RSA Archer Record  1",
+            "locationLeft": 1020.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Create RSA Archer Record",
+                "programName": "TCPB - ArcherCreateRecord v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"Title\",\"value\":\"#App:21270:tc.incident.name!String\"},{\"key\":\"Incident Summary\",\"value\":\"#App:21272:tc.incident.attribute.description!String\"},{\"key\":\"Incident Status\",\"value\":\"#App:21270:tc.incident.status!String\"},{\"key\":\"Incident Details\",\"value\":\"#App:21272:tc.incident.attribute.aac!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "fieldsToUpdate"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:KEYCHAIN:RSA Archer Password}",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_password"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:TEXT:RSA Archer Username}",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_username"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_no_results"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:TEXT:RSA Archer Instance Name}",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_instancename"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "attachment_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "attachment"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_userdomain"
+                    }
+                },
+                {
+                    "value": "Security Incidents",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_record_level_name"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "attachment_archer_field"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:TEXT:RSA Archer Base URL}",
+                    "appCatalogItemParameter": {
+                        "paramName": "api_url"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 21272,
+            "outputVariables": "[{\"name\":\"tc.incident.attribute.aac\",\"type\":\"String\"},{\"name\":\"tc.incident.attribute.description\",\"type\":\"String\"}]",
+            "locationTop": 320.0,
+            "name": "Lookup Attribute Values",
+            "locationLeft": 800.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Value Lookup",
+                "programName": "TCPB - ValueLookup v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"tc.incident.attribute.aac\",\"value\":\"Additional Analysis and Context\"},{\"key\":\"tc.incident.attribute.description\",\"value\":\"Description\"},{\"key\":\"tc.incident.attribute.phase_of_intrusion\",\"value\":\"Phase of Intrusion\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:21270:tc.incident.attributes!KeyValueArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_array"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 20.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "RSA Archer | Create Archer Record from Incident",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 21270,
+            "sourceTriggerId": 2271,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 2271,
+            "sourceJobId": 21271,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 21272,
+            "sourceJobId": 21270,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 21271,
+            "sourceJobId": 21272,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 20.0,
+    "exportablePipes": [],
+    "description": "This playbook starts with a User Action trigger tied to ThreatConnect Incidents.  When triggered it will parse the Incident attributes and create an Archer record with relevant fields.  ",
+    "playbookTriggerList": [
+        {
+            "id": 2271,
+            "type": "UserAction",
+            "locationTop": 200.0,
+            "name": "Create RSA Archer Record from Incident",
+            "userActionTypes": "Incident",
+            "httpResponseBody": "#App:21271:archer.result.json.raw!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.entity\",\"type\":\"TCEntity\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": 360.0,
+            "orFilters": false,
+            "renderBodyAsTip": true
+        }
+    ],
+    "dateExported": "9/19/18 3:41 PM"
+}

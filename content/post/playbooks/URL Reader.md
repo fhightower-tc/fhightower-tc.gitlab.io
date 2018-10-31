@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Request the content of the given website and return the text of the website's content."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/url-reader"
+downloadLinks = ["/post/playbooks/downloads/URL_reader.pbx"]
 +++
 
 ## Dependencies

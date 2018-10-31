@@ -1,0 +1,380 @@
+{
+    "jobList": [
+        {
+            "id": 16214,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"},{\"name\":\"http_client.response.content_type\",\"type\":\"String\"}]",
+            "locationTop": -130.0,
+            "name": "Get Shodan Enrichment",
+            "locationLeft": 590.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "https://api.shodan.io/shodan/host/#Trigger:1542:Indicator!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"minify\",\"value\":\"#Trigger:1542:minify!String\"},{\"key\":\"key\",\"value\":\"#Trigger:1542:shodan_api_key!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16215,
+            "outputVariables": "[{\"name\":\"json_path.output\",\"type\":\"String\"},{\"name\":\"json_path.output_array\",\"type\":\"StringArray\"}]",
+            "locationTop": 30.0,
+            "name": "JSON Path $.hostnames",
+            "locationLeft": 310.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter JSON Path",
+                "programName": "Json Path"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:16214:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_json"
+                    }
+                },
+                {
+                    "value": "$.hostnames",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_path"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "stripQuotes"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16217,
+            "outputVariables": "[{\"name\":\"json_path.output\",\"type\":\"String\"}]",
+            "locationTop": 30.0,
+            "name": "JSON Path $.os",
+            "locationLeft": 930.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter JSON Path",
+                "programName": "Json Path"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "$.os",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_path"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "stripQuotes"
+                    }
+                },
+                {
+                    "value": "#App:16214:http_client.response.content_type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_json"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16218,
+            "outputVariables": "[{\"name\":\"json_path.output\",\"type\":\"String\"},{\"name\":\"json_path.output_array\",\"type\":\"StringArray\"}]",
+            "locationTop": 30.0,
+            "name": "JSON Path $.ports",
+            "locationLeft": 630.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter JSON Path",
+                "programName": "Json Path"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "stripQuotes"
+                    }
+                },
+                {
+                    "value": "#App:16214:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_json"
+                    }
+                },
+                {
+                    "value": "$.ports",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_path"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16219,
+            "locationTop": 70.0,
+            "name": "Merge OS Information",
+            "locationLeft": 1440.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"m.os\",\"value\":\"#App:16220:os.failure!String #App:16221:os.success!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16220,
+            "outputVariables": "[{\"name\":\"os.failure\",\"type\":\"String\"}]",
+            "locationTop": 200.0,
+            "name": "Set No OS Information Found",
+            "locationLeft": 1160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"os.failure\",\"value\":\"OS Not Found\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16221,
+            "outputVariables": "[{\"name\":\"os.success\",\"type\":\"String\"}]",
+            "locationTop": -20.0,
+            "name": "Set OS Information Found",
+            "locationLeft": 1160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"os.success\",\"value\":\"#App:16217:json_path.output!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16222,
+            "locationTop": 210.0,
+            "name": "Join Hostnames Array",
+            "locationLeft": 310.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"hostnames\",\"value\":\"#App:16215:json_path.output_array!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": "#App:16215:json_path.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16223,
+            "locationTop": 210.0,
+            "name": "Join Open Ports Array",
+            "locationLeft": 630.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:16218:json_path.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"openports\",\"value\":\"#App:16218:json_path.output_array!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 16214,
+            "sourceTriggerId": 1542,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16215,
+            "sourceJobId": 16214,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16218,
+            "sourceJobId": 16214,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16217,
+            "sourceJobId": 16214,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16221,
+            "sourceJobId": 16217,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16219,
+            "sourceJobId": 16221,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16219,
+            "sourceJobId": 16220,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16220,
+            "sourceJobId": 16217,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16222,
+            "sourceJobId": 16215,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16223,
+            "sourceJobId": 16218,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1542,
+            "sourceJobId": 16219,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetTriggerId": 1542,
+            "sourceJobId": 16222,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetTriggerId": 1542,
+            "sourceJobId": 16223,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        }
+    ],
+    "panX": 157.0,
+    "definitionVersion": "1.0.0",
+    "type": "Pipe",
+    "name": "Get Shodan Enrichment",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "pipeOutputParams": "[{\"key\":\"shodan.open_ports\",\"value\":\"#App:16218:json_path.output!String \",\"displayValue\":\"#App:16218:json_path.output!String \"},{\"key\":\"shodan.os_info\",\"value\":\"#App:16217:json_path.output!String \",\"displayValue\":\"#App:16217:json_path.output!String \"},{\"key\":\"shodan.hostnames\",\"value\":\"#App:16215:json_path.output!String \",\"displayValue\":\"#App:16215:json_path.output!String \"}]",
+            "id": 1542,
+            "type": "PipeConfig",
+            "locationTop": -130.0,
+            "name": "Component Trigger",
+            "eventType": "External",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"Indicator\",\"type\":\"String\"},{\"name\":\"minify\",\"type\":\"String\"},{\"name\":\"shodan_api_key\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "pipeInputParams": "[{\"label\":\"Indicator\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"Indicator\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[]},{\"label\":\"minify\",\"dataType\":\"Choice\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"minify\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"true\",\"false\"]},{\"label\":\"Shodan API Key\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"shodan_api_key\",\"encrypted\":true,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${KEYCHAIN}\"]}]",
+            "locationLeft": 310.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 330.0,
+    "dateExported": "3/12/18 10:41 PM",
+    "exportablePipes": []
+}

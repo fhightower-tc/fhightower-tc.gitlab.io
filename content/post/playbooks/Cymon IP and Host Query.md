@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "This playbook lets you query Cymon for an IP Address or Host."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/cymon-query-ip-and-05"
+downloadLinks = ["/post/playbooks/downloads/Cymon IP and Host Query.pbx"]
 +++
 
 ## Documentation

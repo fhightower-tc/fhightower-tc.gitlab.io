@@ -1,0 +1,583 @@
+{
+    "jobList": [
+        {
+            "id": 14482,
+            "locationTop": -120.0,
+            "name": "Set Variable 1",
+            "locationLeft": 40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"triggerForThisPlaybook\",\"value\":\"https://sandbox.threatconnect.com/api/playbook/402b2179-b9a1-4085-9e6b-2604fb015b3d\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14483,
+            "outputVariables": "[{\"name\":\"firstItem\",\"type\":\"String\"}]",
+            "locationTop": 20.0,
+            "name": "Json Path 1",
+            "locationLeft": 240.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"firstItem\",\"value\":\"[0]\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                },
+                {
+                    "value": "#Trigger:1346:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14485,
+            "outputVariables": "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+            "locationTop": 20.0,
+            "name": "Find and Replace 1",
+            "locationLeft": 660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Find and Replace",
+                "programName": "Find / Replace"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "replace_regex"
+                    }
+                },
+                {
+                    "value": "#Trigger:1346:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_text"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_regex"
+                    }
+                },
+                {
+                    "value": "\"?#App:14483:firstItem!String\"?,?",
+                    "appCatalogItemParameter": {
+                        "paramName": "find_regex"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14486,
+            "locationTop": 20.0,
+            "name": "HTTP Client 1",
+            "locationLeft": 870.0,
+            "playbookRetryDelayMinutes": 1,
+            "playbookRetryMaxRetries": 5,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "HTTP Client",
+                "programName": "TCPB - HTTP Client v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:14482:triggerForThisPlaybook!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "multipart"
+                    }
+                },
+                {
+                    "value": "#App:14485:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "http_method"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "proxies_enabled"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"link\",\"value\":\"#App:14487:link!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "params"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "verify_ssl"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "advanced"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14487,
+            "locationTop": -120.0,
+            "name": "Value Lookup 1",
+            "locationLeft": 240.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Value Lookup",
+                "programName": "TCPB - ValueLookup v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"link\",\"value\":\"link\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#Trigger:1346:trg.http.queryparam!KeyValueArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14488,
+            "outputVariables": "[{\"name\":\"http.status_code\",\"type\":\"String\"}]",
+            "locationTop": 20.0,
+            "name": "HTTP Client 2",
+            "locationLeft": 450.0,
+            "playbookRetryDelayMinutes": 1,
+            "playbookRetryMaxRetries": 5,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "HTTP Client",
+                "programName": "TCPB - HTTP Client v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:14487:link!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "proxies_enabled"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "multipart"
+                    }
+                },
+                {
+                    "value": "#App:14483:firstItem!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "advanced"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "verify_ssl"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "http_method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "params"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15800,
+            "locationTop": 110.0,
+            "name": "Logger 1",
+            "locationLeft": 450.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "INFO",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                },
+                {
+                    "value": "Done serializing array: #Trigger:1346:trg.http.body!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15812,
+            "locationTop": 220.0,
+            "name": "Logger 2",
+            "locationLeft": 660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:15813:errorMessage!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                },
+                {
+                    "value": "ERROR",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15813,
+            "outputVariables": "[{\"name\":\"errorMessage\",\"type\":\"String\"}]",
+            "locationTop": 110.0,
+            "name": "Set Variable 2",
+            "locationLeft": 660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorMessage\",\"value\":\"Request to #App:14487:link!String failed: #App:14488:http.status_code!String . Make sure this link is correct and that the playbook related to this link is turned on.\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15814,
+            "outputVariables": "[{\"name\":\"errorMessage\",\"type\":\"String\"}]",
+            "locationTop": 110.0,
+            "name": "Copy of Set Variable 2 1",
+            "locationLeft": 1080.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorMessage\",\"value\":\"Request to #App:14482:triggerForThisPlaybook!String failed: #App:14486:http.status_code!String . Make sure this link is correct (it should be the trigger link for this playbook).\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15815,
+            "locationTop": 220.0,
+            "name": "Logger 3",
+            "locationLeft": 1080.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "ERROR",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                },
+                {
+                    "value": "#App:15814:errorMessage!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15859,
+            "locationTop": 220.0,
+            "name": "Logger 4",
+            "locationLeft": 240.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "No playbook trigger link given. This playbook expects a link to a playbook to which each item in the array will be sent. Please pass this value in as the `link` parameter.",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                },
+                {
+                    "value": "ERROR",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 15860,
+            "locationTop": 20.0,
+            "name": "If / Else 1",
+            "locationLeft": 90.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:14487:link!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 346.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Array Serializer",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 14482,
+            "sourceTriggerId": 1346,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14487,
+            "sourceJobId": 14482,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14485,
+            "sourceJobId": 14488,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14488,
+            "sourceJobId": 14483,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14486,
+            "sourceJobId": 14485,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15800,
+            "sourceJobId": 14483,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15812,
+            "sourceJobId": 15813,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15813,
+            "sourceJobId": 14488,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15814,
+            "sourceJobId": 14486,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15815,
+            "sourceJobId": 15814,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15860,
+            "sourceJobId": 14487,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 15859,
+            "sourceJobId": 15860,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14483,
+            "sourceJobId": 15860,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 248.0,
+    "exportablePipes": [],
+    "description": "Given an array, this playbook sends each item in the array one at a time to another playbook. This allows you to run a playbook on each item of an array.",
+    "playbookTriggerList": [
+        {
+            "id": 1346,
+            "type": "HttpLink",
+            "locationTop": -120.0,
+            "name": "HttpLink Trigger 1",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"},{\"name\":\"trg.http.queryparam\",\"type\":\"KeyValueArray\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -160.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "3/2/18 2:09 PM"
+}

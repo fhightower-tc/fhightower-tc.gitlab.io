@@ -1,0 +1,698 @@
+{
+    "jobList": [
+        {
+            "id": 10127,
+            "outputVariables": "[{\"name\":\"website\",\"type\":\"String\"},{\"name\":\"userAgent\",\"type\":\"String\"},{\"name\":\"slackChannel\",\"type\":\"String\"},{\"name\":\"slackMessagePrefix\",\"type\":\"String\"}]",
+            "locationTop": 30.0,
+            "name": "Set Variables",
+            "locationLeft": 50.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"userAgent\",\"value\":\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36\"},{\"key\":\"slackChannel\",\"value\":\"#slack-channel\"},{\"key\":\"website\",\"value\":\"http://example.com\"},{\"key\":\"slackMessagePrefix\",\"value\":\"[Page Monitor PB]\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10128,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 210.0,
+            "name": "HTTP Client Request to Website",
+            "locationLeft": 50.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "#App:10127:website!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"User-Agent\",\"value\":\"#App:10127:userAgent!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10129,
+            "outputVariables": "[{\"name\":\"hash.encode.md5\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Hash Response Content",
+            "locationLeft": 290.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Encode Hash",
+                "programName": "Hash Encoding"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10128:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10130,
+            "locationTop": 280.0,
+            "name": "Slack Unsuccessful Request",
+            "locationLeft": 290.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10127:slackMessagePrefix!String  Bad response when trying to request website #App:10127:website!String.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10131,
+            "outputVariables": "[{\"name\":\"datastore.response\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Check Datastore for Previous Hash",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Data Store",
+                "programName": "DataStore"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "pageMonitor",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "Local",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10132,
+            "outputVariables": "[{\"name\":\"existHash\",\"type\":\"StringArray\"}]",
+            "locationTop": 150.0,
+            "name": "Find Previous Hash",
+            "locationLeft": 740.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.0",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"existHash\",\"value\":\"hits.hits[0]._source.hash\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "#App:10131:datastore.response!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10133,
+            "outputVariables": "[{\"name\":\"nonExistHash\",\"type\":\"String\"}]",
+            "locationTop": 240.0,
+            "name": "No Previous Hash",
+            "locationLeft": 970.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"nonExistHash\",\"value\":\"0\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10134,
+            "locationTop": 450.0,
+            "name": "New Hash?",
+            "locationLeft": 90.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10138:previousHash!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "#App:10129:hash.encode.md5!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10135,
+            "locationTop": 420.0,
+            "name": "Slack Alert",
+            "locationLeft": 290.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackMessagePrefix!String The content of #App:10127:website!String has changed.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10136,
+            "locationTop": 550.0,
+            "name": "Log No Change",
+            "locationLeft": 290.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "The content of the website has not changed.",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                },
+                {
+                    "value": "INFO",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10137,
+            "locationTop": 420.0,
+            "name": "Update Datastore w/ New Hash",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Data Store",
+                "programName": "DataStore"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "Local",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "{\"hash\": \"#App:10129:hash.encode.md5!String\"}",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "pageMonitor",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "#App:10146:databaseID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10138,
+            "outputVariables": "[{\"name\":\"previousHash\",\"type\":\"String\"}]",
+            "locationTop": 240.0,
+            "name": "Merge Hashes",
+            "locationLeft": 1700.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"previousHash\",\"value\":\"#App:10133:nonExistHash!String\"},{\"key\":\"previousHash\",\"value\":\"#App:10139:hashString!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10139,
+            "outputVariables": "[{\"name\":\"hashString\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Join Array 1",
+            "locationLeft": 970.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": " ",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"hashString\",\"value\":\"#App:10132:existHash!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10140,
+            "locationTop": 240.0,
+            "name": "Slack Unsuccessful DB Request",
+            "locationLeft": 740.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackMessagePrefix!String  Error requesting the hash in the datastore.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10143,
+            "locationTop": 470.0,
+            "name": "Slack Error Updating Datastore",
+            "locationLeft": 740.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10127:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:10127:slackMessagePrefix!String  Error writing to the datastore: #App:10137:datastore.response!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10145,
+            "outputVariables": "[{\"name\":\"databaseID\",\"type\":\"StringArray\"}]",
+            "locationTop": 150.0,
+            "name": "Find ID of Datastore Entry",
+            "locationLeft": 1190.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.0",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"databaseID\",\"value\":\"hits.hits[0]._id\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:10131:datastore.response!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10146,
+            "outputVariables": "[{\"name\":\"databaseID\",\"type\":\"String\"}]",
+            "locationTop": 150.0,
+            "name": "Join Array 2",
+            "locationLeft": 1410.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"databaseID\",\"value\":\"#App:10145:databaseID!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 10128,
+            "sourceJobId": 10127,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10131,
+            "sourceJobId": 10129,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10138,
+            "sourceJobId": 10133,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10134,
+            "sourceJobId": 10138,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10129,
+            "sourceJobId": 10128,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10130,
+            "sourceJobId": 10128,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10139,
+            "sourceJobId": 10132,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10135,
+            "sourceJobId": 10134,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10136,
+            "sourceJobId": 10134,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10133,
+            "sourceJobId": 10132,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10140,
+            "sourceJobId": 10131,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10143,
+            "sourceJobId": 10137,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10137,
+            "sourceJobId": 10135,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10145,
+            "sourceJobId": 10139,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10146,
+            "sourceJobId": 10145,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10138,
+            "sourceJobId": 10146,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10132,
+            "sourceJobId": 10131,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10127,
+            "sourceTriggerId": 972,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 337.0,
+    "definitionVersion": "1.0.0",
+    "name": "Page Monitor",
+    "description": "Periodically capture the content of a website and send an alert if the content changes. DO NOT use this playbook to monitor malicious infrastructure.",
+    "logLevel": "TRACE",
+    "playbookTriggerList": [
+        {
+            "id": 972,
+            "type": "Timer",
+            "locationTop": 30.0,
+            "name": "Run Playbook Weekly",
+            "eventType": "External",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 00 20 ? * 2 *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Weekly",
+            "locationLeft": -210.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": -5.0,
+    "dateExported": "1/5/18 8:24 PM"
+}

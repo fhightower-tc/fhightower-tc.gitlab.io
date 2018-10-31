@@ -1,0 +1,619 @@
+{
+    "jobList": [
+        {
+            "id": 10413,
+            "outputVariables": "[{\"name\":\"robtexAPI\",\"type\":\"String\"},{\"name\":\"errorPrefix\",\"type\":\"String\"}]",
+            "locationTop": 80.0,
+            "name": "Set Variable 1",
+            "locationLeft": -1120.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"robtexAPI\",\"value\":\"https://freeapi.robtex.com/ipquery/#Trigger:1003:trg.action.item!String\"},{\"key\":\"errorPrefix\",\"value\":\"[Robtex IP Query]:\u00a0\"},{\"key\":\"slackChannel\",\"value\":\"#slack-channel\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10414,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 210.0,
+            "name": "HTTP Client 1",
+            "locationLeft": -1120.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "#App:10413:robtexAPI!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10415,
+            "outputVariables": "[{\"name\":\"passiveDNSHistory\",\"type\":\"StringArray\"},{\"name\":\"activeDNSHistory\",\"type\":\"StringArray\"},{\"name\":\"passiveDNS\",\"type\":\"StringArray\"},{\"name\":\"activeDNS\",\"type\":\"StringArray\"}]",
+            "locationTop": 160.0,
+            "name": "Json Path 1",
+            "locationLeft": -870.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.1",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"passiveDNS\",\"value\":\"pas[*].o\"},{\"key\":\"passiveDNSHistory\",\"value\":\"pash[*].o\"},{\"key\":\"activeDNS\",\"value\":\"act[*].o\"},{\"key\":\"activeDNSHistory\",\"value\":\"acth[*].o\"},{\"key\":\"as\",\"value\":\"as\"},{\"key\":\"city\",\"value\":\"city\"},{\"key\":\"country\",\"value\":\"country\"},{\"key\":\"asname\",\"value\":\"asname\"},{\"key\":\"whoisdesc\",\"value\":\"whoisdesc\"},{\"key\":\"routedesc\",\"value\":\"routedesc\"},{\"key\":\"bgproute\",\"value\":\"bgproute\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:10414:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10416,
+            "locationTop": 270.0,
+            "name": "Send Slack Message 1",
+            "locationLeft": -870.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:10413:errorPrefix!String Unable to retrieve search for #Trigger:1003:trg.action.item!String in Robtex using #App:10413:robtexAPI!String : #App:10414:http_client.response.output_content!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "#App:10413:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10479,
+            "locationTop": 160.0,
+            "name": "Create Active DNS Hosts",
+            "locationLeft": -650.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create ThreatConnect Host",
+                "programName": "TCPB - HostCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#App:10415:activeDNS!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"Source\",\"value\":\"#App:10413:robtexAPI!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10480,
+            "locationTop": 160.0,
+            "name": "Create Historical Active DNS Hosts",
+            "locationLeft": -430.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create ThreatConnect Host",
+                "programName": "TCPB - HostCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "#App:10415:activeDNSHistory!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"Source\",\"value\":\"#App:10413:robtexAPI!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10481,
+            "locationTop": 160.0,
+            "name": "Create Passive DNS Hosts",
+            "locationLeft": -210.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create ThreatConnect Host",
+                "programName": "TCPB - HostCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"Source\",\"value\":\"#App:10413:robtexAPI!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "#App:10415:passiveDNS!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10482,
+            "locationTop": 160.0,
+            "name": "Create Historical Passive DNS Hosts",
+            "locationLeft": 10.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.11",
+                "displayName": "Create ThreatConnect Host",
+                "programName": "TCPB - HostCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"Source\",\"value\":\"#App:10413:robtexAPI!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "#App:10415:passiveDNSHistory!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 10415,
+            "sourceJobId": 10414,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10413,
+            "sourceTriggerId": 1003,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10414,
+            "sourceJobId": 10413,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10416,
+            "sourceJobId": 10414,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10479,
+            "sourceJobId": 10415,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10480,
+            "sourceJobId": 10479,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10481,
+            "sourceJobId": 10480,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 10482,
+            "sourceJobId": 10481,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 1461.0,
+    "definitionVersion": "1.0.0",
+    "name": "Robtex IP Query",
+    "description": "Playbook which queries Robtex for an IP Address.",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "httpBasicAuthUsername": "AXVQASDE5MISUO4QADS1",
+            "type": "UserAction",
+            "locationTop": 80.0,
+            "name": "Query Robtex API",
+            "userActionTypes": "Address",
+            "anyOrg": true,
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "locationLeft": -1340.0,
+            "id": 1003,
+            "orFilters": false,
+            "httpBasicAuthPassword": "UMXZF4S8SS7XQDNI6PHC",
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 48.0,
+    "dateExported": "1/17/18 7:02 PM"
+}

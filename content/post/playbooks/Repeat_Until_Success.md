@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "This playbook attempts an action until it is successful. In this sense, it is a bit like a 'pause' or 'wait' command that will wait until the given action is successful before moving on."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/repeat-until-success"
+downloadLinks = ["/post/playbooks/downloads/Repeat_Until_Success.pbx"]
 +++
 
 ## Usage

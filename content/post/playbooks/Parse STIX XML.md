@@ -6,6 +6,7 @@ author = "joereese"
 description = "Parse a STIX XML file from the File Post spaces app."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/parse-stix-xml"
+downloadLinks = ["/post/playbooks/downloads/Parse STIX XML from File Post.pbx"]
 +++
 
 This playbook is intended to parse a STIX XML file from the File Post spaces app.  See [https://kb.threatconnect.com/customer/portal/articles/2920045](https://kb.threatconnect.com/customer/portal/articles/2920045) for how to configure and use the File Post app.

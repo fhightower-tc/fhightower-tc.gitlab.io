@@ -1,0 +1,744 @@
+{
+    "jobList": [
+        {
+            "id": 19771,
+            "locationTop": 270.0,
+            "name": "Reset Feed Status",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "feed_monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "#App:20098:datastore_path!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "PUT",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "{\"fault\":false}",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 80.0,
+            "scheduleType": "Daily",
+            "publishPassword": "xI7m72bUjL8K9bg9",
+            "scheduleLOM": false,
+            "publishUsername": "Mo7DEPxh04wlXa6f",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            }
+        },
+        {
+            "id": 20093,
+            "locationTop": 140.0,
+            "name": "Lookup Counts",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicator_count\",\"value\":\"indicator_count\"},{\"key\":\"group_count\",\"value\":\"group_count\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#Trigger:1945:trg.http.queryparam!KeyValueArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_array"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": -200.0,
+            "scheduleType": "Daily",
+            "publishPassword": "KJQ6KyPoVQFHho06",
+            "scheduleLOM": false,
+            "publishUsername": "zQxcvmGQB9wDsk8k",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Value Lookup",
+                "programName": "TCPB - ValueLookup v1.0"
+            },
+            "outputVariables": "[{\"name\":\"group_count\",\"type\":\"String\"},{\"name\":\"indicator_count\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 20094,
+            "locationTop": 210.0,
+            "name": "Indicators?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:20093:indicator_count!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "0",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 340.0,
+            "scheduleType": "Daily",
+            "publishPassword": "pe0ppEtJZ2X3zLF6",
+            "scheduleLOM": false,
+            "publishUsername": "gWlRb3iHxSl39kUP",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 20096,
+            "locationTop": 180.0,
+            "name": "No Indicators Slack",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title"
+                    }
+                },
+                {
+                    "value": "Feed Failure: No Indicators: #App:20098:base_message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "text"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_icon"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title_link"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "text_markdown"
+                    }
+                },
+                {
+                    "value": "#F26724",
+                    "appCatalogItemParameter": {
+                        "paramName": "color"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_link"
+                    }
+                },
+                {
+                    "value": "#App:20098:slack_channel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "channel"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "send"
+                    }
+                },
+                {
+                    "value": "ThreatConnect Playbooks",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext_markdown"
+                    }
+                },
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/ThreatConnect-Logo-CMYK.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "image_url"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:KEYCHAIN:Slack Token}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields_markdown"
+                    }
+                },
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/tc-favicon.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer_icon"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "thumb_url"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 520.0,
+            "scheduleType": "Daily",
+            "publishPassword": "PFIU9Er3QPizzjDo",
+            "scheduleLOM": false,
+            "publishUsername": "IA5VCpoTLCFEiy0H",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message Attachment",
+                "programName": "TCPB - SendSlackMessageAttachment v1.0"
+            }
+        },
+        {
+            "id": 20097,
+            "locationTop": 90.0,
+            "name": "No Indicators Notification",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "recipients"
+                    }
+                },
+                {
+                    "value": "High",
+                    "appCatalogItemParameter": {
+                        "paramName": "priority"
+                    }
+                },
+                {
+                    "value": "Feed Monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "notification_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "is_organization"
+                    }
+                },
+                {
+                    "value": "Feed Failure: No Indicators: #App:20098:base_message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 520.0,
+            "scheduleType": "Daily",
+            "publishPassword": "gF0JPSqj38kDpCFX",
+            "scheduleLOM": false,
+            "publishUsername": "ZxyipLB6sfxtXv6Y",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Add ThreatConnect Notification",
+                "programName": "TCPB - Notification v1.0"
+            }
+        },
+        {
+            "id": 20098,
+            "locationTop": 230.0,
+            "name": "Set Configuration",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"datastore_path\",\"value\":\"collect_abusech_feodo_ip\"},{\"key\":\"base_message\",\"value\":\"Collect: abuse.ch Feodo IP\"},{\"key\":\"slack_channel\",\"value\":\"innovation\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": -200.0,
+            "scheduleType": "Daily",
+            "publishPassword": "n5gjp0m5baBAosAt",
+            "scheduleLOM": false,
+            "publishUsername": "u53cSUf0bocCf4pM",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "outputVariables": "[{\"name\":\"base_message\",\"type\":\"String\"},{\"name\":\"slack_channel\",\"type\":\"String\"},{\"name\":\"datastore_path\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 20099,
+            "locationTop": 160.0,
+            "name": "Groups?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:20093:group_count!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "0",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "greater than",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 930.0,
+            "scheduleType": "Daily",
+            "publishPassword": "veGiRzIVJwmP0e1l",
+            "scheduleLOM": false,
+            "publishUsername": "BOFEt0ecbpdLaS80",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 20100,
+            "locationTop": 250.0,
+            "name": "Merge",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 750.0,
+            "scheduleType": "Daily",
+            "publishPassword": "JBIBSoIg7X9dcyWw",
+            "scheduleLOM": false,
+            "publishUsername": "DBB8NZI28S5NKiDQ",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            }
+        },
+        {
+            "id": 20101,
+            "locationTop": 40.0,
+            "name": "No Groups Notification",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "is_organization"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "recipients"
+                    }
+                },
+                {
+                    "value": "High",
+                    "appCatalogItemParameter": {
+                        "paramName": "priority"
+                    }
+                },
+                {
+                    "value": "Feed Monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "notification_type"
+                    }
+                },
+                {
+                    "value": "Feed Failure: No Groups: #App:20098:base_message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1090.0,
+            "scheduleType": "Daily",
+            "publishPassword": "gNcT4XZhcrH6JKIS",
+            "scheduleLOM": false,
+            "publishUsername": "QPB66kFnbjwpaSYg",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Add ThreatConnect Notification",
+                "programName": "TCPB - Notification v1.0"
+            }
+        },
+        {
+            "id": 20102,
+            "locationTop": 130.0,
+            "name": "No Groups Slack",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/ThreatConnect-Logo-CMYK.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "image_url"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "send"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title_link"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:KEYCHAIN:Slack Token}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields_markdown"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "text_markdown"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields"
+                    }
+                },
+                {
+                    "value": "Feed Failure: No Groups: #App:20098:base_message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "text"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_icon"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title"
+                    }
+                },
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/tc-favicon.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer_icon"
+                    }
+                },
+                {
+                    "value": "#F26724",
+                    "appCatalogItemParameter": {
+                        "paramName": "color"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_name"
+                    }
+                },
+                {
+                    "value": "#App:20098:slack_channel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "channel"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "thumb_url"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_link"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext_markdown"
+                    }
+                },
+                {
+                    "value": "ThreatConnect Playbooks",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1090.0,
+            "scheduleType": "Daily",
+            "publishPassword": "TxfujqO0WYy5PXp5",
+            "scheduleLOM": false,
+            "publishUsername": "wxEuaHRQb2WdTWiq",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message Attachment",
+                "programName": "TCPB - SendSlackMessageAttachment v1.0"
+            }
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": -4.8716,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Dead Hand Receiver",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 20094,
+            "sourceJobId": 20093,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20098,
+            "sourceTriggerId": 1945,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20093,
+            "sourceTriggerId": 1945,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20100,
+            "sourceJobId": 20097,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20100,
+            "sourceJobId": 20096,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20099,
+            "sourceJobId": 20100,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 19771,
+            "sourceJobId": 20098,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20094,
+            "sourceJobId": 19771,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20096,
+            "sourceJobId": 20094,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20097,
+            "sourceJobId": 20094,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20100,
+            "sourceJobId": 20094,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20102,
+            "sourceJobId": 20099,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20101,
+            "sourceJobId": 20099,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 177.0401,
+    "exportablePipes": [],
+    "description": "This playbook recieves a webhook from a feed collector and then resets the dead hand entry in the datastore. This prevents the dead hand timer from sending a fault notification. This playbook also checks for indicator and group counts and sends an appropriate notification if groups or indicators are not collected.",
+    "playbookTriggerList": [
+        {
+            "id": 1945,
+            "type": "HttpLink",
+            "locationTop": 190.0,
+            "name": "Dead Hand Webhook",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.http.queryparam\",\"type\":\"KeyValueArray\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -440.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "6/20/18 1:36 AM"
+}

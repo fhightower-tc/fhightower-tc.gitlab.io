@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Playbook which creates a task on a given interval. This is a good starting point for automating the creation of recurring tasks in ThreatConnect."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/recurring-task"
+downloadLinks = ["/post/playbooks/downloads/Recurring Task.pbx"]
 +++
 
 ## Documentation

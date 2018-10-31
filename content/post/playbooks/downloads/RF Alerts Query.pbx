@@ -1,0 +1,403 @@
+{
+    "jobList": [
+        {
+            "id": 350,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 240.0,
+            "name": "Rule Search",
+            "locationLeft": 230.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"X-RFToken\",\"value\":\"#App:355:XRFToken!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "https://api.recordedfuture.com/v2/alert/rule?limit=10",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 351,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]",
+            "locationTop": 240.0,
+            "name": "Last 24 Hour Alerts for Rule",
+            "locationLeft": 870.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"X-RFToken\",\"value\":\"#App:355:XRFToken!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "https://api.recordedfuture.com/v2/alert/search?triggered=%5B-72h%2C%5D&alertRule=#App:353:join_array.output!String&limit=10",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 352,
+            "outputVariables": "[{\"name\":\"getID\",\"type\":\"StringArray\"}]",
+            "locationTop": 240.0,
+            "name": "Get ID of Rule",
+            "locationLeft": 440.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"getID\",\"value\":\"$.data.results..id\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:350:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 353,
+            "outputVariables": "[{\"name\":\"join_array.output\",\"type\":\"String\"}]",
+            "locationTop": 240.0,
+            "name": "Join Array",
+            "locationLeft": 650.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Join Array",
+                "programName": "Join Array"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "join_on"
+                    }
+                },
+                {
+                    "value": "#App:352:getID!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 354,
+            "outputVariables": "[{\"name\":\"alertIDs\",\"type\":\"StringArray\"}]",
+            "locationTop": 240.0,
+            "name": "Get ID's of Alerts",
+            "locationLeft": 1080.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"alertIDs\",\"value\":\"$.data.results[*].id\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:351:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 355,
+            "locationTop": 240.0,
+            "name": "X-RFToken",
+            "locationLeft": 10.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"XRFToken\",\"value\":\"your_API_TOKEN_HERE\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 356,
+            "locationTop": 240.0,
+            "name": "Create ThreatConnect Task",
+            "locationLeft": 1310.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.16",
+                "displayName": "Create ThreatConnect Task",
+                "programName": "TCPB - TaskCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "#App:354:alertIDs!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "buddy+orgadmin",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_escalatees"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "task_reminder_date"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "task_escalation_date"
+                    }
+                },
+                {
+                    "value": "RFATemp",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "buddy",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_assignees"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "task_due_date"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "Task",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 352,
+            "sourceJobId": 350,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 353,
+            "sourceJobId": 352,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 351,
+            "sourceJobId": 353,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 354,
+            "sourceJobId": 351,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 350,
+            "sourceJobId": 355,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 356,
+            "sourceJobId": 354,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 355,
+            "sourceTriggerId": 44,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 20.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "RF Alerts Query",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "id": 44,
+            "type": "Timer",
+            "locationTop": 90.0,
+            "name": "Timer",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 00 20-20/1 * * ? *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Daily",
+            "locationLeft": 10.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 79.0,
+    "dateExported": "3/16/18 10:42 AM",
+    "exportablePipes": []
+}

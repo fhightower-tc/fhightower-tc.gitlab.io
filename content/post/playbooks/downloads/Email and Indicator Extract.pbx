@@ -1,0 +1,2026 @@
+{
+    "jobList": [
+        {
+            "id": 316,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 130.0,
+            "name": "Filter Email Address",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "(?i)[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                },
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 317,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 530.0,
+            "name": "Filter SHA256",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "\\b([a-fA-F\\d]{64})\\b",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 318,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 50.0,
+            "name": "Filter IP",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 319,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 210.0,
+            "name": "Filter Hosts",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "\\b((?:(?!-)[a-zA-Z0-9-]{1,63}(?<!-)\\.)+(?i)(?!exe|dat|php|dll|doc|docx|txt|rtf|odt|xls|xlsx|ppt|pptx|bin|pcap|ioc|pdf|mdb|asp|html|xml|jpg|png|lnk|log|vbs|lco|bat|shell|quit|pdb|vbp|bdoda|bsspx|save|cpl|wav|tmp|close|ico|ini|sleep|run|scr|jar|jxr|apt|w32|css|js|xpi|class|apk|rar|zip|hlp|tmp|cpp|crl|cfg|cer|plg|tmp|lxdns|cgi|dat($|\\r\\n)|gif($|\\r\\n)|xn$)(?:xn--[a-zA-Z0-9]{2,22}|[a-zA-Z]{2,13}))",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 320,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 290.0,
+            "name": "Filter URL",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "\\b(https?|sftp|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:.;'\"\"*$()\\\\;]*[-a-zA-Z0-9+&@#/%?=~+|\\.]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 321,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 370.0,
+            "name": "Filter MD5",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "\\b([a-fA-F\\d]{32})\\b",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                },
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 322,
+            "outputVariables": "[{\"name\":\"regex_filter.output\",\"type\":\"StringArray\"}]",
+            "locationTop": 450.0,
+            "name": "Filter SHA1",
+            "locationLeft": 510.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Filter Regex",
+                "programName": "Regex Filter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:340:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_group"
+                    }
+                },
+                {
+                    "value": "\\b([a-fA-F\\d]{40})\\b",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 323,
+            "locationTop": 10.0,
+            "name": "Create ThreatConnect Address",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect Address",
+                "programName": "TCPB - AddressCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "Address",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "#App:318:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "Customer Org",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 324,
+            "locationTop": 90.0,
+            "name": "Create EmailAddress",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect Email Address",
+                "programName": "TCPB - EmailAddressCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "EmailAddress",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "#App:316:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 325,
+            "locationTop": 170.0,
+            "name": "Create Host",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect Host",
+                "programName": "TCPB - HostCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "whois_active"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "dns_active"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "#App:319:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 326,
+            "locationTop": 0.0,
+            "name": "IP validation",
+            "locationLeft": 1020.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:330:jIP!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 327,
+            "locationTop": 80.0,
+            "name": "eMail Validation",
+            "locationLeft": 1070.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:331:jEmail!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 328,
+            "locationTop": 150.0,
+            "name": "Host Validation",
+            "locationLeft": 1010.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#App:332:jHosts!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 329,
+            "locationTop": 350.0,
+            "name": "MD5 Validation",
+            "locationLeft": 1010.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#App:334:jMD5!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 330,
+            "locationTop": 10.0,
+            "name": "IP Join Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"jIP\",\"value\":\"#App:318:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 331,
+            "outputVariables": "[{\"name\":\"jEmail\",\"type\":\"String\"}]",
+            "locationTop": 100.0,
+            "name": "Email Join Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"jEmail\",\"value\":\"#App:316:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 332,
+            "outputVariables": "[{\"name\":\"jHosts\",\"type\":\"String\"}]",
+            "locationTop": 190.0,
+            "name": "Host Join Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"jHosts\",\"value\":\"#App:319:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 333,
+            "outputVariables": "[{\"name\":\"jURL\",\"type\":\"String\"}]",
+            "locationTop": 280.0,
+            "name": "URL Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"jURL\",\"value\":\"#App:320:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 334,
+            "outputVariables": "[{\"name\":\"jMD5\",\"type\":\"String\"}]",
+            "locationTop": 370.0,
+            "name": "MD5 Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"jMD5\",\"value\":\"#App:321:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 335,
+            "outputVariables": "[{\"name\":\"jSHA1\",\"type\":\"String\"}]",
+            "locationTop": 450.0,
+            "name": "SHA1 Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"jSHA1\",\"value\":\"#App:322:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 336,
+            "outputVariables": "[{\"name\":\"jSHA256\",\"type\":\"String\"}]",
+            "locationTop": 530.0,
+            "name": "SHA256 Array",
+            "locationLeft": 760.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"jSHA256\",\"value\":\"#App:317:regex_filter.output!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 337,
+            "locationTop": 440.0,
+            "name": "SHA1 Validation",
+            "locationLeft": 1060.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#App:335:jSHA1!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 338,
+            "locationTop": 520.0,
+            "name": "SHA256 Validation",
+            "locationLeft": 1010.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#App:336:jSHA256!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 339,
+            "locationTop": 370.0,
+            "name": "Upload Document",
+            "locationLeft": -230.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.16",
+                "displayName": "Upload a file to a Document",
+                "programName": "TCPB - DocumentUpload v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:42:trg.mbox.attachment!BinaryArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_data"
+                    }
+                },
+                {
+                    "value": "#App:345:tc.groups!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_id"
+                    }
+                },
+                {
+                    "value": "Document",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#Trigger:42:trg.mbox.filename!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "filename"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 340,
+            "locationTop": 180.0,
+            "name": "Defang [.]",
+            "locationLeft": 210.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Find and Replace",
+                "programName": "Find / Replace"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[.]",
+                    "appCatalogItemParameter": {
+                        "paramName": "find_regex"
+                    }
+                },
+                {
+                    "value": "#App:341:find_replace.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_text"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_regex"
+                    }
+                },
+                {
+                    "value": ".",
+                    "appCatalogItemParameter": {
+                        "paramName": "replace_regex"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 341,
+            "outputVariables": "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+            "locationTop": 180.0,
+            "name": "Defang hxxp",
+            "locationLeft": -40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Find and Replace",
+                "programName": "Find / Replace"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "hxxp",
+                    "appCatalogItemParameter": {
+                        "paramName": "find_regex"
+                    }
+                },
+                {
+                    "value": "http",
+                    "appCatalogItemParameter": {
+                        "paramName": "replace_regex"
+                    }
+                },
+                {
+                    "value": "#Trigger:42:trg.mbox.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_text"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_regex"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 342,
+            "locationTop": 430.0,
+            "name": "Create File SHA1",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect File",
+                "programName": "TCPB - FileCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_path"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "file_size"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_name"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "File",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "sha256"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_date"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "#App:322:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "sha1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 343,
+            "locationTop": 510.0,
+            "name": "Create File SHA256",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect File",
+                "programName": "TCPB - FileCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_path"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_date"
+                    }
+                },
+                {
+                    "value": "File",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "sha1"
+                    }
+                },
+                {
+                    "value": "#App:317:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "sha256"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "file_size"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 344,
+            "locationTop": 180.0,
+            "name": "Create TC Group Email",
+            "locationLeft": -840.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.16",
+                "displayName": "Create ThreatConnect Group",
+                "programName": "TCPB - GroupCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations_all"
+                    }
+                },
+                {
+                    "value": "Email",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#Trigger:42:trg.mbox.subject!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "Customer Org",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "halt_on_error"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"body\",\"value\":\"#Trigger:42:trg.mbox.body!String\"},{\"key\":\"header\",\"value\":\"#Trigger:42:trg.mbox.header!String\"},{\"key\":\"subject\",\"value\":\"#Trigger:42:trg.mbox.subject!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "additional_fields"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 345,
+            "locationTop": 370.0,
+            "name": "Create Document",
+            "locationLeft": -490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.16",
+                "displayName": "Create ThreatConnect Group",
+                "programName": "TCPB - GroupCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Document",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations_all"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"fileName\",\"value\":\"upload.doc\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "additional_fields"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "Customer Org",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.groups!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "halt_on_error"
+                    }
+                },
+                {
+                    "value": "#Trigger:42:trg.mbox.filename!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 346,
+            "locationTop": 340.0,
+            "name": "If / Else 1",
+            "locationLeft": -640.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#Trigger:42:trg.mbox.filename!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 347,
+            "locationTop": 350.0,
+            "name": "Create MD5",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect File",
+                "programName": "TCPB - FileCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "File",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:321:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "sha1"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "sha256"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_date"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "file_size"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "occurrence_path"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 348,
+            "locationTop": 250.0,
+            "name": "URL Validation",
+            "locationLeft": 1050.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:333:jURL!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 349,
+            "locationTop": 260.0,
+            "name": "Create Url",
+            "locationLeft": 1250.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.16",
+                "displayName": "Create ThreatConnect URL",
+                "programName": "TCPB - UrlCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "Email IMPORT",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "TLP RED",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "#App:320:regex_filter.output!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "DOITNC",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "URL",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#App:344:tc.group!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 323,
+            "sourceJobId": 326,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 324,
+            "sourceJobId": 327,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 325,
+            "sourceJobId": 328,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 330,
+            "sourceJobId": 318,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 326,
+            "sourceJobId": 330,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 331,
+            "sourceJobId": 316,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 327,
+            "sourceJobId": 331,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 332,
+            "sourceJobId": 319,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 328,
+            "sourceJobId": 332,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 333,
+            "sourceJobId": 320,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 334,
+            "sourceJobId": 321,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 336,
+            "sourceJobId": 317,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 335,
+            "sourceJobId": 322,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 329,
+            "sourceJobId": 334,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 337,
+            "sourceJobId": 335,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 338,
+            "sourceJobId": 336,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 318,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 316,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 319,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 320,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 321,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 322,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 317,
+            "sourceJobId": 340,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 340,
+            "sourceJobId": 341,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 342,
+            "sourceJobId": 337,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 343,
+            "sourceJobId": 338,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 344,
+            "sourceTriggerId": 42,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 341,
+            "sourceJobId": 344,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 339,
+            "sourceJobId": 345,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 345,
+            "sourceJobId": 346,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 346,
+            "sourceJobId": 344,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 347,
+            "sourceJobId": 329,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 348,
+            "sourceJobId": 333,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 349,
+            "sourceJobId": 348,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": -588.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "000_ Email and Indicator Extract FINAL",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "id": 42,
+            "type": "Mailbox",
+            "locationTop": 180.0,
+            "name": "Mailbox to Receive Emails",
+            "eventType": "External",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.mbox.subject\",\"type\":\"String\"},{\"name\":\"trg.mbox.filename\",\"type\":\"StringArray\"},{\"name\":\"trg.mbox.header\",\"type\":\"String\"},{\"name\":\"trg.mbox.body\",\"type\":\"String\"},{\"name\":\"trg.mbox.attachment\",\"type\":\"BinaryArray\"},{\"name\":\"trg.mbox.filename\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -1080.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 37.0,
+    "dateExported": "3/16/18 10:18 AM",
+    "exportablePipes": []
+}

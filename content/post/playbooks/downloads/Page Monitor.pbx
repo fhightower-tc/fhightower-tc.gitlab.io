@@ -1,0 +1,883 @@
+{
+    "jobList": [
+        {
+            "id": 515,
+            "locationTop": 30.0,
+            "name": "Set Variables",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"userAgent\",\"value\":\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36\"},{\"key\":\"website\",\"value\":\"http://example.com\"},{\"key\":\"slackMessagePrefix\",\"value\":\"[Page Monitor PB]\"},{\"key\":\"slackChannel\",\"value\":\"\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 50.0,
+            "scheduleType": "Daily",
+            "publishPassword": "fEKTwA7AVwUPBLxb",
+            "publishUsername": "oEPi48lM3FMyfLRa",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "outputVariables": "[{\"name\":\"slackMessagePrefix\",\"type\":\"String\"},{\"name\":\"userAgent\",\"type\":\"String\"},{\"name\":\"website\",\"type\":\"String\"},{\"name\":\"slackChannel\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 516,
+            "locationTop": 210.0,
+            "name": "HTTP Client Request to Website",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "#App:515:website!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"User-Agent\",\"value\":\"#App:515:userAgent!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 50.0,
+            "scheduleType": "Daily",
+            "publishPassword": "XXqVMGyByST22V4F",
+            "publishUsername": "l27Hi5CrWUBdhFjb",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 517,
+            "locationTop": 150.0,
+            "name": "Hash Response Content",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:516:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 290.0,
+            "scheduleType": "Daily",
+            "publishPassword": "Icb3ey5WImMGquCW",
+            "publishUsername": "LxSKAU4f1f2txG3V",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Encode Hash",
+                "programName": "Hash Encoding"
+            },
+            "outputVariables": "[{\"name\":\"hash.encode.md5\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 518,
+            "locationTop": 280.0,
+            "name": "Slack Unsuccessful Request",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:515:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:515:slackMessagePrefix!String  Bad response when trying to request website #App:515:website!String.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 290.0,
+            "scheduleType": "Daily",
+            "publishPassword": "UE0gFAnDwBmwnrua",
+            "publishUsername": "gUcte2qdq3W1nKE8",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            }
+        },
+        {
+            "id": 519,
+            "locationTop": 150.0,
+            "name": "Check Datastore for Previous Hash",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "Local",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "pageMonitor",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 510.0,
+            "scheduleType": "Daily",
+            "publishPassword": "TYV36ywddfGQJAxJ",
+            "publishUsername": "mrVXWhuCTn2Ja8X6",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "outputVariables": "[{\"name\":\"datastore.response\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 520,
+            "locationTop": 150.0,
+            "name": "Find Previous Hash",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"existHash\",\"value\":\"hits.hits[0]._source.hash\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:519:datastore.response!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 740.0,
+            "scheduleType": "Daily",
+            "publishPassword": "eqYhLnmrdZ3AfzLC",
+            "publishUsername": "bRvekDai3VAj5kwV",
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "outputVariables": "[{\"name\":\"existHash\",\"type\":\"StringArray\"}]"
+        },
+        {
+            "id": 521,
+            "locationTop": 280.0,
+            "name": "No Previous Hash",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"nonExistHash\",\"value\":\"0\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1120.0,
+            "scheduleType": "Daily",
+            "publishPassword": "ldKWGZ82P8xuHQs4",
+            "publishUsername": "Ga4zHIYJIUO9rhq9",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "outputVariables": "[{\"name\":\"nonExistHash\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 522,
+            "locationTop": 450.0,
+            "name": "New Hash?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:526:previousHash!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#App:517:hash.encode.md5!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 90.0,
+            "scheduleType": "Daily",
+            "publishPassword": "tWr9L7WWnknoNw0L",
+            "publishUsername": "0DKMj1of9lPv4icQ",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 523,
+            "locationTop": 420.0,
+            "name": "Slack Alert",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:515:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:515:slackMessagePrefix!String The content of #App:515:website!String has changed.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 290.0,
+            "scheduleType": "Daily",
+            "publishPassword": "468BXG5lGACPIwN1",
+            "publishUsername": "t8JIcRJw9yq0cesd",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            }
+        },
+        {
+            "id": 524,
+            "locationTop": 550.0,
+            "name": "Log No Change",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "INFO",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                },
+                {
+                    "value": "The content of the website has not changed.",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 290.0,
+            "scheduleType": "Daily",
+            "publishPassword": "lacDQPNgPz30GS4Z",
+            "publishUsername": "yAfmIDWEEMqrUCUD",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            }
+        },
+        {
+            "id": 525,
+            "locationTop": 420.0,
+            "name": "Update Datastore w/ New Hash",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "Local",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "#App:531:databaseID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "{\"hash\": \"#App:517:hash.encode.md5!String\"}",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "pageMonitor",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 510.0,
+            "scheduleType": "Daily",
+            "publishPassword": "3rB9HZuiuxnzqNxZ",
+            "publishUsername": "LVF0T0htzEIAepcu",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "outputVariables": "[{\"name\":\"datastore.response\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 526,
+            "locationTop": 240.0,
+            "name": "Merge Hashes",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"previousHash\",\"value\":\"#App:521:nonExistHash!String\"},{\"key\":\"previousHash\",\"value\":\"#App:527:hashString!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1700.0,
+            "scheduleType": "Daily",
+            "publishPassword": "rQAI7DwDW6263fk9",
+            "publishUsername": "clthRdcnYZqeZ2NI",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "outputVariables": "[{\"name\":\"previousHash\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 527,
+            "locationTop": 150.0,
+            "name": "Join Array 1",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "\u00a0",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"hashString\",\"value\":\"#App:520:existHash!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 970.0,
+            "scheduleType": "Daily",
+            "publishPassword": "sjI3Pl79SqqiByAM",
+            "publishUsername": "mr6xBddeHStPuBpb",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "outputVariables": "[{\"name\":\"hashString\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 528,
+            "locationTop": 280.0,
+            "name": "Slack Unsuccessful DB Request",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:515:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "#App:515:slackMessagePrefix!String  Error requesting the hash in the datastore. This is expected the first time the Page Monitor playbook is run.",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 740.0,
+            "scheduleType": "Daily",
+            "publishPassword": "bBFdyJhOG9AkhqJs",
+            "publishUsername": "s1VPbGRuITwWqsGd",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            }
+        },
+        {
+            "id": 529,
+            "locationTop": 470.0,
+            "name": "Slack Error Updating Datastore",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:515:slackChannel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:515:slackMessagePrefix!String  Error writing to the datastore: #App:525:datastore.response!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 740.0,
+            "scheduleType": "Daily",
+            "publishPassword": "lw6AMp9E0ZD1M6XX",
+            "publishUsername": "f0kt8VXGeQ0RmVFa",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            }
+        },
+        {
+            "id": 530,
+            "locationTop": 150.0,
+            "name": "Find ID of Datastore Entry",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"databaseID\",\"value\":\"hits.hits[0]._id\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "#App:519:datastore.response!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1190.0,
+            "scheduleType": "Daily",
+            "publishPassword": "nWwmehbNk421qARz",
+            "publishUsername": "83nWMiFSTlexNCFs",
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "outputVariables": "[{\"name\":\"databaseID\",\"type\":\"StringArray\"}]"
+        },
+        {
+            "id": 531,
+            "locationTop": 150.0,
+            "name": "Join Array 2",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"databaseID\",\"value\":\"#App:530:databaseID!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 1410.0,
+            "scheduleType": "Daily",
+            "publishPassword": "RuIfSxryyOdb8ckv",
+            "publishUsername": "vfWdFSyfm2fzF5qO",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "outputVariables": "[{\"name\":\"databaseID\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 532,
+            "locationTop": 280.0,
+            "name": "Merge 1",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 970.0,
+            "scheduleType": "Daily",
+            "publishPassword": "30ohlUP1Jnq3guU4",
+            "publishUsername": "eErLpIeObMSBlywL",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            }
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 714.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Page Monitor",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 516,
+            "sourceJobId": 515,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 519,
+            "sourceJobId": 517,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 526,
+            "sourceJobId": 521,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 522,
+            "sourceJobId": 526,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 517,
+            "sourceJobId": 516,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 518,
+            "sourceJobId": 516,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 527,
+            "sourceJobId": 520,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 523,
+            "sourceJobId": 522,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 524,
+            "sourceJobId": 522,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 528,
+            "sourceJobId": 519,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 529,
+            "sourceJobId": 525,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 525,
+            "sourceJobId": 523,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 530,
+            "sourceJobId": 527,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 531,
+            "sourceJobId": 530,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 526,
+            "sourceJobId": 531,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 520,
+            "sourceJobId": 519,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 532,
+            "sourceJobId": 528,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 532,
+            "sourceJobId": 520,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 521,
+            "sourceJobId": 532,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 515,
+            "sourceTriggerId": 130,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 81.0,
+    "exportablePipes": [],
+    "description": "Periodically capture the content of a website and send an alert if the content changes. DO NOT use this playbook to monitor malicious infrastructure.",
+    "playbookTriggerList": [
+        {
+            "id": 130,
+            "type": "Timer",
+            "locationTop": 30.0,
+            "name": "Run Playbook Weekly",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 02 16 ? * 2 *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Weekly",
+            "locationLeft": -200.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "5/14/18 4:44 PM"
+}

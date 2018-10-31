@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Query <a href='https://www.robtex.com/'>Robtex</a> for an IP or ASN."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/robtex-query"
+downloadLinks = ["/post/playbooks/downloads/Robtex ASN Query.pbx", "/post/playbooks/downloads/Robtex IP Query.pbx"]
 +++
 
 This playbook was featured in a "Playbook Friday" blog: [https://threatconnect.com/blog/robtex-asn-query-ip-query/](https://threatconnect.com/blog/robtex-asn-query-ip-query/)! The blog post includes installation instructions and a gif of how to setup the playbook.

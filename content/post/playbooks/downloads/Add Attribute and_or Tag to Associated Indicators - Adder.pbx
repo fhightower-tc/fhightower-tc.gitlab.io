@@ -1,0 +1,2166 @@
+{
+    "jobList": [
+        {
+            "id": 23191,
+            "outputVariables": "[{\"name\":\"tc.adversary.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.adversary\",\"type\":\"TCEntity\"},{\"name\":\"tc.adversaries.json\",\"type\":\"String\"}]",
+            "locationTop": 290.0,
+            "name": "Get ThreatConnect Adversary By ID 1",
+            "locationLeft": -150.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Adversary by ID",
+                "programName": "TCPB - AdversaryRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                },
+                {
+                    "value": "Adversary",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23192,
+            "outputVariables": "[{\"name\":\"tc.incidents.json\",\"type\":\"String\"},{\"name\":\"tc.incident.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.incident\",\"type\":\"TCEntity\"}]",
+            "locationTop": 650.0,
+            "name": "Get ThreatConnect Incident By ID 1",
+            "locationLeft": 1130.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Incident by ID",
+                "programName": "TCPB - IncidentRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Incident",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23193,
+            "locationTop": 350.0,
+            "name": "Merge 1",
+            "locationLeft": 2330.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"selectedGroup\",\"value\":\"#App:23191:tc.adversary!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23194:tc.campaign!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23195:tc.document!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23196:tc.email!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23192:tc.incident!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23197:tc.signature!TCEntity\"},{\"key\":\"selectedGroup\",\"value\":\"#App:23198:tc.threat!TCEntity\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23194,
+            "outputVariables": "[{\"name\":\"tc.campaign.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.campaign\",\"type\":\"TCEntity\"},{\"name\":\"tc.campaign.json\",\"type\":\"String\"}]",
+            "locationTop": 380.0,
+            "name": "Get ThreatConnect Campaign By ID 1",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Campaign by ID",
+                "programName": "TCPB - CampaignRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                },
+                {
+                    "value": "Campaign",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23195,
+            "outputVariables": "[{\"name\":\"tc.documents.json\",\"type\":\"String\"},{\"name\":\"tc.document\",\"type\":\"TCEntity\"},{\"name\":\"tc.document.associations.indicator\",\"type\":\"TCEntityArray\"}]",
+            "locationTop": 470.0,
+            "name": "Get ThreatConnect Document By ID 1",
+            "locationLeft": 490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Document by ID",
+                "programName": "TCPB - DocumentRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                },
+                {
+                    "value": "Document",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23196,
+            "outputVariables": "[{\"name\":\"tc.email.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.emails.json\",\"type\":\"String\"},{\"name\":\"tc.email\",\"type\":\"TCEntity\"}]",
+            "locationTop": 560.0,
+            "name": "Get ThreatConnect Email By ID 1",
+            "locationLeft": 810.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Email by ID",
+                "programName": "TCPB - EmailRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                },
+                {
+                    "value": "Email",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23197,
+            "outputVariables": "[{\"name\":\"tc.signature.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.signatures.json\",\"type\":\"String\"},{\"name\":\"tc.signature\",\"type\":\"TCEntity\"}]",
+            "locationTop": 740.0,
+            "name": "Get ThreatConnect Signature By ID 1",
+            "locationLeft": 1450.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Signature by ID",
+                "programName": "TCPB - SignatureRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Signature",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23198,
+            "outputVariables": "[{\"name\":\"tc.threat.associations.indicator\",\"type\":\"TCEntityArray\"},{\"name\":\"tc.threat\",\"type\":\"TCEntity\"},{\"name\":\"tc.threats.json\",\"type\":\"String\"}]",
+            "locationTop": 830.0,
+            "name": "Get ThreatConnect Threat By ID 1",
+            "locationLeft": 1770.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.22",
+                "displayName": "Get ThreatConnect Threat by ID",
+                "programName": "TCPB - ThreatRetrieveById v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Threat",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:groupID!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "ids"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23199,
+            "locationTop": 280.0,
+            "name": "If / Else 1",
+            "locationLeft": 60.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#App:23191:tc.adversaries.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23200,
+            "locationTop": 370.0,
+            "name": "Copy of If / Else 1 1",
+            "locationLeft": 380.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#App:23194:tc.campaign.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23201,
+            "locationTop": 460.0,
+            "name": "Copy of If / Else 1 2",
+            "locationLeft": 700.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23195:tc.documents.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23202,
+            "locationTop": 550.0,
+            "name": "Copy of If / Else 1 3",
+            "locationLeft": 1020.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:23196:tc.emails.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23203,
+            "locationTop": 640.0,
+            "name": "Copy of If / Else 1 4",
+            "locationLeft": 1340.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23192:tc.incidents.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23204,
+            "locationTop": 730.0,
+            "name": "Copy of If / Else 1 5",
+            "locationLeft": 1660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23197:tc.signatures.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23205,
+            "locationTop": 820.0,
+            "name": "Copy of If / Else 1 6",
+            "locationLeft": 1980.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:23198:tc.threats.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "contains",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "{",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23206,
+            "outputVariables": "[{\"name\":\"decode_url.output\",\"type\":\"String\"}]",
+            "locationTop": 30.0,
+            "name": "Decode URL 1",
+            "locationLeft": 70.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Decode URL",
+                "programName": "Decode URL"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:2306:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23210,
+            "locationTop": 1460.0,
+            "name": "Check if Description Exists",
+            "locationLeft": -160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"descriptionExists\",\"value\":\".+\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23211,
+            "locationTop": 1620.0,
+            "name": "Check if Source Exists",
+            "locationLeft": -160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"sourceExists\",\"value\":\".+\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23212,
+            "locationTop": 1790.0,
+            "name": "Check if Additional Analysis and Context Exists",
+            "locationLeft": -160.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"aacExists\",\"value\":\".+\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23215,
+            "locationTop": 1460.0,
+            "name": "Placeholder Merge 1",
+            "locationLeft": 1700.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"abc\",\"value\":\"def\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23216,
+            "locationTop": 1620.0,
+            "name": "Placeholder Merge 2",
+            "locationLeft": 1700.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"abc\",\"value\":\"def\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23217,
+            "locationTop": 1790.0,
+            "name": "Placeholder Merge 3",
+            "locationLeft": 1700.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"abc\",\"value\":\"def\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23218,
+            "locationTop": 30.0,
+            "name": "Set Variable 1",
+            "locationLeft": -150.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorMessagePrefix\",\"value\":\"[Attribute and Tag Adder PB]:\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23219,
+            "outputVariables": "[{\"name\":\"groupIDArray\",\"type\":\"StringArray\"},{\"name\":\"descriptionArray\",\"type\":\"StringArray\"},{\"name\":\"tagArray\",\"type\":\"StringArray\"},{\"name\":\"additionalAnalysisAndContextArray\",\"type\":\"StringArray\"},{\"name\":\"sourceArray\",\"type\":\"StringArray\"}]",
+            "locationTop": 160.0,
+            "name": "Regex Extract 1",
+            "locationLeft": -150.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "#App:23206:decode_url.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"groupIDArray\",\"value\":\"groupID\\u003d([0-9]*?)\\u0026\"},{\"key\":\"tagArray\",\"value\":\"tag\\u003d(.*)\"},{\"key\":\"descriptionArray\",\"value\":\"description\\u003d(.*?)\\u0026\"},{\"key\":\"sourceArray\",\"value\":\"source\\u003d(.*?)\\u0026\"},{\"key\":\"additionalAnalysisAndContextArray\",\"value\":\"additionalAnalysisAndContext\\u003d(.*?)\\u0026\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23220,
+            "outputVariables": "[{\"name\":\"description\",\"type\":\"String\"},{\"name\":\"tag\",\"type\":\"String\"},{\"name\":\"additionalAnalysisAndContext\",\"type\":\"String\"},{\"name\":\"groupID\",\"type\":\"String\"},{\"name\":\"source\",\"type\":\"String\"}]",
+            "locationTop": 160.0,
+            "name": "Join Array 1",
+            "locationLeft": 70.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"groupID\",\"value\":\"#App:23219:groupIDArray!StringArray\"},{\"key\":\"tag\",\"value\":\"#App:23219:tagArray!StringArray\"},{\"key\":\"description\",\"value\":\"#App:23219:descriptionArray!StringArray\"},{\"key\":\"source\",\"value\":\"#App:23219:sourceArray!StringArray\"},{\"key\":\"additionalAnalysisAndContext\",\"value\":\"#App:23219:additionalAnalysisAndContextArray!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23221,
+            "locationTop": 1410.0,
+            "name": "Add Description if Adversary",
+            "locationLeft": 80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23191:tc.adversary.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23222,
+            "locationTop": 1410.0,
+            "name": "Add Description if Campaign",
+            "locationLeft": 300.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23194:tc.campaign.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23223,
+            "locationTop": 1410.0,
+            "name": "Add Description if Document",
+            "locationLeft": 520.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "#App:23195:tc.document.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23224,
+            "locationTop": 1410.0,
+            "name": "Add Description if Email",
+            "locationLeft": 750.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23196:tc.email.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23225,
+            "locationTop": 1410.0,
+            "name": "Add Description if Incident",
+            "locationLeft": 970.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23192:tc.incident.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23226,
+            "locationTop": 1410.0,
+            "name": "Add Description if Signature",
+            "locationLeft": 1190.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23197:tc.signature.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23227,
+            "locationTop": 1410.0,
+            "name": "Add Description if Threat",
+            "locationLeft": 1410.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Description",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23198:tc.threat.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23228,
+            "locationTop": 1580.0,
+            "name": "Add Source if Adversary",
+            "locationLeft": 80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23191:tc.adversary.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23229,
+            "locationTop": 1580.0,
+            "name": "Add Source if Campaign",
+            "locationLeft": 300.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23194:tc.campaign.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23230,
+            "locationTop": 1580.0,
+            "name": "Add Source if Document",
+            "locationLeft": 530.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23195:tc.document.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23231,
+            "locationTop": 1580.0,
+            "name": "Add Source if Email",
+            "locationLeft": 750.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "#App:23196:tc.email.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23232,
+            "locationTop": 1580.0,
+            "name": "Add Source if Incident",
+            "locationLeft": 970.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23192:tc.incident.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23233,
+            "locationTop": 1580.0,
+            "name": "Add Source if Signature",
+            "locationLeft": 1190.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "#App:23197:tc.signature.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23234,
+            "locationTop": 1580.0,
+            "name": "Add Source if Threat",
+            "locationLeft": 1410.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Source",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23198:tc.threat.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:source!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23235,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Adversary",
+            "locationLeft": 80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23191:tc.adversary.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23236,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Campaign",
+            "locationLeft": 300.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23194:tc.campaign.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23237,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Document",
+            "locationLeft": 530.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23195:tc.document.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23238,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Email",
+            "locationLeft": 750.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23196:tc.email.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23239,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Incident",
+            "locationLeft": 970.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23192:tc.incident.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23240,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Signature",
+            "locationLeft": 1190.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "#App:23197:tc.signature.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23241,
+            "locationTop": 1750.0,
+            "name": "Add AA&C if Threat",
+            "locationLeft": 1410.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Create ThreatConnect Attribute",
+                "programName": "Add Attribute"
+            },
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "update"
+                    }
+                },
+                {
+                    "value": "#App:23220:additionalAnalysisAndContext!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_content"
+                    }
+                },
+                {
+                    "value": "#App:23198:tc.threat.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "indicator_name"
+                    }
+                },
+                {
+                    "value": "Additional Analysis and Context",
+                    "appCatalogItemParameter": {
+                        "paramName": "attribute_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23243,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Adversary",
+            "locationLeft": 80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:23191:tc.adversary.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23244,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Campaign",
+            "locationLeft": 300.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23194:tc.campaign.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23245,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Document",
+            "locationLeft": 520.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:23195:tc.document.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23246,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Email",
+            "locationLeft": 740.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:23196:tc.email.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23247,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Incident",
+            "locationLeft": 960.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "#App:23192:tc.incident.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23248,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Signature",
+            "locationLeft": 1180.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23197:tc.signature.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 23249,
+            "locationTop": 1920.0,
+            "name": "Add Tag if Threat",
+            "locationLeft": 1400.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Create ThreatConnect Tag",
+                "programName": "TCPB - TagCreate v1.0"
+            },
+            "jobParameterList": [
+                {
+                    "value": "#App:23198:tc.threat.associations.indicator!TCEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "entity"
+                    }
+                },
+                {
+                    "value": "#App:23220:tag!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "tag"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 23218,
+            "sourceTriggerId": 2306,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23199,
+            "sourceJobId": 23191,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23194,
+            "sourceJobId": 23199,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23200,
+            "sourceJobId": 23194,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23195,
+            "sourceJobId": 23200,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23201,
+            "sourceJobId": 23195,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23196,
+            "sourceJobId": 23201,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23201,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23202,
+            "sourceJobId": 23196,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23202,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23192,
+            "sourceJobId": 23202,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23197,
+            "sourceJobId": 23203,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23204,
+            "sourceJobId": 23197,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23204,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23198,
+            "sourceJobId": 23204,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23205,
+            "sourceJobId": 23198,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23205,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23220,
+            "sourceJobId": 23219,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23203,
+            "sourceJobId": 23192,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23200,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23199,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23193,
+            "sourceJobId": 23203,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23206,
+            "sourceJobId": 23218,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23222,
+            "sourceJobId": 23221,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23223,
+            "sourceJobId": 23222,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23224,
+            "sourceJobId": 23223,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23225,
+            "sourceJobId": 23224,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23226,
+            "sourceJobId": 23225,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23227,
+            "sourceJobId": 23226,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23215,
+            "sourceJobId": 23227,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23211,
+            "sourceJobId": 23215,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23216,
+            "sourceJobId": 23234,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23229,
+            "sourceJobId": 23228,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23230,
+            "sourceJobId": 23229,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23231,
+            "sourceJobId": 23230,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23232,
+            "sourceJobId": 23231,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23233,
+            "sourceJobId": 23232,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23234,
+            "sourceJobId": 23233,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23236,
+            "sourceJobId": 23235,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23237,
+            "sourceJobId": 23236,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23238,
+            "sourceJobId": 23237,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23239,
+            "sourceJobId": 23238,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23240,
+            "sourceJobId": 23239,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23241,
+            "sourceJobId": 23240,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23217,
+            "sourceJobId": 23241,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23212,
+            "sourceJobId": 23216,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23243,
+            "sourceJobId": 23217,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23244,
+            "sourceJobId": 23243,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23245,
+            "sourceJobId": 23244,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23246,
+            "sourceJobId": 23245,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23247,
+            "sourceJobId": 23246,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23248,
+            "sourceJobId": 23247,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23249,
+            "sourceJobId": 23248,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23219,
+            "sourceJobId": 23206,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23191,
+            "sourceJobId": 23220,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23210,
+            "sourceJobId": 23193,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23221,
+            "sourceJobId": 23210,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23215,
+            "sourceJobId": 23210,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23235,
+            "sourceJobId": 23212,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23228,
+            "sourceJobId": 23211,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23216,
+            "sourceJobId": 23211,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 23217,
+            "sourceJobId": 23212,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": -86.0,
+    "type": "Standard",
+    "name": "Add Attribute and/or Tag to Associated Indicators - Adder",
+    "description": "This playbook adds attributes and tags to indicators which are associated with a group. It requires the 'Add Attribute and/or Tag to Associated Indicators - Trigger' playbook to be installed and running.",
+    "playbookLabels": [],
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "locationTop": 30.0,
+            "id": 2306,
+            "type": "HttpLink",
+            "eventType": "External",
+            "name": "HttpLink Trigger 1",
+            "playbookTriggerFilterList": [],
+            "locationLeft": -430.0,
+            "anyOrg": true,
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"}]"
+        }
+    ],
+    "panY": -156.0,
+    "exportablePipes": []
+}

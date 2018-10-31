@@ -1,0 +1,304 @@
+{
+    "jobList": [
+        {
+            "id": 14974,
+            "outputVariables": "[{\"name\":\"arraySerializerUrl\",\"type\":\"String\"},{\"name\":\"adjustDNSPbUrl\",\"type\":\"String\"},{\"name\":\"errorMessagePrefix\",\"type\":\"String\"}]",
+            "locationTop": 160.0,
+            "name": "Set Variable 1",
+            "locationLeft": 50.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorMessagePrefix\",\"value\":\"[Turn DNS On PB]:\"},{\"key\":\"arraySerializerUrl\",\"value\":\"<REPLACE ME>\"},{\"key\":\"adjustDNSPbUrl\",\"value\":\"<REPLACE ME>\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14975,
+            "locationTop": 370.0,
+            "name": "Send Slack Message 1",
+            "locationLeft": 270.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "${USER:KEYCHAIN:Slack API Token}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "${USER:TEXT:Personal Slack Channel}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "#App:14974:errorMessagePrefix!String Unable to find the hosts from #App:14976:tc.indicators.json!String .",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14976,
+            "outputVariables": "[{\"name\":\"tc.indicators.json\",\"type\":\"String\"}]",
+            "locationTop": 160.0,
+            "name": "Get ThreatConnect Indicator by Association 1",
+            "locationLeft": 280.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.17",
+                "displayName": "Get ThreatConnect Indicator by Association",
+                "programName": "TCPB - IndicatorRetrieveByAssociation v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "indicator",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_variable"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "#Trigger:1395:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "association_entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14977,
+            "outputVariables": "[{\"name\":\"hosts\",\"type\":\"StringArray\"}]",
+            "locationTop": 270.0,
+            "name": "Json Path 1",
+            "locationLeft": 50.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"hosts\",\"value\":\"[*].hostName\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "#App:14976:tc.indicators.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14978,
+            "locationTop": 270.0,
+            "name": "HTTP Client 1",
+            "locationLeft": 490.0,
+            "playbookRetryDelayMinutes": 1,
+            "playbookRetryMaxRetries": 5,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "HTTP Client",
+                "programName": "TCPB - HTTP Client v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "advanced"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "multipart"
+                    }
+                },
+                {
+                    "value": "#App:14974:arraySerializerUrl!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "POST",
+                    "appCatalogItemParameter": {
+                        "paramName": "http_method"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "verify_ssl"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "proxies_enabled"
+                    }
+                },
+                {
+                    "value": "[#App:14979:hostsString!String]",
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"link\",\"value\":\"#App:14974:adjustDNSPbUrl!String?dnsStatus\\u003dtrue\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "params"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 14979,
+            "outputVariables": "[{\"name\":\"hostsString\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "Join Array 1",
+            "locationLeft": 270.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"hostsString\",\"value\":\"#App:14977:hosts!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 466.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Turn DNS On Trigger",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 14974,
+            "sourceTriggerId": 1395,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14976,
+            "sourceJobId": 14974,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14977,
+            "sourceJobId": 14976,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14978,
+            "sourceJobId": 14979,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14975,
+            "sourceJobId": 14977,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 14979,
+            "sourceJobId": 14977,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1395,
+            "sourceJobId": 14978,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        }
+    ],
+    "panY": 77.0,
+    "exportablePipes": [],
+    "description": "",
+    "playbookTriggerList": [
+        {
+            "id": 1395,
+            "type": "UserAction",
+            "locationTop": 160.0,
+            "name": "Turn DNS On",
+            "userActionTypes": "Email,Incident,Signature,Threat,Campaign,Document,Adversary",
+            "httpResponseBody": "Request processing... this may take a few minutes",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.entity\",\"type\":\"TCEntity\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -180.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "3/7/18 3:52 PM"
+}

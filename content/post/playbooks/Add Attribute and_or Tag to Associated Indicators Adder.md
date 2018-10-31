@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Add an attribute and/or tag to all indicators associated with a given group."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/attribute-and-tag-adder"
+downloadLinks = ["/post/playbooks/downloads/Add Attribute and_or Tag to Associated Indicators - Adder.pbx", "Add Attribute and_or Tag to Associated Indicators - Trigger.pbx"]
 +++
 
 ## Documentation

@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "This playbook redirects you to a browse screen view of all URL Indicators with the same URL path and query strings. It is triggered with a user action."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/similar-url-finder"
+downloadLinks = ["/post/playbooks/downloads/Similar URL Finder.pbx"]
 +++
 
 ## Documentation

@@ -1,0 +1,276 @@
+{
+    "jobList": [
+        {
+            "id": 12080,
+            "locationTop": 140.0,
+            "name": "Set Variable 1",
+            "locationLeft": 30.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"errorPrefix\",\"value\":\"[Similar URL Finder]:\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12093,
+            "outputVariables": "[{\"name\":\"withoutPrefix\",\"type\":\"StringArray\"}]",
+            "locationTop": 270.0,
+            "name": "Regex Extract URL Path and Query Strings",
+            "locationLeft": 30.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1161:trg.action.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"withoutPrefix\",\"value\":\".*?:\\\\/\\\\/.*?\\\\/(.*)\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12095,
+            "outputVariables": "[{\"name\":\"indicatorWithoutPrefix\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "Join Array 3",
+            "locationLeft": 260.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicatorWithoutPrefix\",\"value\":\"#App:12093:withoutPrefix!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12141,
+            "outputVariables": "[{\"name\":\"encode_url.output\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "Encode URL 1",
+            "locationLeft": 490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Encode URL",
+                "programName": "Encode URL"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:12095:indicatorWithoutPrefix!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12142,
+            "outputVariables": "[{\"name\":\"redirectLink\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "Set Variable 2",
+            "locationLeft": 710.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"redirectLink\",\"value\":\"#App:12145:baseTCUrl!String/auth/browse/index.xhtml?filters\\u003dtypeName%20in%20(%22URL%22)%20and%20summary%20contains%20%22#App:12141:encode_url.output!String%22\\u0026intelType\\u003dindicators\\u0026owners\\u003d5\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12144,
+            "outputVariables": "[{\"name\":\"baseTCUrl\",\"type\":\"StringArray\"}]",
+            "locationTop": 140.0,
+            "name": "Regex Extract TC Base URL",
+            "locationLeft": 260.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1161:trg.action.weblink!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"baseTCUrl\",\"value\":\"(.*?:\\\\/\\\\/.*?)\\\\/.*\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 12145,
+            "outputVariables": "[{\"name\":\"baseTCUrl\",\"type\":\"String\"}]",
+            "locationTop": 140.0,
+            "name": "Join Array 1",
+            "locationLeft": 490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"baseTCUrl\",\"value\":\"#App:12144:baseTCUrl!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 12080,
+            "sourceTriggerId": 1161,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12095,
+            "sourceJobId": 12093,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12142,
+            "sourceJobId": 12141,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1161,
+            "sourceJobId": 12142,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 12141,
+            "sourceJobId": 12095,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12145,
+            "sourceJobId": 12144,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12144,
+            "sourceJobId": 12080,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 12093,
+            "sourceJobId": 12145,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 575.0,
+    "definitionVersion": "1.0.0",
+    "name": "Similar URL Finder",
+    "description": "This playbook redirects you to a browse screen view of all URL Indicators with the same URL path and query strings. It is triggered with a user action.",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "httpBasicAuthUsername": "DNV7UXCYDCC9XZXCHZTD",
+            "type": "UserAction",
+            "locationTop": 140.0,
+            "name": "View Browse Screen for Other URLs with the Same URL Path and Query String",
+            "anyOrg": true,
+            "userActionTypes": "URL",
+            "httpResponseBody": "<script>\nwindow.location.href = '#App:12142:redirectLink!String';\n</script>",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.weblink\",\"type\":\"String\"},{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "locationLeft": -200.0,
+            "id": 1161,
+            "orFilters": false,
+            "httpBasicAuthPassword": "GNBAXDDHJXKL4PBE4WDM",
+            "renderBodyAsTip": true
+        }
+    ],
+    "panY": 144.0,
+    "dateExported": "1/26/18 1:18 PM"
+}

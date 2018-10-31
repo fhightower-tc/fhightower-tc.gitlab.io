@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Store attributes for the unstructured indicator importer in the datastore."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/unstructured-data-importer-attribute-storer"
+downloadLinks = ["/post/playbooks/downloads/[unstructured importer] Store Attributes in Datastore.pbx"]
 +++
 
 This playbook stores attributes from [https://gitlab.com/fhightower-tc/unstructured-indicator-importer/blob/master/example_datastore_attributes.json](https://gitlab.com/fhightower-tc/unstructured-indicator-importer/blob/master/example_datastore_attributes.json) in the datastore so that they can be accessed by the [unstructured indicator importer](https://gitlab.com/fhightower-tc/unstructured-indicator-importer).

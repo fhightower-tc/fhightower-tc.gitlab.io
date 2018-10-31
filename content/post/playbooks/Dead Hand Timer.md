@@ -6,6 +6,7 @@ author = "Malware Utkonos"
 description = "This playbook checks the status of a feed and sends a notification if there is a fault in the feed status."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/Dead%20Hand"
+downloadLinks = ["/post/playbooks/downloads/Dead Hand Timer.pbx"]
 +++
 
 ## Documentation

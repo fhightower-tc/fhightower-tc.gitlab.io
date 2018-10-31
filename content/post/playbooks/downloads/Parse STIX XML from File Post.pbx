@@ -1,0 +1,655 @@
+{
+    "jobList": [
+        {
+            "id": 20633,
+            "outputVariables": "[{\"name\":\"results\",\"type\":\"TCEnhancedEntityArray\"}]",
+            "locationTop": 280.0,
+            "name": "STIX 1.1.1 Parser 1",
+            "locationLeft": -260.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.1",
+                "displayName": "STIX 1.1.1 Parser",
+                "programName": "TCPB - StixParser v2.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "STIX",
+                    "appCatalogItemParameter": {
+                        "paramName": "parser"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "default_rating"
+                    }
+                },
+                {
+                    "value": "#Trigger:2187:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "stix_content"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "default_confidence"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20634,
+            "outputVariables": "[{\"name\":\"tc.import.groupsfailed\",\"type\":\"String\"},{\"name\":\"tc.import.indicatorsfailed\",\"type\":\"String\"},{\"name\":\"tc.import.groupssaved\",\"type\":\"String\"},{\"name\":\"tc.import.indicatorssaved\",\"type\":\"String\"}]",
+            "locationTop": 280.0,
+            "name": "ThreatConnect Import 1",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.8",
+                "displayName": "ThreatConnect Import",
+                "programName": "TCPB - TC Import v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "merge_attributes"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "associate_to_groups"
+                    }
+                },
+                {
+                    "value": "#App:20633:results!TCEnhancedEntityArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input"
+                    }
+                },
+                {
+                    "value": "Sterling Cooper",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "associate_to_indicators"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20644,
+            "outputVariables": "[{\"name\":\"http.header.content_disposition.file_name\",\"type\":\"String\"}]",
+            "locationTop": 170.0,
+            "name": "Parse HTTP Header 1",
+            "locationLeft": -260.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "pipeRunLevel": true,
+                "displayName": "Parse HTTP Header",
+                "programName": "7132e76722cc362d87b414fc99219008"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:2187:trg.http.header!KeyValueArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "cpnt.http.header"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 20645,
+            "locationTop": 170.0,
+            "name": "Create ThreatConnect Document 1",
+            "locationLeft": -40.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.20",
+                "displayName": "Create ThreatConnect Document",
+                "programName": "TCPB - DocumentCreate v1.0"
+            },
+            "enableNotifications": false,
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "Document",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "add_to_malware"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "Sterling Cooper",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "#App:20644:http.header.content_disposition.file_name!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "document_file_name"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "vault_pw"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "#Trigger:2187:trg.http.body!Binary",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_data"
+                    }
+                },
+                {
+                    "value": "#App:20644:http.header.content_disposition.file_name!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "DEBUG",
+    "panX": 749.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Parse STIX XML from File Post",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 20634,
+            "sourceJobId": 20633,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20644,
+            "sourceTriggerId": 2187,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20633,
+            "sourceTriggerId": 2187,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20645,
+            "sourceJobId": 20644,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20634,
+            "sourceJobId": 20645,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 2187,
+            "sourceJobId": 20634,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        }
+    ],
+    "panY": -19.0,
+    "exportablePipes": [
+        {
+            "jobList": [
+                {
+                    "id": 20636,
+                    "outputVariables": "[{\"name\":\"http.header.accept\",\"type\":\"String\"},{\"name\":\"http.header.accept_encoding\",\"type\":\"String\"},{\"name\":\"http.header.host\",\"type\":\"String\"},{\"name\":\"http.header.accept_version\",\"type\":\"String\"},{\"name\":\"http.header.connection\",\"type\":\"String\"},{\"name\":\"http.header.content_type\",\"type\":\"String\"},{\"name\":\"http.header.content_disposition\",\"type\":\"String\"},{\"name\":\"http.header.accept_language\",\"type\":\"String\"},{\"name\":\"http.header.content_length\",\"type\":\"String\"},{\"name\":\"http.header.cookie\",\"type\":\"String\"},{\"name\":\"http.header.date\",\"type\":\"String\"},{\"name\":\"http.header.user_agent\",\"type\":\"String\"},{\"name\":\"http.header.authorization\",\"type\":\"String\"}]",
+                    "locationTop": 310.0,
+                    "name": "Value Lookup 1",
+                    "locationLeft": 530.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.10",
+                        "displayName": "Value Lookup",
+                        "programName": "TCPB - ValueLookup v1.0"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "#Trigger:2188:cpnt.http.header!KeyValueArray",
+                            "appCatalogItemParameter": {
+                                "paramName": "input_array"
+                            }
+                        },
+                        {
+                            "value": "[{\"key\":\"http.header.content_disposition\",\"value\":\"Content-Disposition\"},{\"key\":\"http.header.cookie\",\"value\":\"Cookie\"},{\"key\":\"http.header.accept\",\"value\":\"Accept\"},{\"key\":\"http.header.user_agent\",\"value\":\"User-Agent\"},{\"key\":\"http.header.connection\",\"value\":\"Connection\"},{\"key\":\"http.header.host\",\"value\":\"Host\"},{\"key\":\"http.header.accept_language\",\"value\":\"Accept-Language\"},{\"key\":\"http.header.accept_encoding\",\"value\":\"Accept-Encoding\"},{\"key\":\"http.header.authorization\",\"value\":\"Authorization\"},{\"key\":\"http.header.accept_version\",\"value\":\"Accept-Version\"},{\"key\":\"http.header.content_type\",\"value\":\"Content-Type\"},{\"key\":\"http.header.content_length\",\"value\":\"Content-Length\"},{\"key\":\"http.header.date\",\"value\":\"Date\"}]",
+                            "appCatalogItemParameter": {
+                                "paramName": "column_mapping"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20637,
+                    "outputVariables": "[{\"name\":\"regex.file_name\",\"type\":\"StringArray\"}]",
+                    "locationTop": 310.0,
+                    "name": "Regex Extract 1",
+                    "locationLeft": 900.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.10",
+                        "displayName": "Regex Extract",
+                        "programName": "TCPB - RegexExtract v1.0"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "#App:20636:http.header.content_disposition!String",
+                            "appCatalogItemParameter": {
+                                "paramName": "input_content"
+                            }
+                        },
+                        {
+                            "value": "[{\"key\":\"regex.file_name\",\"value\":\"filename[^;\\u003d\\\\n]*\\u003d(([\\u0027\\\"]).*?\\\\2|[^;\\\\n]*)\"}]",
+                            "appCatalogItemParameter": {
+                                "paramName": "regex_pattern_mapping"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "capture_groups"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "strip_nulls"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20638,
+                    "outputVariables": "[{\"name\":\"join.file_name\",\"type\":\"String\"}]",
+                    "locationTop": 310.0,
+                    "name": "Join Array 1",
+                    "locationLeft": 1110.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.10",
+                        "displayName": "Join Array",
+                        "programName": "TCPB - JoinArray v1.0"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "[{\"key\":\"join.file_name\",\"value\":\"#App:20637:regex.file_name!StringArray\"}]",
+                            "appCatalogItemParameter": {
+                                "paramName": "array_mapping"
+                            }
+                        },
+                        {
+                            "value": ",",
+                            "appCatalogItemParameter": {
+                                "paramName": "delimiter"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20639,
+                    "outputVariables": "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+                    "locationTop": 310.0,
+                    "name": "Find and Replace 1",
+                    "locationLeft": 1320.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.0",
+                        "displayName": "Find and Replace",
+                        "programName": "Find / Replace"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "match_case"
+                            }
+                        },
+                        {
+                            "value": "filename=",
+                            "appCatalogItemParameter": {
+                                "paramName": "find_regex"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "as_regex"
+                            }
+                        },
+                        {
+                            "value": "#App:20638:join.file_name!String",
+                            "appCatalogItemParameter": {
+                                "paramName": "input_text"
+                            }
+                        },
+                        {
+                            "value": "",
+                            "appCatalogItemParameter": {
+                                "paramName": "replace_regex"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20640,
+                    "outputVariables": "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+                    "locationTop": 310.0,
+                    "name": "Find and Replace 2",
+                    "locationLeft": 1530.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.0",
+                        "displayName": "Find and Replace",
+                        "programName": "Find / Replace"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "match_case"
+                            }
+                        },
+                        {
+                            "value": "",
+                            "appCatalogItemParameter": {
+                                "paramName": "replace_regex"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "as_regex"
+                            }
+                        },
+                        {
+                            "value": "\"",
+                            "appCatalogItemParameter": {
+                                "paramName": "find_regex"
+                            }
+                        },
+                        {
+                            "value": "#App:20639:find_replace.output!String",
+                            "appCatalogItemParameter": {
+                                "paramName": "input_text"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20641,
+                    "locationTop": 360.0,
+                    "name": "if filename",
+                    "locationLeft": 760.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.0",
+                        "displayName": "If / Else",
+                        "programName": "If / Else"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "as_numeric"
+                            }
+                        },
+                        {
+                            "value": "contains",
+                            "appCatalogItemParameter": {
+                                "paramName": "operator"
+                            }
+                        },
+                        {
+                            "value": "#App:20636:http.header.content_disposition!String",
+                            "appCatalogItemParameter": {
+                                "paramName": "operand_1"
+                            }
+                        },
+                        {
+                            "value": "filename",
+                            "appCatalogItemParameter": {
+                                "paramName": "operand_2"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "appCatalogItemParameter": {
+                                "paramName": "match_case"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20642,
+                    "outputVariables": "[{\"name\":\"v.filename\",\"type\":\"String\"}]",
+                    "locationTop": 410.0,
+                    "name": "set empty filename",
+                    "locationLeft": 1110.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.10",
+                        "displayName": "Set Variable",
+                        "programName": "TCPB - SetVariable v1.0"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "[{\"key\":\"v.filename\",\"value\":\"\u00a0\"}]",
+                            "appCatalogItemParameter": {
+                                "paramName": "variable_mapping"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20643,
+                    "outputVariables": "[{\"name\":\"m.filename\",\"type\":\"String\"}]",
+                    "locationTop": 380.0,
+                    "name": "merge filename",
+                    "locationLeft": 1760.0,
+                    "appCatalogItem": {
+                        "programVersion": "1.0.0",
+                        "displayName": "Merge",
+                        "programName": "Merge"
+                    },
+                    "enableNotifications": false,
+                    "playbookRetryEnabled": false,
+                    "jobParameterList": [
+                        {
+                            "value": "[{\"key\":\"m.filename\",\"value\":\"#App:20640:find_replace.output!String\"},{\"key\":\"m.filename\",\"value\":\"#App:20642:v.filename!String\"}]",
+                            "appCatalogItemParameter": {
+                                "paramName": "output_array"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "playbookConnectionList": [
+                {
+                    "targetJobId": 20636,
+                    "sourceTriggerId": 2188,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20638,
+                    "sourceJobId": 20637,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20639,
+                    "sourceJobId": 20638,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20640,
+                    "sourceJobId": 20639,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20641,
+                    "sourceJobId": 20636,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20637,
+                    "sourceJobId": 20641,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20642,
+                    "sourceJobId": 20641,
+                    "type": "Fail",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20643,
+                    "sourceJobId": 20640,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetJobId": 20643,
+                    "sourceJobId": 20642,
+                    "type": "Pass",
+                    "isCircularOnTarget": false
+                },
+                {
+                    "targetTriggerId": 2188,
+                    "sourceJobId": 20643,
+                    "type": "Pass",
+                    "isCircularOnTarget": true
+                },
+                {
+                    "targetJobId": 20642,
+                    "sourceJobId": 20637,
+                    "type": "Fail",
+                    "isCircularOnTarget": false
+                }
+            ],
+            "panX": 20.0,
+            "definitionVersion": "7132e76722cc362d87b414fc99219008",
+            "type": "Pipe",
+            "name": "Parse HTTP Header",
+            "description": "This component takes the header from the HTTP Trigger (#trg.http.header) and parses it into useful output variables. ",
+            "logLevel": "WARN",
+            "playbookTriggerList": [
+                {
+                    "pipeOutputParams": "[{\"key\":\"http.header.accept\",\"value\":\"#App:20636:http.header.accept!String \",\"displayValue\":\"#App:20636:http.header.accept!String \"},{\"key\":\"http.header.accept_encoding\",\"value\":\"#App:20636:http.header.accept_encoding!String \",\"displayValue\":\"#App:20636:http.header.accept_encoding!String \"},{\"key\":\"http.header.accept_language\",\"value\":\"#App:20636:http.header.accept_language!String \",\"displayValue\":\"#App:20636:http.header.accept_language!String \"},{\"key\":\"http.header.accept_version\",\"value\":\"#App:20636:http.header.accept_version!String \",\"displayValue\":\"#App:20636:http.header.accept_version!String \"},{\"key\":\"http.header.authorization\",\"value\":\"#App:20636:http.header.authorization!String \",\"displayValue\":\"#App:20636:http.header.authorization!String \"},{\"key\":\"http.header.connection\",\"value\":\"#App:20636:http.header.connection!String \",\"displayValue\":\"#App:20636:http.header.connection!String \"},{\"key\":\"http.header.content_disposition\",\"value\":\"#App:20636:http.header.content_disposition!String \",\"displayValue\":\"#App:20636:http.header.content_disposition!String \"},{\"key\":\"http.header.content_length\",\"value\":\"#App:20636:http.header.content_length!String \",\"displayValue\":\"#App:20636:http.header.content_length!String \"},{\"key\":\"http.header.content_type\",\"value\":\"#App:20636:http.header.content_type!String \",\"displayValue\":\"#App:20636:http.header.content_type!String \"},{\"key\":\"http.header.cookie\",\"value\":\"#App:20636:http.header.cookie!String \",\"displayValue\":\"#App:20636:http.header.cookie!String \"},{\"key\":\"http.header.date\",\"value\":\"#App:20636:http.header.date!String \",\"displayValue\":\"#App:20636:http.header.date!String \"},{\"key\":\"http.header.host\",\"value\":\"#App:20636:http.header.host!String \",\"displayValue\":\"#App:20636:http.header.host!String \"},{\"key\":\"http.header.user_agent\",\"value\":\"#App:20636:http.header.user_agent!String \",\"displayValue\":\"#App:20636:http.header.user_agent!String \"},{\"key\":\"http.header.content_disposition.file_name\",\"value\":\"#App:20643:m.filename!String \",\"displayValue\":\"#App:20643:m.filename!String \"}]",
+                    "id": 2188,
+                    "type": "PipeConfig",
+                    "locationTop": 90.0,
+                    "name": "Parse HTTP Header",
+                    "eventType": "External",
+                    "fireOnDuplicate": false,
+                    "outputVariables": "[{\"name\":\"cpnt.http.header\",\"type\":\"KeyValueArray\"}]",
+                    "httpBasicAuthEnable": false,
+                    "anyOrg": true,
+                    "pipeInputParams": "[{\"label\":\"HTTP Header\",\"dataType\":\"String\",\"playbookDataType\":\"KeyValueArray\",\"required\":true,\"name\":\"cpnt.http.header\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[]}]",
+                    "locationLeft": 290.0,
+                    "orFilters": false,
+                    "renderBodyAsTip": false
+                }
+            ],
+            "panY": 20.0,
+            "dateExported": "9/4/18 5:28 PM"
+        }
+    ],
+    "description": "",
+    "playbookTriggerList": [
+        {
+            "id": 2187,
+            "type": "HttpLink",
+            "locationTop": 400.0,
+            "name": "HttpLink Trigger 1",
+            "httpResponseBody": "Your file was processed.\n\nResults: \n\nGroups Saved / Failed:\n#App:20634:tc.import.groupssaved!String / #App:20634:tc.import.groupsfailed!String \n\nIndicators Saved / Failed:\n#App:20634:tc.import.indicatorssaved!String / #App:20634:tc.import.indicatorsfailed!String",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"},{\"name\":\"trg.http.body\",\"type\":\"Binary\"},{\"name\":\"trg.http.header\",\"type\":\"KeyValueArray\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -570.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "9/4/18 5:28 PM"
+}

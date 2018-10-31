@@ -6,6 +6,7 @@ author = "citadelintellgenceresearch"
 description = "This playbook is designed to verify when a new IOC (Address, URL, Host, File, or Email Address) comes in, whether it already exists in the platform in a different owner."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/indicator%20uniqueness%20validator"
+downloadLinks = ["/post/playbooks/downloads/Indicator Uniqueness Validator (Address, URL, Host, File, EmailAddress).pbx"]
 +++
 
 This playbook is designed to verify when a new IOC (Address, URL, Host, File, or Email Address) comes in, whether it already exists in the platform in a different owner. If so, the new indicator is tagged with "multiple_owners", denoting that it is a duplicate IOC. This is designed to be used in conjunction with a custom dashboard card to display the owner names and their number of duplicate indicators. The TQL syntax for the dashboard card is as follows:

@@ -1,0 +1,375 @@
+{
+    "jobList": [
+        {
+            "id": 9626,
+            "outputVariables": "[{\"name\":\"http_client.response.output_content\",\"type\":\"String\"},{\"name\":\"http_client.response_code\",\"type\":\"String\"}]",
+            "locationTop": 380.0,
+            "name": "HTTP Client - Request RSS",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "HTTP Client",
+                "programName": "Http Client"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "ignore_ssl_trust"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "httpclient_proxy"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "parameters"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                },
+                {
+                    "value": "#App:9627:url!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "action"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9627,
+            "outputVariables": "[{\"name\":\"threatRating\",\"type\":\"String\"},{\"name\":\"url\",\"type\":\"String\"},{\"name\":\"confidenceRating\",\"type\":\"String\"}]",
+            "locationTop": 210.0,
+            "name": "Set Variables",
+            "locationLeft": 170.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"confidenceRating\",\"value\":\"50\"},{\"key\":\"threatRating\",\"value\":\"3\"},{\"key\":\"url\",\"value\":\"https://www.google.com/alerts/feeds/12345/54321\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9634,
+            "locationTop": 450.0,
+            "name": "Send Slack Message",
+            "locationLeft": 390.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "${USER:TEXT:Personal Slack Channel}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "${USER:KEYCHAIN:Slack API Token}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "value": "Error requesting #App:9627:url!String : (#App:9626:http_client.response_code!String ) - #App:9626:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9646,
+            "outputVariables": "[{\"name\":\"json_xml.output\",\"type\":\"String\"}]",
+            "locationTop": 320.0,
+            "name": "Convert JSON to XML",
+            "locationLeft": 390.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Convert JSON <> XML",
+                "programName": "JSON <> XML"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "XML",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_format"
+                    }
+                },
+                {
+                    "value": "JSON",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_format"
+                    }
+                },
+                {
+                    "value": "#App:9626:http_client.response.output_content!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9651,
+            "outputVariables": "[{\"name\":\"links\",\"type\":\"StringArray\"}]",
+            "locationTop": 320.0,
+            "name": "Get Links from Each Entry",
+            "locationLeft": 600.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.0",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:9646:json_xml.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"links\",\"value\":\"feed.entry[*].link\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9669,
+            "outputVariables": "[{\"name\":\"cleaned_links\",\"type\":\"StringArray\"}]",
+            "locationTop": 320.0,
+            "name": "Clean Links to Get Raw URL",
+            "locationLeft": 810.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"cleaned_links\",\"value\":\".*?\\u0026url\\u003d(http.*?)\\u0026ct\\u003d.*\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "#App:9651:links!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9785,
+            "locationTop": 320.0,
+            "name": "Create URLs",
+            "locationLeft": 1020.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.9",
+                "displayName": "Create ThreatConnect URL",
+                "programName": "TCPB - UrlCreate v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "URL",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "#App:9669:cleaned_links!StringArray",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "#App:9627:confidenceRating!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "confidence"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "#App:9627:threatRating!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "rating"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 9626,
+            "sourceJobId": 9627,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9651,
+            "sourceJobId": 9646,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9669,
+            "sourceJobId": 9651,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9634,
+            "sourceJobId": 9626,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9646,
+            "sourceJobId": 9626,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9627,
+            "sourceTriggerId": 925,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 9785,
+            "sourceJobId": 9669,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 328.0,
+    "definitionVersion": "1.0.0",
+    "name": "Google Alert Feed Reader",
+    "description": "Read a Google Alerts RSS feed and create indicators from the links.",
+    "logLevel": "INFO",
+    "playbookTriggerList": [
+        {
+            "id": 925,
+            "type": "Timer",
+            "locationTop": 210.0,
+            "name": "Run on Interval",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 00 17 ? * 2 *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Weekly",
+            "locationLeft": -50.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": -54.0,
+    "dateExported": "12/22/17 4:29 PM"
+}

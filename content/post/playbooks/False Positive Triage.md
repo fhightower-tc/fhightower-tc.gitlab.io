@@ -6,6 +6,7 @@ author = "Malware Utkonos"
 description = "Reports a false positive, turns off all monitors, resets all ratings, waits 25 hours for CAL to pick up the change, and finally deletes the indicator and republishes all groups associated with the indicator."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/False%20Positive%20Triage"
+downloadLinks = ["/post/playbooks/downloads/False Positive Triage HTTP Interface.pbx", "/post/playbooks/downloads/False Positive Triage Trigger Interface.pbx", "/post/playbooks/downloads/False Positive Triage Standalone - pre 5.7.pbx", "/post/playbooks/downloads/False Positive Triage Standalone - post 5.7.pbx"]
 +++
 
 There are two versions of this playbook. One which works in ThreatConnect instances before version 5.7 and one that works in versions >= 5.7.

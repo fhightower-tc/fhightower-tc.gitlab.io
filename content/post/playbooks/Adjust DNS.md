@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "These playbooks allow users to turn the DNS on or off for all indicators associated with a group."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/toggle-dns"
+downloadLinks = ["/post/playbooks/downloads/Adjust DNS.pbx"]
 +++
 
 ## Usage

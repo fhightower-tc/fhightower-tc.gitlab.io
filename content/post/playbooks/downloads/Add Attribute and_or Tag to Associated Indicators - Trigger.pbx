@@ -1,0 +1,67 @@
+{
+    "jobList": [
+        {
+            "id": 11108,
+            "outputVariables": "[{\"name\":\"groupID\",\"type\":\"String\"},{\"name\":\"metadataAddingPlaybookTrigger\",\"type\":\"String\"}]",
+            "locationTop": 340.0,
+            "name": "Set Variable 1",
+            "locationLeft": -1040.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"groupID\",\"value\":\"#Trigger:1044:trg.action.item!String\"},{\"key\":\"metadataAddingPlaybookTrigger\",\"value\":\"\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 11108,
+            "sourceTriggerId": 1044,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1044,
+            "sourceJobId": 11108,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        }
+    ],
+    "panX": 1557.0,
+    "definitionVersion": "1.0.0",
+    "name": "Add Attribute and/or Tag to Associated Indicators - Trigger",
+    "description": "",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "httpBasicAuthUsername": "G2OCXATN3OVEDDY8WQ1C",
+            "type": "UserAction",
+            "locationTop": 180.0,
+            "name": "Add Attribute and/or Tag to Indicators Associated to this Group",
+            "anyOrg": true,
+            "userActionTypes": "Incident,Campaign,Adversary,Document,Email,Signature,Threat",
+            "httpResponseBody": "<iframe id=\"iframe\" name=\"my_iframe\" hidden=\"hidden\"></iframe>\n<form action=\"#App:11108:metadataAddingPlaybookTrigger!String \" method=\"POST\" target=\"my_iframe\">\n<input type=\"text\" name=\"groupID\" value=\"#App:11108:groupID!String\" hidden=\"hidden\">\n<br>\n\n<label>Description: </label><br>\n<textarea name=\"description\" cols=\"50\" rows=\"11\"></textarea>\n<br><br>\n<label>Source: </label><br>\n<textarea name=\"source\" cols=\"50\" rows=\"11\"></textarea>\n<br><br>\n<label>Additional Analysis and Context: </label><br>\n<textarea name=\"additionalAnalysisAndContext\" cols=\"50\" rows=\"11\"></textarea>\n<br><br>\n<label>Tag: <input type=\"text\" name=\"tag\"></label>\n<br><br>\n<input type=\"submit\">\n<br>\n</form>",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "locationLeft": -1330.0,
+            "id": 1044,
+            "orFilters": false,
+            "httpBasicAuthPassword": "7HLYV94YCXWSZQNBTLIB",
+            "renderBodyAsTip": true
+        }
+    ],
+    "panY": 20.0,
+    "dateExported": "1/19/18 2:57 PM"
+}

@@ -1,0 +1,214 @@
+{
+    "jobList": [
+        {
+            "id": 694933970,
+            "outputVariables": "[{\"name\":\"taskName\",\"type\":\"String\"},{\"name\":\"dueDateOffset\",\"type\":\"String\"}]",
+            "locationTop": 70.0,
+            "name": "Set Variables",
+            "locationLeft": 260.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"taskName\",\"value\":\"[RECURRING] Send Metrics to Administrator\"},{\"key\":\"dueDateOffset\",\"value\":\"2D\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 694933972,
+            "outputVariables": "[{\"name\":\"date_fmt.output\",\"type\":\"String\"}]",
+            "locationTop": 70.0,
+            "name": "Find Due Date",
+            "locationLeft": 490.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Date Formatter",
+                "programName": "Date Formatter"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "yyyy-MM-dd'T'HH:mm:ss.S'Z'",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_format"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_format"
+                    }
+                },
+                {
+                    "value": "#Global:0:gbl.timestamp.epoch!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "date"
+                    }
+                },
+                {
+                    "value": "#App:694933970:dueDateOffset!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "offset"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 694933977,
+            "locationTop": 70.0,
+            "name": "Create ThreatConnect Task",
+            "locationLeft": 720.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.11",
+                "displayName": "Create ThreatConnect Task",
+                "programName": "TCPB - TaskCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_assignees"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "task_escalation_date"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_reminder_date"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "Task",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_escalatees"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "#App:694933970:taskName!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "#App:694933972:date_fmt.output!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "task_due_date"
+                    }
+                }
+            ]
+        }
+    ],
+    "playbookConnectionList": [
+        {
+            "targetJobId": 694933972,
+            "sourceJobId": 694933970,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 694933977,
+            "sourceJobId": 694933972,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 694933970,
+            "sourceTriggerId": 694933969,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panX": 408.0,
+    "definitionVersion": "1.0.0",
+    "name": "Recurring Task",
+    "description": "Create a recurring task.",
+    "logLevel": "WARN",
+    "playbookTriggerList": [
+        {
+            "id": 694933969,
+            "type": "Timer",
+            "locationTop": 70.0,
+            "name": "Run Weekly",
+            "eventType": "External",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 00 12 ? * 2 *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Weekly",
+            "locationLeft": 30.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "panY": 79.0,
+    "dateExported": "11/24/17 2:46 PM"
+}

@@ -1,0 +1,149 @@
+{
+    "jobList": [
+        {
+            "id": 14308,
+            "outputVariables": "[{\"name\":\"b2s.text\",\"type\":\"String\"}]",
+            "locationTop": 210.0,
+            "name": "Binary To String 1",
+            "locationLeft": 250.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.2",
+                "displayName": "Binary To String",
+                "programName": "TCPB - BinaryToString v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:16733:http.content!Binary",
+                    "appCatalogItemParameter": {
+                        "paramName": "content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16733,
+            "outputVariables": "[{\"name\":\"http.content\",\"type\":\"Binary\"}]",
+            "locationTop": 90.0,
+            "name": "HTTP Client 2",
+            "locationLeft": 280.0,
+            "playbookRetryDelayMinutes": 1,
+            "playbookRetryMaxRetries": 5,
+            "appCatalogItem": {
+                "programVersion": "2.0.2",
+                "displayName": "HTTP Client",
+                "programName": "TCPB - HTTP Client v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "params"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "headers"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "verify_ssl"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "proxies_enabled"
+                    }
+                },
+                {
+                    "value": "#Trigger:609:trg.http.body!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "url"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "advanced"
+                    }
+                },
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "http_method"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "multipart"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "body"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "INFO",
+    "panX": 303.0,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "PDF Reader",
+    "playbookConnectionList": [
+        {
+            "targetTriggerId": 609,
+            "sourceJobId": 14308,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 14308,
+            "sourceJobId": 16733,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16733,
+            "sourceTriggerId": 609,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 154.0,
+    "exportablePipes": [],
+    "description": "",
+    "playbookTriggerList": [
+        {
+            "id": 609,
+            "type": "HttpLink",
+            "locationTop": 90.0,
+            "name": "HttpLink Trigger 1",
+            "httpResponseBody": "#App:14308:b2s.text!String",
+            "eventType": "External",
+            "outputVariables": "[{\"name\":\"trg.http.body\",\"type\":\"String\"}]",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "httpResponseCode": "\n",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": 70.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "4/16/18 10:56 AM"
+}

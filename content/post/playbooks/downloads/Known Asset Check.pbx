@@ -1,0 +1,268 @@
+{
+    "jobList": [
+        {
+            "id": 16543,
+            "outputVariables": "[{\"name\":\"tc.victim.assets.json\",\"type\":\"String\"}]",
+            "locationTop": 260.0,
+            "name": "Get Assets",
+            "locationLeft": -140.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Get ThreatConnect Victim Assets",
+                "programName": "TCPB - VictimAssetRetrieve v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:16545:tc.victim!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "victim_entity"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16544,
+            "locationTop": 150.0,
+            "name": "Send Alert",
+            "locationLeft": 500.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message",
+                "programName": "TCPB - Slack Messaging v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Victim asset, #Trigger:1585:trg.tc.item!String, recently created.\n\n\n#Trigger:1585:trg.tc.weblink!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "playbook-testing",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_recipient"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16545,
+            "locationTop": 150.0,
+            "name": "Get Victim",
+            "locationLeft": -140.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Get ThreatConnect Victim by Name",
+                "programName": "TCPB - VictimRetrieveByName v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Victim",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "Acme Corp",
+                    "appCatalogItemParameter": {
+                        "paramName": "names"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16546,
+            "outputVariables": "[{\"name\":\"found\",\"type\":\"String\"}]",
+            "locationTop": 200.0,
+            "name": "Search Assets",
+            "locationLeft": 110.0,
+            "appCatalogItem": {
+                "programVersion": "2.0.1",
+                "displayName": "JMESPath",
+                "programName": "TCPB - JMESPath v2.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"found\",\"value\":\"@[?name \\u003d\\u003d \\u0027#Trigger:1585:trg.tc.item!String\\u0027].id\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "string_expressions"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "string_array_expressions"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_quotes"
+                    }
+                },
+                {
+                    "value": "#App:16543:tc.victim.assets.json!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_data"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16547,
+            "locationTop": 190.0,
+            "name": "Found?",
+            "locationLeft": 350.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#App:16546:found!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 16548,
+            "locationTop": 250.0,
+            "name": "Log Not Found",
+            "locationLeft": 500.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Logger",
+                "programName": "Logger"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "DEBUG",
+                    "appCatalogItemParameter": {
+                        "paramName": "logging"
+                    }
+                },
+                {
+                    "value": "Victim asset not found: #Trigger:1585:trg.tc.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "log_message"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": 0.6,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Known Asset Check",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 16543,
+            "sourceJobId": 16545,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16546,
+            "sourceJobId": 16543,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16547,
+            "sourceJobId": 16546,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16544,
+            "sourceJobId": 16547,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16548,
+            "sourceJobId": 16547,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 16545,
+            "sourceTriggerId": 1585,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 0.6,
+    "exportablePipes": [],
+    "description": "On host or address indicator create, determine if the indicator exists as a Victim asset. If the indicator is actually an asset, send an alert.",
+    "playbookTriggerList": [
+        {
+            "id": 1585,
+            "type": "MultipleIndicator",
+            "locationTop": 150.0,
+            "name": "Known Asset Check",
+            "userActionTypes": "Address,Host",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.tc.weblink\",\"type\":\"String\"},{\"name\":\"trg.tc.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": false,
+            "locationLeft": -370.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "3/19/18 2:12 AM"
+}

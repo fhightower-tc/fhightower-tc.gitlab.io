@@ -1,0 +1,513 @@
+{
+    "jobList": [
+        {
+            "id": 20012,
+            "locationTop": -130.0,
+            "name": "Send Notification",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "recipients"
+                    }
+                },
+                {
+                    "value": "High",
+                    "appCatalogItemParameter": {
+                        "paramName": "priority"
+                    }
+                },
+                {
+                    "value": "Feed Monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "notification_type"
+                    }
+                },
+                {
+                    "value": "#App:20089:message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "message"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "is_organization"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 790.0,
+            "scheduleType": "Daily",
+            "publishPassword": "onN1n3sCNhbNVgFW",
+            "scheduleLOM": false,
+            "publishUsername": "RISoo4Aa4uSsm1eM",
+            "appCatalogItem": {
+                "programVersion": "1.0.9",
+                "displayName": "Add ThreatConnect Notification",
+                "programName": "TCPB - Notification v1.0"
+            }
+        },
+        {
+            "id": 20085,
+            "locationTop": -30.0,
+            "name": "Retrieve Feed Status",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "GET",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "feed_monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "#App:20089:datastore_path!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                },
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 170.0,
+            "scheduleType": "Daily",
+            "publishPassword": "uRlcrFPcZnT5neJg",
+            "scheduleLOM": false,
+            "publishUsername": "3a0mdrIogolrEhbC",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            },
+            "outputVariables": "[{\"name\":\"datastore.response\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 20087,
+            "locationTop": -30.0,
+            "name": "Parse DataStore Response",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "null_missing_leaf"
+                    }
+                },
+                {
+                    "value": "#App:20085:datastore.response!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "json_content"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"fault\",\"value\":\"$._source.fault\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "column_mapping_as_string"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 400.0,
+            "scheduleType": "Daily",
+            "publishPassword": "5lv42h1tJlvY4iU5",
+            "scheduleLOM": false,
+            "publishUsername": "xF7MpRyqfSo1MaT0",
+            "appCatalogItem": {
+                "programVersion": "2.0.3",
+                "displayName": "Json Path",
+                "programName": "TCPB - JsonPath v1.0"
+            },
+            "outputVariables": "[{\"name\":\"fault\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 20088,
+            "locationTop": -30.0,
+            "name": "Fault?",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#App:20087:fault!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 640.0,
+            "scheduleType": "Daily",
+            "publishPassword": "ZmcuPoHiqHvzBNoS",
+            "scheduleLOM": false,
+            "publishUsername": "XexMNz75TMPmyZWD",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            }
+        },
+        {
+            "id": 20089,
+            "locationTop": -30.0,
+            "name": "Set Configuration",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"datastore_path\",\"value\":\"collect_abusech_feodo_ip\"},{\"key\":\"message\",\"value\":\"Feed Failure: Collect: abuse.ch Feodo IP\"},{\"key\":\"slack_channel\",\"value\":\"innovation\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": -60.0,
+            "scheduleType": "Daily",
+            "publishPassword": "5bMlJNeZJQ2jz5MT",
+            "scheduleLOM": false,
+            "publishUsername": "UCan1nLi1jI8gD3C",
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "outputVariables": "[{\"name\":\"message\",\"type\":\"String\"},{\"name\":\"datastore_path\",\"type\":\"String\"},{\"name\":\"slack_channel\",\"type\":\"String\"}]"
+        },
+        {
+            "id": 20090,
+            "locationTop": -30.0,
+            "name": "Send Slack Notification",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields"
+                    }
+                },
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/tc-favicon.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer_icon"
+                    }
+                },
+                {
+                    "value": "ThreatConnect Playbooks",
+                    "appCatalogItemParameter": {
+                        "paramName": "footer"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_icon"
+                    }
+                },
+                {
+                    "value": "#App:20089:slack_channel!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "channel"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "fields_markdown"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext_markdown"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "send"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_link"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "title_link"
+                    }
+                },
+                {
+                    "value": "https://threatconnect.com/wp-content/uploads/ThreatConnect-Logo-CMYK.png",
+                    "appCatalogItemParameter": {
+                        "paramName": "image_url"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "text_markdown"
+                    }
+                },
+                {
+                    "value": "${ORGANIZATION:KEYCHAIN:Slack Token}",
+                    "appCatalogItemParameter": {
+                        "paramName": "slack_api_token"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "author_name"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "thumb_url"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "pretext"
+                    }
+                },
+                {
+                    "value": "#F26724",
+                    "appCatalogItemParameter": {
+                        "paramName": "color"
+                    }
+                },
+                {
+                    "value": "#App:20089:message!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "text"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 790.0,
+            "scheduleType": "Daily",
+            "publishPassword": "m7XLhLMaCaXgImnP",
+            "scheduleLOM": false,
+            "publishUsername": "OuHaNy1GWQStTxvN",
+            "appCatalogItem": {
+                "programVersion": "1.0.1",
+                "displayName": "Send Slack Message Attachment",
+                "programName": "TCPB - SendSlackMessageAttachment v1.0"
+            }
+        },
+        {
+            "id": 20092,
+            "locationTop": 70.0,
+            "name": "Reset Feed Status",
+            "playbookRetryEnabled": false,
+            "publishAuth": false,
+            "notifyIncludeLogFiles": false,
+            "enableNotifications": false,
+            "notifyOnComplete": false,
+            "jobParameterList": [
+                {
+                    "value": "{\"fault\":true}",
+                    "appCatalogItemParameter": {
+                        "paramName": "request_entity"
+                    }
+                },
+                {
+                    "value": "Organization",
+                    "appCatalogItemParameter": {
+                        "paramName": "domain_type"
+                    }
+                },
+                {
+                    "value": "PUT",
+                    "appCatalogItemParameter": {
+                        "paramName": "db_method"
+                    }
+                },
+                {
+                    "value": "feed_monitoring",
+                    "appCatalogItemParameter": {
+                        "paramName": "type_name"
+                    }
+                },
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "organization_name"
+                    }
+                },
+                {
+                    "value": "#App:20089:datastore_path!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "path"
+                    }
+                }
+            ],
+            "notifyOnPartialFailure": false,
+            "notifyOnFailure": true,
+            "locationLeft": 790.0,
+            "scheduleType": "Daily",
+            "publishPassword": "axXT31aFkspXYQu0",
+            "scheduleLOM": false,
+            "publishUsername": "L0SnD9vRVmP1LrWV",
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "DataStore",
+                "programName": "DataStore"
+            }
+        }
+    ],
+    "logLevel": "TRACE",
+    "panX": -150.6775,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "Dead Hand Timer",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 20087,
+            "sourceJobId": 20085,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20088,
+            "sourceJobId": 20087,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20012,
+            "sourceJobId": 20088,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20085,
+            "sourceJobId": 20089,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20090,
+            "sourceJobId": 20088,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20092,
+            "sourceJobId": 20088,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 20089,
+            "sourceTriggerId": 1991,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": 52.5091,
+    "exportablePipes": [],
+    "description": "This playbook checks the status of a feed and sends a notificaiton if there is a fault in the feed status.",
+    "playbookTriggerList": [
+        {
+            "id": 1991,
+            "type": "Timer",
+            "locationTop": -30.0,
+            "name": "Dead Hand Timer",
+            "eventType": "Create",
+            "fireOnDuplicate": false,
+            "scheduleCronFormat": "00 36 1 * * ? *",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "scheduleType": "Daily",
+            "locationLeft": -290.0,
+            "orFilters": false,
+            "renderBodyAsTip": false
+        }
+    ],
+    "dateExported": "6/20/18 1:36 AM"
+}

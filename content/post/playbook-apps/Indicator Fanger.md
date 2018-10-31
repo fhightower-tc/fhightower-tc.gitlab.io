@@ -6,7 +6,7 @@ author = "Floyd Hightower"
 description = "Fang indicators of compromise in text."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_Indicator_Fanger"
-downloadLink = "/post/playbook-apps/apps-for-download/TCPB_-_Indicator_Fanger_v0.1.tcx"
+downloadLink = "/post/playbook-apps/downloads/TCPB_-_Indicator_Fanger_v0.1.tcx"
 +++
 
 # Summary

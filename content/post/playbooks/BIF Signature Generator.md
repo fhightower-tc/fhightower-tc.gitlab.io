@@ -6,6 +6,7 @@ author = "Malware Utkonos"
 description = "Generate a Bro Intelligence Framework signature from an indicator."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/BIF%20Signature%20Generator"
+downloadLinks = ["/post/playbooks/downloads/BIF Signature Generator.pbx"]
 +++
 
 ## Documentation

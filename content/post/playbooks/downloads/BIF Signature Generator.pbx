@@ -1,0 +1,1341 @@
+{
+    "jobList": [
+        {
+            "id": 18782,
+            "outputVariables": "[{\"name\":\"bro.sig\",\"type\":\"String\"}]",
+            "locationTop": -140.0,
+            "name": "Format Sig w/ Description",
+            "locationLeft": 2380.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bro.sig\",\"value\":\"#App:18829:merged.indicator!String\\t#App:18829:merged.bif_type!String\\tThreatConnect\\t#App:18834:tc.indicator.description!String\\t#Trigger:1887:trg.action.weblink!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18795,
+            "outputVariables": "[{\"name\":\"tc.signature.web_link\",\"type\":\"String\"}]",
+            "locationTop": -80.0,
+            "name": "Create BIF Signature",
+            "locationLeft": 3880.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.18",
+                "displayName": "Create ThreatConnect Signature",
+                "programName": "TCPB - SignatureCreate v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "tags"
+                    }
+                },
+                {
+                    "value": "#App:18799:uncompress.data!Binary",
+                    "appCatalogItemParameter": {
+                        "paramName": "signature_file_data"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes_all"
+                    }
+                },
+                {
+                    "value": "Bro",
+                    "appCatalogItemParameter": {
+                        "paramName": "signature_file_type"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "labels"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "associations"
+                    }
+                },
+                {
+                    "value": "[]",
+                    "appCatalogItemParameter": {
+                        "paramName": "attributes"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "fail_on_error"
+                    }
+                },
+                {
+                    "value": "#App:18851:new_title!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_name"
+                    }
+                },
+                {
+                    "value": "sig.bro",
+                    "appCatalogItemParameter": {
+                        "paramName": "signature_file_name"
+                    }
+                },
+                {
+                    "value": "Signature",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "labels_all"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "tags_all"
+                    }
+                },
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18798,
+            "outputVariables": "[{\"name\":\"compress.data\",\"type\":\"Binary\"}]",
+            "locationTop": -80.0,
+            "name": "Compress File",
+            "locationLeft": 2780.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Compress File",
+                "programName": "TCPB - CompressFile v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "something",
+                    "appCatalogItemParameter": {
+                        "paramName": "file_name"
+                    }
+                },
+                {
+                    "value": "ZIP",
+                    "appCatalogItemParameter": {
+                        "paramName": "algorithm"
+                    }
+                },
+                {
+                    "value": "#App:18802:bro.sig!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "content"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "password"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18799,
+            "outputVariables": "[{\"name\":\"uncompress.data\",\"type\":\"Binary\"}]",
+            "locationTop": -80.0,
+            "name": "Uncompress File",
+            "locationLeft": 3000.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.7",
+                "displayName": "Uncompress File",
+                "programName": "TCPB - UncompressFile v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:18798:compress.data!Binary",
+                    "appCatalogItemParameter": {
+                        "paramName": "content"
+                    }
+                },
+                {
+                    "value": "ZIP",
+                    "appCatalogItemParameter": {
+                        "paramName": "algorithm"
+                    }
+                },
+                {
+                    "appCatalogItemParameter": {
+                        "paramName": "password"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18800,
+            "locationTop": -100.0,
+            "name": "Description?",
+            "locationLeft": 2220.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#App:18834:tc.indicator.description!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18801,
+            "outputVariables": "[{\"name\":\"bro.sig\",\"type\":\"String\"}]",
+            "locationTop": -40.0,
+            "name": "Format Sig w/o Description",
+            "locationLeft": 2380.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bro.sig\",\"value\":\"#App:18829:merged.indicator!String\\t#App:18829:merged.bif_type!String\\tThreatConnect\\tNo Description\\t#Trigger:1887:trg.action.weblink!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18802,
+            "outputVariables": "[{\"name\":\"bro.sig\",\"type\":\"String\"}]",
+            "locationTop": -80.0,
+            "name": "Merge Sigs",
+            "locationLeft": 2630.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bro.sig\",\"value\":\"#App:18782:bro.sig!String\"},{\"key\":\"bro.sig\",\"value\":\"#App:18801:bro.sig!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18803,
+            "locationTop": -70.0,
+            "name": "Address?",
+            "locationLeft": -110.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "Address",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18806,
+            "outputVariables": "[{\"name\":\"indicator\",\"type\":\"String\"},{\"name\":\"bif_type\",\"type\":\"String\"}]",
+            "locationTop": -100.0,
+            "name": "Set Address Variables",
+            "locationLeft": 60.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::ADDR\"},{\"key\":\"indicator\",\"value\":\"#Trigger:1887:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18819,
+            "locationTop": 20.0,
+            "name": "Host?",
+            "locationLeft": 80.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "Host",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18820,
+            "locationTop": 100.0,
+            "name": "EmailAddr?",
+            "locationLeft": 270.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "EmailAddress",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18821,
+            "locationTop": 190.0,
+            "name": "URL?",
+            "locationLeft": 460.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "URL",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18822,
+            "locationTop": 290.0,
+            "name": "CIDR?",
+            "locationLeft": 650.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "CIDR",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18823,
+            "locationTop": 390.0,
+            "name": "File?",
+            "locationLeft": 830.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "File",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18824,
+            "outputVariables": "[{\"name\":\"bif_type\",\"type\":\"String\"},{\"name\":\"indicator\",\"type\":\"String\"}]",
+            "locationTop": -10.0,
+            "name": "Set Host Variables",
+            "locationLeft": 250.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::DOMAIN\"},{\"key\":\"indicator\",\"value\":\"#Trigger:1887:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18825,
+            "outputVariables": "[{\"name\":\"indicator\",\"type\":\"String\"},{\"name\":\"bif_type\",\"type\":\"String\"}]",
+            "locationTop": 80.0,
+            "name": "Set Email Address Variables",
+            "locationLeft": 440.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::EMAIL\"},{\"key\":\"indicator\",\"value\":\"#Trigger:1887:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18826,
+            "outputVariables": "[{\"name\":\"bif_type\",\"type\":\"String\"}]",
+            "locationTop": 170.0,
+            "name": "Set URL Variables",
+            "locationLeft": 630.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::URL\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18827,
+            "outputVariables": "[{\"name\":\"bif_type\",\"type\":\"String\"},{\"name\":\"indicator\",\"type\":\"String\"}]",
+            "locationTop": 270.0,
+            "name": "Set CIDR Variables",
+            "locationLeft": 810.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::SUBNET\"},{\"key\":\"indicator\",\"value\":\"#Trigger:1887:trg.action.item!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18828,
+            "outputVariables": "[{\"name\":\"bif_type\",\"type\":\"String\"}]",
+            "locationTop": 370.0,
+            "name": "Set File Variables",
+            "locationLeft": 990.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"bif_type\",\"value\":\"Intel::FILE_HASH\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18829,
+            "outputVariables": "[{\"name\":\"merged.bif_type\",\"type\":\"String\"},{\"name\":\"merged.indicator\",\"type\":\"String\"}]",
+            "locationTop": -100.0,
+            "name": "Merge Data",
+            "locationLeft": 2050.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "Merge",
+                "programName": "Merge"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"merged.bif_type\",\"value\":\"#App:18806:bif_type!String\"},{\"key\":\"merged.bif_type\",\"value\":\"#App:18824:bif_type!String\"},{\"key\":\"merged.bif_type\",\"value\":\"#App:18825:bif_type!String\"},{\"key\":\"merged.bif_type\",\"value\":\"#App:18826:bif_type!String\"},{\"key\":\"merged.bif_type\",\"value\":\"#App:18827:bif_type!String\"},{\"key\":\"merged.bif_type\",\"value\":\"#App:18828:bif_type!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18806:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18824:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18825:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18841:stripped_url!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18827:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18846:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18847:indicator!String\"},{\"key\":\"merged.indicator\",\"value\":\"#App:18848:indicator!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_array"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18834,
+            "outputVariables": "[{\"name\":\"tc.indicator.description\",\"type\":\"String\"}]",
+            "locationTop": -70.0,
+            "name": "Get Indicator",
+            "locationLeft": -370.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.17",
+                "displayName": "Get ThreatConnect Indicator by Value",
+                "programName": "TCPB - IndicatorRetrieveByValue v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "indicator",
+                    "appCatalogItemParameter": {
+                        "paramName": "output_variable"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "values"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.owner!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.type!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18840,
+            "outputVariables": "[{\"name\":\"raw_data\",\"type\":\"StringArray\"}]",
+            "locationTop": 170.0,
+            "name": "Strip Scheme",
+            "locationLeft": 850.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"raw_data\",\"value\":\"(?:https?|s?ftp):\\\\/\\\\/(.+)\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.item!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18841,
+            "outputVariables": "[{\"name\":\"stripped_url\",\"type\":\"String\"}]",
+            "locationTop": 170.0,
+            "name": "Join URL",
+            "locationLeft": 1070.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"stripped_url\",\"value\":\"#App:18840:raw_data!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18842,
+            "locationTop": 370.0,
+            "name": "SHA256?",
+            "locationLeft": 1470.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "#App:18843:tc.file.sha256!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18843,
+            "outputVariables": "[{\"name\":\"tc.file.md5\",\"type\":\"String\"},{\"name\":\"tc.file.sha256\",\"type\":\"String\"},{\"name\":\"tc.file.sha1\",\"type\":\"String\"}]",
+            "locationTop": 370.0,
+            "name": "Get File",
+            "locationLeft": 1220.0,
+            "appCatalogItem": {
+                "programVersion": "1.1.17",
+                "displayName": "Get ThreatConnect File by Value",
+                "programName": "TCPB - FileRetrieveByValue v1.1"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "Research Labs",
+                    "appCatalogItemParameter": {
+                        "paramName": "owner"
+                    }
+                },
+                {
+                    "value": "#Trigger:1887:trg.action.entity!TCEntity",
+                    "appCatalogItemParameter": {
+                        "paramName": "values"
+                    }
+                },
+                {
+                    "value": "File",
+                    "appCatalogItemParameter": {
+                        "paramName": "resource_type"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18844,
+            "locationTop": 470.0,
+            "name": "SHA1?",
+            "locationLeft": 1640.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.0",
+                "displayName": "If / Else",
+                "programName": "If / Else"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "#App:18843:tc.file.sha1!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_1"
+                    }
+                },
+                {
+                    "value": "not equals",
+                    "appCatalogItemParameter": {
+                        "paramName": "operator"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "match_case"
+                    }
+                },
+                {
+                    "value": "null",
+                    "appCatalogItemParameter": {
+                        "paramName": "operand_2"
+                    }
+                },
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "as_numeric"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18846,
+            "outputVariables": "[{\"name\":\"indicator\",\"type\":\"String\"}]",
+            "locationTop": 350.0,
+            "name": "SHA256",
+            "locationLeft": 1620.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicator\",\"value\":\"#App:18843:tc.file.sha256!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18847,
+            "outputVariables": "[{\"name\":\"indicator\",\"type\":\"String\"}]",
+            "locationTop": 450.0,
+            "name": "SHA1",
+            "locationLeft": 1800.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicator\",\"value\":\"#App:18843:tc.file.sha1!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18848,
+            "outputVariables": "[{\"name\":\"indicator\",\"type\":\"String\"}]",
+            "locationTop": 560.0,
+            "name": "MD5",
+            "locationLeft": 1800.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"indicator\",\"value\":\"#App:18843:tc.file.md5!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18849,
+            "outputVariables": "[{\"name\":\"truncated_title\",\"type\":\"StringArray\"}]",
+            "locationTop": -80.0,
+            "name": "Truncate Title",
+            "locationLeft": 3440.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Regex Extract",
+                "programName": "TCPB - RegexExtract v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "false",
+                    "appCatalogItemParameter": {
+                        "paramName": "strip_nulls"
+                    }
+                },
+                {
+                    "value": "true",
+                    "appCatalogItemParameter": {
+                        "paramName": "capture_groups"
+                    }
+                },
+                {
+                    "value": "#App:18850:raw_data!String",
+                    "appCatalogItemParameter": {
+                        "paramName": "input_content"
+                    }
+                },
+                {
+                    "value": "[{\"key\":\"truncated_title\",\"value\":\"(.{1,100})+?.*\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "regex_pattern_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18850,
+            "outputVariables": "[{\"name\":\"raw_data\",\"type\":\"String\"}]",
+            "locationTop": -80.0,
+            "name": "Format Title",
+            "locationLeft": 3220.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Set Variable",
+                "programName": "TCPB - SetVariable v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"raw_data\",\"value\":\"BIF: #App:18829:merged.indicator!String\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "variable_mapping"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 18851,
+            "outputVariables": "[{\"name\":\"new_title\",\"type\":\"String\"}]",
+            "locationTop": -80.0,
+            "name": "Join Title",
+            "locationLeft": 3660.0,
+            "appCatalogItem": {
+                "programVersion": "1.0.5",
+                "displayName": "Join Array",
+                "programName": "TCPB - JoinArray v1.0"
+            },
+            "playbookRetryEnabled": false,
+            "jobParameterList": [
+                {
+                    "value": "[{\"key\":\"new_title\",\"value\":\"#App:18849:truncated_title!StringArray\"}]",
+                    "appCatalogItemParameter": {
+                        "paramName": "array_mapping"
+                    }
+                },
+                {
+                    "value": ",",
+                    "appCatalogItemParameter": {
+                        "paramName": "delimiter"
+                    }
+                }
+            ]
+        }
+    ],
+    "logLevel": "WARN",
+    "panX": -521.6224,
+    "definitionVersion": "1.0.0",
+    "type": "Standard",
+    "name": "BIF Signature Generator",
+    "playbookConnectionList": [
+        {
+            "targetJobId": 18799,
+            "sourceJobId": 18798,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18782,
+            "sourceJobId": 18800,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18801,
+            "sourceJobId": 18800,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18802,
+            "sourceJobId": 18782,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18798,
+            "sourceJobId": 18802,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18802,
+            "sourceJobId": 18801,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18806,
+            "sourceJobId": 18803,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18819,
+            "sourceJobId": 18803,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18820,
+            "sourceJobId": 18819,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18821,
+            "sourceJobId": 18820,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18822,
+            "sourceJobId": 18821,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18823,
+            "sourceJobId": 18822,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18824,
+            "sourceJobId": 18819,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18825,
+            "sourceJobId": 18820,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18826,
+            "sourceJobId": 18821,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18827,
+            "sourceJobId": 18822,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18828,
+            "sourceJobId": 18823,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18806,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18824,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18825,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18827,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18800,
+            "sourceJobId": 18829,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetTriggerId": 1887,
+            "sourceJobId": 18795,
+            "type": "Pass",
+            "isCircularOnTarget": true
+        },
+        {
+            "targetJobId": 18834,
+            "sourceTriggerId": 1887,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18803,
+            "sourceJobId": 18834,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18840,
+            "sourceJobId": 18826,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18841,
+            "sourceJobId": 18840,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18841,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18843,
+            "sourceJobId": 18828,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18842,
+            "sourceJobId": 18843,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18844,
+            "sourceJobId": 18842,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18846,
+            "sourceJobId": 18842,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18847,
+            "sourceJobId": 18844,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18848,
+            "sourceJobId": 18844,
+            "type": "Fail",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18846,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18847,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18829,
+            "sourceJobId": 18848,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18850,
+            "sourceJobId": 18799,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18849,
+            "sourceJobId": 18850,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18851,
+            "sourceJobId": 18849,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        },
+        {
+            "targetJobId": 18795,
+            "sourceJobId": 18851,
+            "type": "Pass",
+            "isCircularOnTarget": false
+        }
+    ],
+    "panY": -45.1676,
+    "exportablePipes": [],
+    "description": "Generates Bro Intelligence Framework signatures from an indicator.",
+    "playbookTriggerList": [
+        {
+            "id": 1887,
+            "type": "UserAction",
+            "locationTop": -320.0,
+            "name": "Generate BIF Signature",
+            "userActionTypes": "Address,Adversary,CIDR,EmailAddress,File,Host,URL",
+            "httpResponseBody": "<a href=\"#App:18795:tc.signature.web_link!String\">Signature Generated</a>",
+            "eventType": "External",
+            "httpResponseHeader": "[]",
+            "fireOnDuplicate": false,
+            "outputVariables": "[{\"name\":\"trg.action.entity\",\"type\":\"TCEntity\"},{\"name\":\"trg.action.type\",\"type\":\"String\"},{\"name\":\"trg.action.weblink\",\"type\":\"String\"},{\"name\":\"trg.action.owner\",\"type\":\"String\"},{\"name\":\"trg.action.item\",\"type\":\"String\"}]",
+            "httpBasicAuthEnable": false,
+            "anyOrg": true,
+            "locationLeft": -370.0,
+            "orFilters": false,
+            "renderBodyAsTip": true
+        }
+    ],
+    "dateExported": "6/6/18 7:19 PM"
+}

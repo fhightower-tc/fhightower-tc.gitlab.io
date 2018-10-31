@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Turn on or off the DNS for all indicators associated with a group."
 categories = ["Playbooks"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/playbooks/toggle-dns"
+downloadLinks = ["/post/playbooks/downloads/Turn DNS Off Trigger.pbx", "/post/playbooks/downloads/Turn DNS On Trigger.pbx"]
 +++
 
 It uses the process of collecting, serializing, and processing described [here](https://fhightower.gitbooks.io/threatconnect-playbook-paradigms-and-constructs/content/constructs/collect_serialize_process.html).
