@@ -2722,3 +2722,17 @@ li.pingback:first-child {
   }
 }
 
+.downloadButton:link {
+  background-color: #05223a;
+  color: #ddd;
+}
+
+.downloadButton:visited {
+  background-color: #05223a;
+  color: #ddd;
+}
+
+.downloadButton:hover {
+  background-color: #05223a;
+  color: white;
+}

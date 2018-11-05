@@ -81,7 +81,7 @@
 </p></div>
 <div id="buttonRow">
   {{ range .Params.downloadLinks }}
-  <a class="buttonLink" href="{{ . }}" download>Download {{ index (last 1 (split . "/")) 0 }}</a><br><br>
+  <a class="buttonLink downloadButton" href="{{ . }}" download>Download <{{ index (last 1 (split . "/")) 0 }}></a><br><br>
   {{ end }}
   {{ if .Params.viewLink }}
   <a class="buttonLink" href="{{ .Params.viewLink }}">View</a>
