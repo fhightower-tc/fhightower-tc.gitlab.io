@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Component for performing addition and subtraction."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/addition-subtraction"
+downloadLinks = ["/post/playbook-components/downloads/[utility] [math] Addition and Subtraction.pbx"]
 +++
 
 # Addition and Subtraction

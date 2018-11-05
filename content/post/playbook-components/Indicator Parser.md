@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Parse indicators from text using the system regexes available via the API."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/indicator-parser"
+downloadLinks = ["/post/playbook-components/downloads/Indicator Parser.pbx"]
 +++
 
 The API endpoint to get the system regexes is documented [here](https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#retrieve-available-indicator-types).

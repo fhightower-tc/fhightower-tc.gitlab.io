@@ -6,6 +6,7 @@ author = "joereese"
 description = "Parse the header from the HTTP Trigger (#trg.http.header) into useful output variables."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/parse-http-header"
+downloadLinks = ["/post/playbook-components/downloads/Parse HTTP Header.pbx"]
 +++
 
 This component parses the HTTP Header KeyValueArray into output variables.  It can be used downstream from both the HTTP Trigger and the HTTP Client app.  It also grabs the filename from the Content-Disposition header if it exists.  

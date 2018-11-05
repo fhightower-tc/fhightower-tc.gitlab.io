@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Shorten a group's name to the maximum length (100 characters)."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/shorten_group_name"
+downloadLinks = ["/post/playbook-components/downloads/Shorten Group Name.pbx"]
 +++
 
 This component takes a potential group name, shortens it to under the 100 character limit without splitting up any words in the group name, and adds a `...` at the end of it.

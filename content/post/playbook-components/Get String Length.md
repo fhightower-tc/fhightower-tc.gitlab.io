@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Get the length of the given string."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/get-string-length"
+downloadLinks = ["/post/playbook-components/downloads/[utility] Get String Length.pbx"]
 +++
 
 ## Documentation

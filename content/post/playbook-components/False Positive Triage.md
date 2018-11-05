@@ -6,6 +6,7 @@ author = "Floyd Hightower"
 description = "Triage false positives."
 categories = ["Playbook Components"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/components/false-positive-triage"
+downloadLinks = ["/post/playbook-components/downloads/False Positive Triage.pbx"]
 +++
 
 This is a component to triage false positives by:
