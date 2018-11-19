@@ -6,4 +6,5 @@ author = "Floyd Hightower"
 description = "Elegant, simple task view for ThreatConnect."
 categories = ["Spaces Apps"]
 viewLink = "https://gitlab.com/fhightower-tc/task-view"
+downloadLinks = ["/post/spaces-apps/downloads/task-view.zip"]
 +++
