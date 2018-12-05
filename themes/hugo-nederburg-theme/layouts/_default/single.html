@@ -71,8 +71,6 @@
   </p>
 </div>
 
-
-
 <div class="entry-tags"><p><span>Tags</span>
   {{ range $index, $name := .Params.tags }}
   <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="View all posts tagged {{ $name }}">{{ $name }}</a>
