@@ -1,7 +1,7 @@
 +++
 date = "2018-03-10"
 title = "Array Set Operations"
-tags = ["Arrays", "Lists", "Sets"]
+tags = ["Arrays", "Lists", "Sets", "Subset", "Superset", "Intersection", "Union", "Difference", "Symmetric Difference"]
 author = "Bracey Summers"
 description = "Take two StringArray and perform the selected Set operation on the arrays."
 categories = ["Playbook Apps"]
