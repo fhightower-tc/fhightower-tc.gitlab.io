@@ -3,7 +3,7 @@ date = "2019-01-18"
 title = "Hamming Distance"
 tags = ["Hamming Distance", "Strings"]
 author = "Floyd Hightower"
-description = "Find the <a href="https://en.wikipedia.org/wiki/Hamming_distance">hamming distance</a> between two strings."
+description = "Find the <a href=\"https://en.wikipedia.org/wiki/Hamming_distance\">hamming distance</a> between two strings."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_Hamming_Distance"
 +++

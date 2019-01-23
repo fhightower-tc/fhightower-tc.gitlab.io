@@ -3,7 +3,7 @@ date = "2019-01-09"
 title = "Dilbert Random Number Generator"
 tags = ["Random Numbers", "Dilbert"]
 author = "Floyd Hightower"
-description = "Create a random number using the method described <a href="https://dilbert.com/strip/2001-10-25c">here</a>."
+description = "Create a random number using the method described <a href=\"https://dilbert.com/strip/2001-10-25c\">here</a>."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_Dilbert_Random_Number_Generator"
 +++

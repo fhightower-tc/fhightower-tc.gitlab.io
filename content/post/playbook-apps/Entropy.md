@@ -3,7 +3,7 @@ date = "2019-01-17"
 title = "Entropy"
 tags = ["Entropy", "Strings"]
 author = "Floyd Hightower"
-description = "Find the <a href="https://en.wikipedia.org/wiki/Shannon_entropy">Shannon Entropy</a> for the given text."
+description = "Find the <a href=\"https://en.wikipedia.org/wiki/Shannon_entropy\">Shannon Entropy</a> for the given text."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_Entropy"
 +++

@@ -3,7 +3,7 @@ date = "2019-01-16"
 title = "IOC Parser"
 tags = ["Indicators", "Parsing"]
 author = "Floyd Hightower"
-description = "Parse indicators of compromise using the <a href="https://github.com/fhightower/ioc-finder">ioc-finder</a> package."
+description = "Parse indicators of compromise using the <a href=\"https://github.com/fhightower/ioc-finder\">ioc-finder</a> package."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_IOC_Parser"
 +++

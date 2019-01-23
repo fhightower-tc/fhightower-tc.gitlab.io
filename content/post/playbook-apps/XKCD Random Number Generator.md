@@ -3,7 +3,7 @@ date = "2019-01-09"
 title = "XKCD Random Number Generator"
 tags = ["Random Numbers", "XKCD"]
 author = "Floyd Hightower"
-description = "Create a random number using the method described <a href="https://xkcd.com/221/">here</a>."
+description = "Create a random number using the method described <a href=\"https://xkcd.com/221/\">here</a>."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_XKCD_Random_Number_Generator"
 +++

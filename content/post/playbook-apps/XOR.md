@@ -3,7 +3,7 @@ date = "2019-01-15"
 title = "XOR Cipher"
 tags = ["Cipher", "XOR"]
 author = "Floyd Hightower"
-description = "<a href="https://en.wikipedia.org/wiki/XOR_cipher">XOR cipher</a> the given message with the given key."
+description = "<a href=\"https://en.wikipedia.org/wiki/XOR_cipher\">XOR cipher</a> the given message with the given key."
 categories = ["Playbook Apps"]
 viewLink = "https://github.com/ThreatConnect-Inc/threatconnect-playbooks/tree/master/apps/TCPB_-_XOR"
 +++
