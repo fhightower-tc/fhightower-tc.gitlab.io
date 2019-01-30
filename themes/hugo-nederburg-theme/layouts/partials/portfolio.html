@@ -1,5 +1,9 @@
 <h1 class="screen-reader-text">Posts</h1>
 
+<h3 style="color: #f5f5f5; background-color: red;">PLEASE NOTE: As of January 1, 2019, this site is no longer updated. Please refer to <a href="https://github.com/ThreatConnect-Inc/threatconnect-playbooks" style="text-decoration: underline;">https://github.com/ThreatConnect-Inc/threatconnect-playbooks</a> for playbooks, playbook apps, and components. Stay Hungry. Stay Foolish.</h3>
+
+<h3 style="color: #f5f5f5; background-color: blue;">Many of the links in this site are broken. If you find something on this site but cannot find it on github, please <a href="https://hightower.space/contact/" style="text-decoration: underline; color: #f5f5f5;">contact me</a>. "Trust in God and keep your playbooks ready."[<a href="https://en.wikipedia.org/wiki/Trust_in_God_and_keep_your_powder_dry">1</a>]</h3>
+
 <div id="loop-container" class="loop-container">
 	{{ $paginator := .Paginate (where (where .Site.Pages "Type" "post") "IsPage" true) }}
 	{{ range $index, $element := .Paginator.Pages }}
